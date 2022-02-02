@@ -1,5 +1,7 @@
 # FediUniFrontend
 
+[![CircleCI](https://circleci.com/gh/FediUni/FediUniFrontend/tree/main.svg?style=svg)](https://circleci.com/gh/FediUni/FediUniFrontend/tree/main)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
 ## Development server
