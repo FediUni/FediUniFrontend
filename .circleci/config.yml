@@ -23,6 +23,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+          version: 19.03.13
       - run:
           name: Build FediUniFrontend Docker Image
           command: docker build -t $IMAGE_NAME:latest .
