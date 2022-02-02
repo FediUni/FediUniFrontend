@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+$default-typography: mat.define-typography-config(
+  $font-family: "Ubuntu",
+);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+@include mat.core($default-typography);

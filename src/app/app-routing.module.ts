@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ProfileComponent } from "./profile/profile.component";
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {ProfileComponent} from "./profile/profile.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes = [
-  { path: "actor/:id", component: ProfileComponent }
+  {path: "login", component: LoginComponent},
+  {path: "actor/:id", component: ProfileComponent}
 ];
 
 @NgModule({
