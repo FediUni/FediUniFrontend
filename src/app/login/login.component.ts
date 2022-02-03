@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../authentication.service";
-import {tap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,12 +10,14 @@ import {tap} from "rxjs";
 })
 export class LoginComponent implements OnInit {
   login: FormGroup
+  loginErr: string
 
-  constructor(fb: FormBuilder, private auth: AuthenticationService) {
+  constructor(fb: FormBuilder, private auth: AuthenticationService, private router: Router) {
     this.login = fb.group({
       'username': ['', [Validators.required, Validators.max(12)]],
       'password': ['', [Validators.required, Validators.max(25)]]
-    })
+    });
+    this.loginErr = '';
   }
 
   ngOnInit(): void {
@@ -42,13 +44,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auth.login(this.login.value['username'], this.login.value['password']).pipe(
-      tap(
-        {
-          next: (data) => console.log(data),
-          error: (err) => console.error(err),
-        }
-      )
-    )
+    let username = this.login.value['username'];
+    let password = this.login.value['password'];
+    this.auth.login(username, password).subscribe({
+      error: (err) => this.loginErr = err,
+      complete: () => this.router.navigate(['/'])
+    });
   }
 }
