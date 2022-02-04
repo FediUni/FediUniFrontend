@@ -1,0 +1,15 @@
+[20:48:42.531] Got install request {"projectName":"/dev/null/inferredProject2*","fileNames":[],"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"/Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register","kind":"discover"}
+[20:48:42.533] Explicitly included types: []
+[20:48:42.534] Inferred typings from unresolved imports: []
+[20:48:42.536] Result: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/bower_components","/Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/node_modules"]}
+[20:48:42.536] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/bower_components","/Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/node_modules"]}
+[20:48:42.537] DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/bower_components
+[20:48:42.537] DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/bower_components 1 undefined Project: /dev/null/inferredProject2* watcher already invoked: false
+[20:48:42.537] Elapsed:: 0.16095799207687378ms DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/bower_components 1 undefined Project: /dev/null/inferredProject2* watcher already invoked: false
+[20:48:42.537] DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/node_modules
+[20:48:42.537] DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/node_modules 1 undefined Project: /dev/null/inferredProject2* watcher already invoked: false
+[20:48:42.537] Elapsed:: 0.046000003814697266ms DirectoryWatcher:: Added:: WatchInfo: /Users/phi/code/src/github.com/FediUni/FediUniFrontend/src/app/register/node_modules 1 undefined Project: /dev/null/inferredProject2* watcher already invoked: false
+[20:48:42.537] Sending response:
+    {"projectName":"/dev/null/inferredProject2*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[20:48:42.537] Response has been sent.
+[20:48:42.538] No new typings were requested as a result of typings discovery
