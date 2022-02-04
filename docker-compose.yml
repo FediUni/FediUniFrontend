@@ -42,4 +42,4 @@ volumes:
 
 secrets:
   config:
-    file: config.yaml
+    file: ~/code/src/github.com/FediUni/FediUni/config.yaml
