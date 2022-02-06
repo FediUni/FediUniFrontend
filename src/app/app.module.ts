@@ -16,6 +16,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    SignInComponent
+    SignInComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
