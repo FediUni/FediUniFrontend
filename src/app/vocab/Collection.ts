@@ -9,4 +9,10 @@ export interface Collection extends Object {
     items: Object[]
 }
 
-export interface OrderedCollection extends Collection { }
+export interface OrderedCollection extends Object {
+    totalItems: number
+    current: Link
+    first: Link
+    last: Link
+    orderedItems: Object | Object[]
+}
