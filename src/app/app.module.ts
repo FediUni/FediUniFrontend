@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { NoteComponent } from './note/note.component';
+import { httpInterceptorProviders } from './interceptors';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { NoteComponent } from './note/note.component';
     MatCardModule,
     MatListModule,
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
