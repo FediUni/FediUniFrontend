@@ -22,7 +22,11 @@ export class TimelineComponent implements OnInit {
 
   getPersonalTimeline(): void {
     this.timeline.getPersonalTimeline(this.auth.getUsername()).subscribe({
-      next: (objects) => this.objects = objects,
+      next: (orderedCollection) => {
+        for (let object of orderedCollection.items) {
+          this.objects.push(object);
+        }
+      },
     })
   }
 }
