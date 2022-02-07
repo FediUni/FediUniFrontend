@@ -16,6 +16,8 @@ services:
   activitypub:
     image: phixyz/fediuni
     container_name: fediuni-xyz
+    ports:
+    - "8080:8080"
     secrets:
       - config
     deploy:
