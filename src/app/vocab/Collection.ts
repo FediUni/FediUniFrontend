@@ -14,5 +14,5 @@ export interface OrderedCollection extends Object {
     current: Link
     first: Link
     last: Link
-    orderedItems: Object[]
+    orderedItems: Object | Object[]
 }
