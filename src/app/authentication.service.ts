@@ -19,7 +19,11 @@ export class AuthenticationService {
     registerForm.append("name", name);
     return this.http.post<JWTResponse>(`${environment.apiUrl}/register`, registerForm).pipe(
       tap({
-        next: (res) => this.handleJWT(res),
+        next: (res) => {
+          let expirationTime = Date.parse(res.expires);
+          this.handleJWT(res.jwt, expirationTime);
+          this.handleUsername(username, expirationTime);
+        }
       })
     );
   }
@@ -30,14 +34,29 @@ export class AuthenticationService {
     loginForm.append("password", password)
     return this.http.post<JWTResponse>(`${environment.apiUrl}/login`, loginForm).pipe(
       tap({
-        next: (res) => this.handleJWT(res),
+        next: (res) => {
+          let expirationTime = Date.parse(res.expires);
+          this.handleJWT(res.jwt, expirationTime);
+          this.handleUsername(username, expirationTime);
+        },
       })
     );
   }
 
-  handleJWT(res: JWTResponse) {
-    let expirationTime = Date.parse(res.expires)
-    this.cookieService.set("jwt", res.jwt, expirationTime, "/", environment.domain, true, 'Strict')
+  handleJWT(token: string, expirationTime: number): void {
+    this.cookieService.set("jwt", token, expirationTime, "/", environment.domain, true, 'Strict');
+  }
+
+  getJWT(): string {
+    return this.cookieService.get("jwt");
+  }
+
+  handleUsername(username: string, expirationTime: number): void {
+    this.cookieService.set("username", username, expirationTime, "/", environment.domain, true, 'Strict');
+  }
+  
+  getUsername(): string {
+    return this.cookieService.get("username");
   }
 }
 
