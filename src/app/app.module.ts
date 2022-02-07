@@ -14,9 +14,11 @@ import { MatButtonModule } from "@angular/material/button";
 import { HttpClientModule } from "@angular/common/http";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
+import { MatListModule } from "@angular/material/list";
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { NoteComponent } from './note/note.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     LoginComponent,
     RegisterComponent,
     SignInComponent,
-    TimelineComponent
+    TimelineComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { TimelineComponent } from './timeline/timeline.component';
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
