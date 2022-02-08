@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
-import { Object } from '../vocab/Object';
-import { tap } from 'rxjs';
+import { Activity } from '../vocab/Activity';
 
 @Component({
   selector: 'app-timeline',
@@ -10,10 +9,10 @@ import { tap } from 'rxjs';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  objects: Object[];
+  activities: Activity[];
 
   constructor(private auth: AuthenticationService, private timeline: TimelineService) {
-    this.objects = [];
+    this.activities = [];
   }
 
   ngOnInit(): void {
@@ -26,13 +25,11 @@ export class TimelineComponent implements OnInit {
     })
   }
 
-  handleIncomingCollection(orderedItems: Object | Object[]): void {
+  handleIncomingCollection(orderedItems: Activity | Activity[]): void {
     if (!Array.isArray(orderedItems)) {
-      this.objects.push(orderedItems)
-      return
+      this.activities.push(orderedItems);
+      return;
     }
-    for (let object of orderedItems) {
-      this.objects.push(object);
-    }
+    this.activities.concat(orderedItems);
   }
 }
