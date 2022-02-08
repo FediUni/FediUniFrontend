@@ -1,1 +1,3 @@
-export class Image implements Object { }
+import { Object } from './Object';
+
+export interface Image extends Object { }

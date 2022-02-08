@@ -1,7 +1,7 @@
 import { Link } from "./Link";
 import { Image } from "./Image";
 
-export interface Object { 
+export interface Object {
   type: String
   id: String
   attributedTo: Object[]
