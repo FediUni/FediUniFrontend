@@ -30,6 +30,8 @@ export class TimelineComponent implements OnInit {
       this.activities.push(orderedItems);
       return;
     }
-    this.activities.concat(orderedItems);
+    orderedItems.forEach((item: Activity) => {
+      this.activities.push(item);
+    })
   }
 }
