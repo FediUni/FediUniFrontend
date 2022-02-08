@@ -1,8 +1,8 @@
-import { Object } from './Object';
 import { Image } from './Image';
 import { Link } from './Link';
+import { Object } from './Object';
 
-export class Note implements Object {
+export class Actor implements Object {
   type: string = '';
   id: string = '';
   attributedTo: Object[] = [];
@@ -10,7 +10,7 @@ export class Note implements Object {
   name: string = '';
   icon: Image[] = [];
   image: Image[] = [];
-  inReplyTo: Object[] = []
+  inReplyTo: Object[] = [];
   published: Date = new Date();
   url: Link[] = [];
 }

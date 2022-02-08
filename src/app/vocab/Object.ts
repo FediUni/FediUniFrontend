@@ -2,11 +2,11 @@ import { Link } from "./Link";
 import { Image } from "./Image";
 
 export interface Object {
-  type: String
-  id: String
+  type: string
+  id: string
   attributedTo: Object[]
-  content: String
-  name: String
+  content: string
+  name: string
   icon: Image[]
   image: Image[]
   inReplyTo: Object[]
