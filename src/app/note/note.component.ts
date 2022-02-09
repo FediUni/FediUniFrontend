@@ -12,15 +12,15 @@ import { Link } from '../vocab/Link';
 export class NoteComponent implements OnInit {
   @Input() note: Object = new Note();
   @Input() author: Actor[] = [];
-  profilePicture: Link[] = [];
+  profilePicture: Link[] | undefined = [];
 
   constructor() {
   }
 
   ngOnInit(): void {
     let icon = this.note.icon;
-    if (this.note.icon !== undefined && this.note.icon.length > 0) {
-      this.profilePicture = this.note.icon[0].url
+    if (icon !== undefined && icon.length > 0) {
+      this.profilePicture = icon[0].url
     }
   }
 
