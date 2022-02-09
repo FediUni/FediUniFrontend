@@ -22,18 +22,19 @@ export class NoteComponent implements OnInit {
 
   }
 
-  getProfilePicture(author: Actor[]) {
- if (author?.length === 0) {
+  getProfilePicture(authors: Actor[]) {
+    if (authors?.length === 0) {
       return;
     }
-    let icons = author[0].icon ?? [];
-    if (icons?.length === 0) {
+    let author = authors[0];
+    if (author?.icon?.length === 0) {
       return;
     }
-    let urls = icons[0].url
-    if (!urls || urls.length > 0) {
+    let icon = author.icon[0];
+    if (!icon?.url) {
       return;
     }
-    this.profilePicture = urls[0];
+    let url = icon.url[0]
+    this.profilePicture = url ?? new Link();
   }
 }
