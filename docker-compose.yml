@@ -25,6 +25,7 @@ services:
         condition: on-failure
     depends_on:
       - redis
+      - mongo
     networks:
       - fediuni
   redis:
@@ -34,6 +35,15 @@ services:
     networks:
       - fediuni
     command: redis-server --requirepass ${REDIS_PASSWORD}
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    networks:
+      - fediuni
+
 
 networks:
   fediuni:
@@ -44,4 +54,4 @@ volumes:
 
 secrets:
   config:
-    file: ~/code/src/github.com/FediUni/FediUni/config.yaml
+    file: config.yaml
