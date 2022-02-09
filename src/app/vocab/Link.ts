@@ -1,6 +1,6 @@
-export interface Link { 
-    type: String
-    href: String
-    name: String
-    mediaType: String
+export class Link {
+  type: string = "";
+  href: string = "";
+  name: string = "";
+  mediaType: string = "";
 }

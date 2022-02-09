@@ -1,6 +1,5 @@
 import { Link } from "./Link"
 import { Object } from "./Object"
-import { Activity } from "./Activity"
 
 export interface Collection extends Object {
   totalItems: number
@@ -10,10 +9,10 @@ export interface Collection extends Object {
   items: Object[]
 }
 
-export interface OrderedCollection extends Object {
-  totalItems: number
-  current: Link
-  first: Link
-  last: Link
-  orderedItems: Activity | Activity[]
+export class OrderedCollection extends Object {
+  totalItems: number = 0;
+  current: Link = new Link();
+  first: Link = new Link();
+  last: Link = new Link();
+  orderedItems: Object[] = [];
 }

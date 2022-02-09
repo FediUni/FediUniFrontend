@@ -1,3 +1,5 @@
 <div *ngFor="let activity of activities">
-  <app-note [note]="activity.object"></app-note>
+  <div *ngIf="activity.object !== undefined">
+    <app-note [note]="activity.object"></app-note>
+  </div>
 </div>
