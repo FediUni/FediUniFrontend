@@ -3,6 +3,7 @@ import { Note } from '../vocab/Note';
 import { Object } from '../vocab/Object';
 import { Actor } from '../vocab/Actor';
 import { Link } from '../vocab/Link';
+import { Image } from '../vocab/Image';
 
 @Component({
   selector: 'app-note',
@@ -12,7 +13,7 @@ import { Link } from '../vocab/Link';
 export class NoteComponent implements OnInit {
   @Input() note: Object = new Note();
   @Input() author: Actor[] = [];
-  profilePicture: Link[] = [];
+  profilePicture: Link = new Link();
 
   constructor() {
   }
@@ -22,7 +23,27 @@ export class NoteComponent implements OnInit {
 
   }
 
-  getProfilePicture(authors: Actor[]) {
-    this.profilePicture = authors?.[0]?.icon?.[0]?.url ?? [];
+  getProfilePicture(authors: Actor[]): void {
+    let author = this.getAuthor(authors);
+    if (author === undefined) {
+      return
+    }
+    let icon = this.getIcon(author);
+    if (icon === undefined) {
+      return
+    }
+    this.profilePicture = this.getURL(icon) ?? new Link();
+  }
+
+  getAuthor(authors: Actor[]): Actor | undefined {
+    return authors?.[0];
+  }
+
+  getIcon(author: Actor): Image | undefined {
+    return author?.icon?.[0];
+  }
+
+  getURL(icon: Image): Link | undefined {
+    return icon?.url?.[0];
   }
 }
