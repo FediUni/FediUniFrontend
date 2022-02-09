@@ -10,7 +10,7 @@ import { Actor } from '../vocab/Actor';
 })
 export class NoteComponent implements OnInit {
   @Input() note: Object = new Note();
-  @Input() author: Actor = new Actor();
+  @Input() author: Actor[] = [];
 
   constructor() {
   }
