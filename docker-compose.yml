@@ -37,6 +37,8 @@ services:
     command: redis-server --requirepass ${REDIS_PASSWORD}
   mongo:
     image: mongo
+    ports:
+      - "27017:27017"
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
