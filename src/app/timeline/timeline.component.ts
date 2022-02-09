@@ -30,9 +30,13 @@ export class TimelineComponent implements OnInit {
     if (orderedCollection?.orderedItems?.length > 0) {
       let orderedItems = orderedCollection.orderedItems ?? [];
       orderedItems.map((item) => {
-        this.activities.push(item as Activity);
-      })
-
+        let activity = item as Activity;
+        if (activity === undefined) {
+          return
+        }
+        activity.actor = activity.actor?.concat(activity.actor);
+        this.activities.push(activity);
+      });
     }
   }
 }

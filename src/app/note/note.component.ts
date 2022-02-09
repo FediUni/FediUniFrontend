@@ -22,12 +22,7 @@ export class NoteComponent implements OnInit {
     this.getProfilePicture(this.author);
   }
 
-  getProfilePicture(authors: Object[] | Object): void {
-    console.log("Checking if Authors is Array")
-    if (!Array.isArray(authors)) {
-      console.log("Converting to Array")
-      authors = [authors];
-    }
+  getProfilePicture(authors: Object[]): void {
     let author = this.getAuthor(authors as Actor[]);
     if (author === undefined) {
       console.log("Author is Undefined");
