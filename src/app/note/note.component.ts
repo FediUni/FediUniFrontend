@@ -12,7 +12,7 @@ import { Link } from '../vocab/Link';
 export class NoteComponent implements OnInit {
   @Input() note: Object = new Note();
   @Input() author: Actor[] = [];
-  profilePicture: Link | undefined;
+  profilePicture: Link[] | undefined;
 
   constructor() {
   }
@@ -23,18 +23,6 @@ export class NoteComponent implements OnInit {
   }
 
   getProfilePicture(authors: Actor[]) {
-    if (authors?.length === 0) {
-      return;
-    }
-    let author = authors[0];
-    if (author?.icon?.length === 0) {
-      return;
-    }
-    let icon = author.icon[0];
-    if (!icon?.url) {
-      return;
-    }
-    let url = icon.url[0]
-    this.profilePicture = url ?? new Link();
+    this.profilePicture = authors[0]?.icon[0]?.url;
   }
 }
