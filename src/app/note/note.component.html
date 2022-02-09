@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-header>
     <span *ngIf="author.length >= 1">
-      <span *ngIf="profilePicture !== undefined">
-        <img mat-card-avatar src={{profilePicture.href}}>
+      <span *ngIf="profilePicture.length >= 1">
+        <img mat-card-avatar src={{profilePicture[0].href}}>
       </span>
       <mat-card-title>{{author[0].name}}</mat-card-title>
     </span>
