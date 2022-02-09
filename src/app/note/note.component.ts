@@ -30,7 +30,7 @@ export class NoteComponent implements OnInit {
       return;
     }
     let urls = icons[0].url
-    if (urls?.length === 0) {
+    if (!urls || urls.length > 0) {
       return;
     }
     this.profilePicture = urls[0] ?? new Link();
