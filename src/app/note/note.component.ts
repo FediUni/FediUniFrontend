@@ -12,14 +12,14 @@ import { Image } from '../vocab/Image';
 })
 export class NoteComponent implements OnInit {
   @Input() note: Object = new Note();
-  @Input() author: Actor[] = [];
+  @Input() author: Object[] = [];
   profilePicture: Link = new Link();
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.getProfilePicture(this.author)
+    this.getProfilePicture(this.author as Actor[])
 
   }
 
