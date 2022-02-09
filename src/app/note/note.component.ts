@@ -25,11 +25,13 @@ export class NoteComponent implements OnInit {
   getProfilePicture(authors: Actor[]): void {
     let author = this.getAuthor(authors);
     if (author === undefined) {
-      return
+      console.log("Author is Undefined");
+      return;
     }
     let icon = this.getIcon(author);
     if (icon === undefined) {
-      return
+      console.log("Icon is Undefined")
+      return;
     }
     this.profilePicture = this.getURL(icon) ?? new Link();
   }

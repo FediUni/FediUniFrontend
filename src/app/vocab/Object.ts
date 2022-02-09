@@ -7,8 +7,8 @@ export interface Object {
   attributedTo?: Object[]
   content?: string
   name?: string
-  icon?: Image[]
-  image?: Image[]
+  icon?: Image[] | Image
+  image?: Image[] | Image
   inReplyTo?: Object[]
   published?: Date
   url?: Link[]
