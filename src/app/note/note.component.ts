@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../vocab/Note';
-import { Object } from '../vocab/Object';
+import { ActivityPubObject } from '../vocab/Object';
 import { Actor } from '../vocab/Actor';
 import { Link } from '../vocab/Link';
 import { Image } from '../vocab/Image';
@@ -11,8 +11,8 @@ import { Image } from '../vocab/Image';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-  @Input() note: Object = new Note();
-  @Input() author: Object[] = [];
+  @Input() note: ActivityPubObject = new Note();
+  @Input() author: ActivityPubObject[] = [];
   profilePicture: Link = new Link();
 
   constructor() {
@@ -22,7 +22,7 @@ export class NoteComponent implements OnInit {
     this.getProfilePicture(this.author);
   }
 
-  getProfilePicture(authors: Object[]): void {
+  getProfilePicture(authors: ActivityPubObject[]): void {
     let author = this.getAuthor(authors as Actor[]);
     if (author === undefined) {
       console.log("Author is Undefined");

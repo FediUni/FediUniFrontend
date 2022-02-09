@@ -1,16 +1,16 @@
-import { Object } from './Object';
+import { ActivityPubObject } from './Object';
 import { Image } from './Image';
 import { Link } from './Link';
 
-export class Note implements Object {
+export class Note implements ActivityPubObject {
   type: string = '';
   id: string = '';
-  attributedTo: Object[] = [];
+  attributedTo: ActivityPubObject[] = [];
   content: string = '';
   name: string = '';
   icon: Image[] = [];
   image: Image[] = [];
-  inReplyTo: Object[] = []
+  inReplyTo: ActivityPubObject[] = []
   published: Date = new Date();
   url: Link[] = [];
 }

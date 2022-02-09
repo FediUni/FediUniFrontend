@@ -1,4 +1,4 @@
-import { Object } from './Object';
+import { ActivityPubObject } from './Object';
 import { Link } from './Link';
 
-export interface Image extends Object { }
+export interface Image extends ActivityPubObject { }

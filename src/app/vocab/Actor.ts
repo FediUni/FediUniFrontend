@@ -1,16 +1,16 @@
 import { Image } from './Image';
 import { Link } from './Link';
-import { Object } from './Object';
+import { ActivityPubObject } from './Object';
 
-export class Actor implements Object {
+export class Actor implements ActivityPubObject {
   type: string = '';
   id: string = '';
-  attributedTo: Object[] = [];
+  attributedTo: ActivityPubObject[] = [];
   content: string = '';
   name: string = '';
   icon: Image[] = [];
   image: Image[] = [];
-  inReplyTo: Object[] = [];
+  inReplyTo: ActivityPubObject[] = [];
   published: Date = new Date();
   url: Link[] = [];
 }

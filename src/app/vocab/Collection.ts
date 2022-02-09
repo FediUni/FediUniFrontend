@@ -1,12 +1,12 @@
 import { Link } from "./Link"
-import { Object } from "./Object"
+import { ActivityPubObject } from "./Object"
 
-export interface Collection extends Object {
+export interface Collection extends ActivityPubObject {
   totalItems: number
   current: Link
   first: Link
   last: Link
-  items: Object[]
+  items: ActivityPubObject[]
 }
 
 export class OrderedCollection extends Object {
@@ -14,5 +14,5 @@ export class OrderedCollection extends Object {
   current: Link = new Link();
   first: Link = new Link();
   last: Link = new Link();
-  orderedItems: Object[] = [];
+  orderedItems: ActivityPubObject[] = [];
 }

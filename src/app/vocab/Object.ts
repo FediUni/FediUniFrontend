@@ -1,15 +1,15 @@
 import { Link } from "./Link";
 import { Image } from "./Image";
 
-export interface Object {
+export interface ActivityPubObject {
   type: string
   id: string
-  attributedTo?: Object[]
+  attributedTo?: ActivityPubObject[]
   content?: string
   name?: string
   icon?: Image[] | Image
   image?: Image[] | Image
-  inReplyTo?: Object[]
+  inReplyTo?: ActivityPubObject[]
   published?: Date
   url?: Link[]
 }

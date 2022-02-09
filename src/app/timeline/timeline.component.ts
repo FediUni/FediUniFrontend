@@ -3,6 +3,7 @@ import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
 import { OrderedCollection } from '../vocab/Collection';
+import { Actor } from '../vocab/Actor';
 
 @Component({
   selector: 'app-timeline',
@@ -32,14 +33,14 @@ export class TimelineComponent implements OnInit {
       orderedItems.map((item) => {
         let activity = item as Activity;
         if (activity === undefined) {
-          return
+          return;
         }
-        console.log(`Converting Actor=${activity.actor} to array`)
-        let actor = activity.actor
-        if (!Array.isArray(actor) && actor !== undefined) {
-          activity.actor = [actor];
+        let actor = activity.actor;
+        if (actor !== undefined && !Array.isArray(actor)) {
+          console.log(`Converting Actor=${actor} to array`)
+          activity.actor = [actor as Actor];
+          console.log(`Converted Actor=${actor} to array`)
         }
-        console.log(`Converted Actor=${activity.actor} to array`)
         this.activities.push(activity);
       });
     }
