@@ -23,7 +23,9 @@ export class NoteComponent implements OnInit {
   }
 
   getProfilePicture(authors: Object[] | Object): void {
+    console.log("Checking if Authors is Array")
     if (!Array.isArray(authors)) {
+      console.log("Converting to Array")
       authors = [authors];
     }
     let author = this.getAuthor(authors as Actor[]);
@@ -40,14 +42,17 @@ export class NoteComponent implements OnInit {
   }
 
   getAuthor(authors: Actor[]): Actor | undefined {
+    console.log("Returning the First Author")
     return authors?.[0];
   }
 
   getIcon(author: Actor): Image | undefined {
+    console.log("Returning the First Icon")
     return author?.icon?.[0];
   }
 
   getURL(icon: Image): Link | undefined {
+    console.log("Returning the First URL")
     return icon?.url?.[0];
   }
 }
