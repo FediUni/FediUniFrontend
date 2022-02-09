@@ -19,7 +19,6 @@ export class NoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfilePicture(this.author)
-
   }
 
   getProfilePicture(author: Actor[]) {

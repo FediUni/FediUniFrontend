@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
+import { OrderedCollection } from '../vocab/Collection';
 
 @Component({
   selector: 'app-timeline',
@@ -21,13 +22,17 @@ export class TimelineComponent implements OnInit {
 
   getPersonalTimeline(): void {
     this.timeline.getPersonalTimeline(this.auth.getUsername()).subscribe({
-      next: (orderedCollection) => this.handleIncomingCollection(orderedCollection.orderedItems),
+      next: (orderedCollection) => this.handleIncomingCollection(orderedCollection),
     })
   }
 
-  handleIncomingCollection(orderedItems: Object[]): void {
-    orderedItems.map((item) => {
-      this.activities.push(item as Activity);
-    })
+  handleIncomingCollection(orderedCollection: OrderedCollection): void {
+    if (orderedCollection?.orderedItems?.length > 0) {
+      let orderedItems = orderedCollection.orderedItems ?? [];
+      orderedItems.map((item) => {
+        this.activities.push(item as Activity);
+      })
+
+    }
   }
 }
