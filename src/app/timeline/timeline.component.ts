@@ -25,13 +25,14 @@ export class TimelineComponent implements OnInit {
     })
   }
 
-  handleIncomingCollection(orderedItems: Activity | Activity[]): void {
+  handleIncomingCollection(orderedItems: Object | Object[]): void {
     if (!Array.isArray(orderedItems)) {
-      this.activities.push(orderedItems);
+      this.activities.push(orderedItems as Activity);
       return;
     }
-    orderedItems.forEach((item: Activity) => {
-      this.activities.push(item);
+    let activities = orderedItems as Activity[]
+    activities.forEach((activity: Activity) => {
+      this.activities.push(activity);
     })
   }
 }

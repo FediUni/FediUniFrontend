@@ -1,7 +1,7 @@
 import { Object } from "./Object";
 
 export interface Activity extends Object {
-  actor: Object
+  actor: Object[]
   object: Object
   target: Object
   result: Object
