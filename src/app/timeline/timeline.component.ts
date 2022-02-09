@@ -27,11 +27,7 @@ export class TimelineComponent implements OnInit {
 
   handleIncomingCollection(orderedItems: Object[]): void {
     orderedItems.map((item) => {
-      console.log(`Mapping ${item}`)
-      if (item instanceof Activity) {
-        console.log(`Item is Activity`)
-        this.activities.push(item);
-      }
+      this.activities.push(item as Activity);
     })
   }
 }
