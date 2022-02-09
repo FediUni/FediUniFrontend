@@ -35,7 +35,10 @@ export class TimelineComponent implements OnInit {
           return
         }
         console.log(`Converting Actor=${activity.actor} to array`)
-        activity.actor = activity.actor?.concat(activity.actor);
+        let actor = activity.actor
+        if (!Array.isArray(actor)) {
+          actor = actor.concat(actor);
+        }
         console.log(`Converted Actor=${activity.actor} to array`)
         this.activities.push(activity);
       });
