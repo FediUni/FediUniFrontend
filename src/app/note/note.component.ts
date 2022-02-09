@@ -19,11 +19,14 @@ export class NoteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProfilePicture(this.author as Actor[])
+    this.getProfilePicture(this.author)
   }
 
-  getProfilePicture(authors: Actor[]): void {
-    let author = this.getAuthor(authors);
+  getProfilePicture(authors: Object[] | Object): void {
+    if (!Array.isArray(authors)) {
+      authors = [authors];
+    }
+    let author = this.getAuthor(authors as Actor[]);
     if (author === undefined) {
       console.log("Author is Undefined");
       return;
