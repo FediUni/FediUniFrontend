@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm install
 
-RUN npm run build
+RUN npm run build-dev
 
 FROM nginx:latest as frontend
 
