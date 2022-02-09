@@ -23,6 +23,6 @@ export class NoteComponent implements OnInit {
   }
 
   getProfilePicture(authors: Actor[]) {
-    this.profilePicture = authors[0]?.icon[0]?.url ?? [];
+    this.profilePicture = authors?.[0]?.icon?.[0]?.url ?? [];
   }
 }
