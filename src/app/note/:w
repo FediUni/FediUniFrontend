@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../vocab/Note';
-import { ActivityPubObject } from '../vocab/ActivityPubObject';
+import { ActivityPubObject } from '../vocab/Object';
 import { Actor } from '../vocab/Actor';
 import { Link } from '../vocab/Link';
 import { Image } from '../vocab/Image';
@@ -12,9 +12,8 @@ import { Image } from '../vocab/Image';
 })
 export class NoteComponent implements OnInit {
   @Input() note: ActivityPubObject = new Note();
+  @Input() author: ActivityPubObject[] = [];
   profilePicture: Link = new Link();
-  private _author: ActivityPubObject[] = [];
-
 
   constructor() {
   }
@@ -23,25 +22,13 @@ export class NoteComponent implements OnInit {
     this.getProfilePicture(this.author);
   }
 
-  @Input()
-  set author(actors: ActivityPubObject[] | ActivityPubObject) {
-    if (!Array.isArray(actors)) {
-      this._author = [actors as Actor];
-      return;
-    }
-    this._author = actors as Actor[];
-  }
-
-  get author(): ActivityPubObject[] {
-    return this._author;
-  }
-
   getProfilePicture(authors: ActivityPubObject[]): void {
     let author = this.getAuthor(authors as Actor[]);
     if (author === undefined) {
       console.log("Author is Undefined");
       return;
     }
+    console.log(`Got Author=${auhtor}`)
     let icon = this.getIcon(author);
     if (icon === undefined) {
       console.log("Icon is Undefined")
@@ -56,17 +43,11 @@ export class NoteComponent implements OnInit {
   }
 
   getIcon(author: Actor): Image | undefined {
-    if (!Array.isArray(author?.icon)) {
-      return author?.icon as Image
-    }
     console.log("Returning the First Icon")
     return author?.icon?.[0];
   }
 
   getURL(icon: Image): Link | undefined {
-    if (!Array.isArray(icon?.url)) {
-      return icon?.url as Link;
-    }
     console.log("Returning the First URL")
     return icon?.url?.[0];
   }

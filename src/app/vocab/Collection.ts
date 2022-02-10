@@ -1,5 +1,5 @@
 import { Link } from "./Link"
-import { ActivityPubObject } from "./Object"
+import { ActivityPubObject } from "./ActivityPubObject"
 
 export interface Collection extends ActivityPubObject {
   totalItems: number

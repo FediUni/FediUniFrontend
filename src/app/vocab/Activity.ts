@@ -1,4 +1,4 @@
-import { ActivityPubObject } from "./Object";
+import { ActivityPubObject } from "./ActivityPubObject";
 import { Actor } from "./Actor";
 
 export interface Activity extends ActivityPubObject {

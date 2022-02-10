@@ -1,16 +1,16 @@
+import { ActivityPubObject } from './ActivityPubObject';
 import { Image } from './Image';
 import { Link } from './Link';
-import { ActivityPubObject } from './Object';
 
 export class Actor implements ActivityPubObject {
   type: string = '';
   id: string = '';
-  attributedTo: ActivityPubObject[] = [];
+  attributedTo: ActivityPubObject[] | ActivityPubObject = [];
   content: string = '';
   name: string = '';
-  icon: Image[] = [];
-  image: Image[] = [];
-  inReplyTo: ActivityPubObject[] = [];
+  icon: Image[] | Image = [];
+  image: Image[] | Image = [];
+  inReplyTo: ActivityPubObject[] | ActivityPubObject = [];
   published: Date = new Date();
-  url: Link[] = [];
+  url: Link[] | Link = [];
 }

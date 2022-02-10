@@ -1,4 +1,4 @@
-import { ActivityPubObject } from './Object';
+import { ActivityPubObject } from './ActivityPubObject';
 import { Image } from './Image';
 import { Link } from './Link';
 

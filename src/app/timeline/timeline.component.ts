@@ -37,9 +37,7 @@ export class TimelineComponent implements OnInit {
         }
         let actor = activity.actor;
         if (actor !== undefined && !Array.isArray(actor)) {
-          console.log(`Converting Actor=${actor} to array`)
           activity.actor = [actor as Actor];
-          console.log(`Converted Actor=${actor} to array`)
         }
         this.activities.push(activity);
       });
