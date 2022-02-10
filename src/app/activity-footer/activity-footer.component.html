@@ -1,0 +1,6 @@
+<mat-card-footer *ngIf="publicationTime !== undefined">
+  <div class="publication">
+    <span class="filler"></span>
+    {{publicationTime | date:'medium'}}
+  </div>
+</mat-card-footer>

@@ -1,15 +1,3 @@
-<mat-card>
-  <mat-card-header>
-    <img mat-card-avatar src={{profilePicture}} *ngIf="profilePicture !== ''">
-    <div *ngIf="author.length >= 1">
-      <mat-card-title >{{author[0].name}}</mat-card-title>
-      <mat-card-subtitle>
-        @{{author[0].preferredUsername}}
-      </mat-card-subtitle>
-    </div>
-  </mat-card-header>
-  <mat-card-content>
-    <p [innerHTML]="note.content"></p>
-    <p>{{note.published}}</p>
-  </mat-card-content>
-</mat-card>
+<mat-card-content>
+    <p [innerHTML]="note?.content"></p>
+</mat-card-content>

@@ -10,6 +10,6 @@ export interface ActivityPubObject {
   icon?: Image[] | Image
   image?: Image[] | Image
   inReplyTo?: ActivityPubObject[] | ActivityPubObject
-  published?: Date
+  published?: Date | string
   url?: Link[] | Link | string
 }
