@@ -56,6 +56,7 @@ export class NoteComponent implements OnInit {
   }
 
   getIcon(author: Actor): Image | undefined {
+    console.log(author?.icon);
     if (!Array.isArray(author?.icon)) {
       return author?.icon as Image
     }
