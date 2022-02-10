@@ -13,7 +13,7 @@ import { Image } from '../vocab/Image';
 export class NoteComponent implements OnInit {
   @Input() note: ActivityPubObject = new Note();
   profilePicture: Link = new Link();
-  private _author: ActivityPubObject[] = [];
+  private _author: Actor[] = [];
 
 
   constructor() {
@@ -32,7 +32,7 @@ export class NoteComponent implements OnInit {
     this._author = actors as Actor[];
   }
 
-  get author(): ActivityPubObject[] {
+  get author(): Actor[] {
     return this._author;
   }
 
@@ -52,7 +52,7 @@ export class NoteComponent implements OnInit {
 
   getAuthor(authors: Actor[]): Actor | undefined {
     console.log("Returning the First Author")
-    return authors?.[0];
+    return authors?.[0] as Actor;
   }
 
   getIcon(author: Actor): Image | undefined {
@@ -60,7 +60,7 @@ export class NoteComponent implements OnInit {
       return author?.icon as Image
     }
     console.log("Returning the First Icon")
-    return author?.icon?.[0];
+    return author?.icon?.[0] as Image;
   }
 
   getURL(icon: Image): Link | undefined {
