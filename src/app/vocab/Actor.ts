@@ -8,6 +8,7 @@ export class Actor implements ActivityPubObject {
   attributedTo: ActivityPubObject[] | ActivityPubObject = [];
   content: string = '';
   name: string = '';
+  preferredUsername: string = '';
   icon: Image[] | Image = [];
   image: Image[] | Image = [];
   inReplyTo: ActivityPubObject[] | ActivityPubObject = [];

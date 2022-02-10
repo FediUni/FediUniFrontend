@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://fediuni.xyz/api',
-  domain: 'fediuni.xyz',
+  apiUrl: 'https://localhost/api',
+  domain: 'localhost',
 };
 
 /*

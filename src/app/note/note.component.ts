@@ -12,7 +12,7 @@ import { Image } from '../vocab/Image';
 })
 export class NoteComponent implements OnInit {
   @Input() note: ActivityPubObject = new Note();
-  profilePicture: Link = new Link();
+  profilePicture: string = '';
   private _author: Actor[] = [];
 
 
@@ -42,13 +42,12 @@ export class NoteComponent implements OnInit {
       console.log("Author is Undefined");
       return;
     }
-    console.log("Icon = ", author.icon)
     let icon = this.getIcon(author);
     if (icon === undefined) {
       console.log("Icon is Undefined")
       return;
     }
-    this.profilePicture = this.getURL(icon) ?? new Link();
+    this.profilePicture = this.getURL(icon);
   }
 
   getAuthor(authors: Actor[]): Actor | undefined {
@@ -65,11 +64,14 @@ export class NoteComponent implements OnInit {
     return author?.icon?.[0] as Image;
   }
 
-  getURL(icon: Image): Link | undefined {
+  getURL(icon: Image): string {
+    if (typeof icon?.url === 'string') {
+      return icon?.url;
+    }
     if (!Array.isArray(icon?.url)) {
-      return icon?.url as Link;
+      return icon?.url?.href ?? '';
     }
     console.log("Returning the First URL")
-    return icon?.url?.[0];
+    return icon?.url?.[0]?.href ?? '';
   }
 }

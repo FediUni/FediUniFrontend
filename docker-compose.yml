@@ -56,4 +56,4 @@ volumes:
 
 secrets:
   config:
-    file: config.yaml
+    file: ./config.yaml
