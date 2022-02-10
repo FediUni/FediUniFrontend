@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthenticationService} from "../authentication.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthenticationService } from "../authentication.service";
+import { Router } from "@angular/router";
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,12 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   login: FormGroup
-  loginErr: string
 
-  constructor(fb: FormBuilder, private auth: AuthenticationService, private router: Router) {
+  constructor(fb: FormBuilder, private auth: AuthenticationService, private msg: MessageService, private router: Router) {
     this.login = fb.group({
       'username': ['', [Validators.required, Validators.max(12)]],
       'password': ['', [Validators.required, Validators.max(25)]]
     });
-    this.loginErr = '';
   }
 
   ngOnInit(): void {
@@ -47,8 +46,7 @@ export class LoginComponent implements OnInit {
     let username = this.login.value['username'];
     let password = this.login.value['password'];
     this.auth.login(username, password).subscribe({
-      error: (err) => this.loginErr = err,
-      complete: () => this.router.navigate(['/'])
+      complete: () => this.router.navigate(['/timeline'])
     });
   }
 }

@@ -64,7 +64,15 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            }
+            },
+            "localhost": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.localhost.ts",
+                },
+              ],
+            },
           },
           "defaultConfiguration": "production"
         },
@@ -76,7 +84,10 @@
             },
             "development": {
               "browserTarget": "FediUniFrontend:build:development"
-            }
+            },
+            "localhost": {
+              "browserTarget": "FediUniFrontend:build:localhost",
+            },
           },
           "defaultConfiguration": "development",
           "options": {
