@@ -42,6 +42,7 @@ export class NoteComponent implements OnInit {
       console.log("Author is Undefined");
       return;
     }
+    console.log(author.icon)
     let icon = this.getIcon(author);
     if (icon === undefined) {
       console.log("Icon is Undefined")
