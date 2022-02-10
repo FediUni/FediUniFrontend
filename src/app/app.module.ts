@@ -22,6 +22,9 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { NoteComponent } from './note/note.component';
 import { httpInterceptorProviders } from './interceptors';
 import { MessageComponent } from './message/message.component';
+import { ActivityHeaderComponent } from './activity-header/activity-header.component';
+import { ActivityComponent } from './activity/activity.component';
+import { ActivityFooterComponent } from './activity-footer/activity-footer.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { MessageComponent } from './message/message.component';
     SignInComponent,
     TimelineComponent,
     NoteComponent,
-    MessageComponent
+    MessageComponent,
+    ActivityHeaderComponent,
+    ActivityComponent,
+    ActivityFooterComponent
   ],
   imports: [
     BrowserModule,
