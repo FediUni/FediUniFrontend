@@ -15,11 +15,13 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { NoteComponent } from './note/note.component';
 import { httpInterceptorProviders } from './interceptors';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { httpInterceptorProviders } from './interceptors';
     RegisterComponent,
     SignInComponent,
     TimelineComponent,
-    NoteComponent
+    NoteComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { httpInterceptorProviders } from './interceptors';
     MatTabsModule,
     MatCardModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   providers: [
     httpInterceptorProviders,

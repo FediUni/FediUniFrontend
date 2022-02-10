@@ -20,9 +20,6 @@
       <mat-error *ngIf="register.get('name')?.invalid">{{getNameErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
-  <mat-error>
-    {{registerErr}}
-  </mat-error>
   <div id="button-wrapper">
     <button color="primary" mat-raised-button>Register</button>
   </div>

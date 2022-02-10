@@ -11,7 +11,6 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class RegisterComponent implements OnInit {
   register: FormGroup;
-  registerErr: string
 
   constructor(fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
     this.register = fb.group({
@@ -19,7 +18,6 @@ export class RegisterComponent implements OnInit {
       'password': ['', [Validators.required, Validators.maxLength(25)]],
       'name': ['', [Validators.maxLength(25)]],
     });
-    this.registerErr = '';
   }
 
   ngOnInit(): void {
@@ -57,7 +55,6 @@ export class RegisterComponent implements OnInit {
     let password = this.register.value['password'];
     let name = this.register.value['name'];
     this.auth.register(username, password, name).subscribe({
-      error: (err: HttpErrorResponse) => this.registerErr = err.error,
       complete: () => this.router.navigate(['/'])
     })
   }
