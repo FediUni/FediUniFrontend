@@ -1,3 +1,15 @@
-<div>
-  {{actor}}
-</div>
+<mat-card *ngIf="actor !== undefined">
+  <mat-card-header>
+    <img mat-card-avatar src={{actor?.icon}}>
+    <mat-card-title *ngIf="actor?.name !== '; useUsername'">{{actor?.name}}</mat-card-title>
+    <ng-template #useUsername>
+    <mat-card-title>actor?.preferredUsername</mat-card-title>
+    </ng-template>
+    <mat-card-subtitle>
+      {{actor.identifier()}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button>Follow</button>
+  </mat-card-actions>
+</mat-card>

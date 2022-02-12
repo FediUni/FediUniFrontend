@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivityPubObject } from '../vocab/ActivityPubObject';
 import { Actor } from '../vocab/Actor';
 import { Image } from '../vocab/Image';
 
@@ -10,41 +9,34 @@ import { Image } from '../vocab/Image';
 })
 export class ActivityHeaderComponent implements OnInit {
   profilePicture: string = '';
-  private _authors: Actor[] = [];
-
+  private _author: Actor | undefined;
   constructor() { }
 
   ngOnInit(): void {
-    this.getProfilePicture(this.author);
+    this.getProfilePicture();
   }
 
   @Input()
-  set authors(authors: any) {
-    if (!Array.isArray(authors)) {
-      this._authors = [authors as Actor];
-      return;
-    }
-    this._authors = authors as Actor[];
-  }
-
-  get author(): Actor[] {
-    return this._authors
-  }
-
-  getProfilePicture(authors: ActivityPubObject[]): void {
-    let author = this.getAuthor(authors as Actor[]);
+  set author(author: any) {
     if (author === undefined) {
       return;
     }
-    let icon = this.getIcon(author);
+    this._author = new Actor(author);
+  }
+
+  get author(): Actor | undefined {
+    return this._author;
+  }
+
+  getProfilePicture(): void {
+    if (this.author === undefined) {
+      return;
+    }
+    let icon = this.getIcon(this.author);
     if (icon === undefined) {
       return;
     }
     this.profilePicture = this.getURL(icon);
-  }
-
-  getAuthor(authors: Actor[]): Actor | undefined {
-    return authors?.[0] as Actor;
   }
 
   getIcon(author: Actor): Image | undefined {
