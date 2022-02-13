@@ -8,8 +8,7 @@ import { environment } from '../environments/environment';
 export class ActorService {
   constructor(private http: HttpClient) { }
 
-  getActor(username: string) {
+  getActor(identifier: string) {
     return this.http.get(`${environment.apiUrl}/actor?identifier=${username}`);
   }
-
 }
