@@ -12,4 +12,5 @@ export interface ActivityPubObject {
   inReplyTo?: ActivityPubObject[] | ActivityPubObject
   published?: Date | string
   url?: Link[] | Link | string
+  summary?: string
 }
