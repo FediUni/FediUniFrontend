@@ -9,22 +9,15 @@ import { Actor } from '../vocab/Actor';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  actor: Actor | undefined;
-  host: string = '';
+  actor: Actor = new Actor();
 
   constructor(private route: ActivatedRoute, private actorService: ActorService) { }
 
   ngOnInit(): void {
-    let identifier = String(this.route.snapshot.paramMap.get('id'));
-    this.actorService.getActor(identifier).subscribe({
-      next: (res) => {
-        this.actor = new Actor(res);
-      },
+    let actorID = String(this.route.snapshot.paramMap.get('id'));
+    this.actorService.getActor(actorID).subscribe({
+      next: (actor) => this.actor = actor,
     });
   }
 
-  determineHost(actorID: string) {
-    let url = new URL(actorID);
-    this.host = url.host
-  }
 }

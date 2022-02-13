@@ -5,7 +5,7 @@ import { Link } from "./Link";
 
 export interface Activity extends ActivityPubObject {
   type: string;
-  id: string;
+  id: URL;
   attributedTo?: ActivityPubObject | ActivityPubObject[] | undefined;
   content?: string | undefined;
   name?: string | undefined;

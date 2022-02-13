@@ -1,5 +1,5 @@
 <div *ngFor="let activity of activities">
   <div *ngIf="activity.object !== undefined && activity.actor !== undefined">
-    <app-activity [activity]="activity"></app-activity>
+    <app-activity [activity]="activity" [actor]="activity.actor"></app-activity>
   </div>
 </div>

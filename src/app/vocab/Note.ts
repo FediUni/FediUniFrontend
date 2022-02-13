@@ -4,7 +4,7 @@ import { Link } from './Link';
 
 export class Note implements ActivityPubObject {
   type: string = '';
-  id: string = '';
+  id?: URL;
   attributedTo: ActivityPubObject[] = [];
   content: string = '';
   name: string = '';

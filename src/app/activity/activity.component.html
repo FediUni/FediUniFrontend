@@ -1,6 +1,6 @@
-<div *ngIf="activity?.object !== undefined && activity?.actor !== undefined && activity?.object?.published !== undefined">
+<div *ngIf="activity?.object !== undefined && actor !== undefined">
 <mat-card class="activity-wrapper">
-  <app-activity-header [authors]="activity?.actor"></app-activity-header>
+  <app-activity-header [author]="actor"></app-activity-header>
   <mat-card-content>
     <app-note *ngIf="activity?.object?.type === 'Note'" [note]="activity?.object"></app-note>
   </mat-card-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Activity } from '../vocab/Activity';
+import { Actor } from '../vocab/Actor';
 
 @Component({
   selector: 'app-activity',
@@ -8,6 +9,7 @@ import { Activity } from '../vocab/Activity';
 })
 export class ActivityComponent implements OnInit {
   private _activity: Activity | undefined;
+  private _actor: Actor | undefined;
 
   constructor() { }
 
@@ -23,5 +25,21 @@ export class ActivityComponent implements OnInit {
 
   get activity(): Activity | undefined {
     return this._activity;
+  }
+
+  @Input()
+  set actor(actor: any) {
+    if (actor === undefined) {
+      return;
+    }
+    if (Array.isArray(actor)) {
+      this._actor = new Actor(actor[0]);
+      return;
+    }
+    this._actor = new Actor(actor);
+  }
+
+  get actor() {
+    return this._actor;
   }
 }

@@ -3,7 +3,7 @@ import { Image } from "./Image";
 
 export interface ActivityPubObject {
   type: string
-  id: string
+  id?: URL
   attributedTo?: ActivityPubObject[] | ActivityPubObject
   content?: string
   name?: string
@@ -12,4 +12,5 @@ export interface ActivityPubObject {
   inReplyTo?: ActivityPubObject[] | ActivityPubObject
   published?: Date | string
   url?: Link[] | Link | string
+  summary?: string
 }
