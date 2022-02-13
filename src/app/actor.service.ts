@@ -9,7 +9,7 @@ export class ActorService {
   constructor(private http: HttpClient) { }
 
   getActor(username: string) {
-    return this.http.get(`${environment.apiUrl}/actor/${username}`);
+    return this.http.get(`${environment.apiUrl}/actor?identifier=${username}`);
   }
 
 }

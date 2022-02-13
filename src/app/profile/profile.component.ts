@@ -15,8 +15,8 @@ export class ProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private actorService: ActorService) { }
 
   ngOnInit(): void {
-    let actorID = String(this.route.snapshot.paramMap.get('id'));
-    this.actorService.getActor(actorID).subscribe({
+    let identifier = String(this.route.snapshot.paramMap.get('id'));
+    this.actorService.getActor(identifier).subscribe({
       next: (res) => {
         this.actor = new Actor(res);
       },

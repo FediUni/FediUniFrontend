@@ -1,6 +1,6 @@
 <mat-card *ngIf="actor !== undefined">
   <mat-card-header>
-    <img mat-card-avatar src={{actor?.icon}}>
+    <img mat-card-avatar src={{actor.profilePicture()}}>
     <mat-card-title *ngIf="actor?.name !== '; useUsername'">{{actor?.name}}</mat-card-title>
     <ng-template #useUsername>
     <mat-card-title>actor?.preferredUsername</mat-card-title>

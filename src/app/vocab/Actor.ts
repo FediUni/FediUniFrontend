@@ -28,6 +28,23 @@ export class Actor implements ActivityPubObject {
     this.host = this.id.host
   }
 
+  profilePicture(): String {
+    let icon: Image;
+    if (Array.isArray(this.icon)) {
+      icon = this.icon?.[0];
+    } else if (this.icon !== undefined) {
+      icon = this.icon;
+    } else {
+      return '';
+    }
+    if (Array.isArray(icon.url)) {
+      return icon.url?.[0]?.href ?? '';
+    } else if (icon.url instanceof Link) {
+      return icon.url?.href ?? '';
+    }
+    return icon.url ?? '';
+  }
+
   identifier() {
     return `@${this.preferredUsername}@${this.host}`;
   }
