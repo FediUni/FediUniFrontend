@@ -5,14 +5,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss']
+  styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent implements OnInit {
-  constructor(private msg: MessageService, private _snackBar: MatSnackBar) { }
+  constructor(private msg: MessageService, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.msg.onMessage().subscribe(
-      (errorMessage) => this._snackBar.open(errorMessage, "Dismiss"),
-    );
+    this.msg
+      .onMessage()
+      .subscribe((errorMessage) =>
+        this._snackBar.open(errorMessage, 'Dismiss')
+      );
   }
 }

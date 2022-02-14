@@ -5,16 +5,15 @@ import { Actor } from '../vocab/Actor';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.scss']
+  styleUrls: ['./activity.component.scss'],
 })
 export class ActivityComponent implements OnInit {
   private _activity: Activity | undefined;
   private _actor: Actor | undefined;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @Input()
   set activity(activity: Activity | undefined) {

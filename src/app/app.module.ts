@@ -6,15 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
-import { HttpClientModule } from "@angular/common/http";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatCardModule } from "@angular/material/card";
-import { MatListModule } from "@angular/material/list";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -25,7 +27,6 @@ import { MessageComponent } from './message/message.component';
 import { ActivityHeaderComponent } from './activity-header/activity-header.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityFooterComponent } from './activity-footer/activity-footer.component';
-
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ActivityFooterComponent } from './activity-footer/activity-footer.compo
     MessageComponent,
     ActivityHeaderComponent,
     ActivityComponent,
-    ActivityFooterComponent
+    ActivityFooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +48,7 @@ import { ActivityFooterComponent } from './activity-footer/activity-footer.compo
     AppRoutingModule,
     HttpClientModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -55,10 +57,9 @@ import { ActivityFooterComponent } from './activity-footer/activity-footer.compo
     MatCardModule,
     MatListModule,
     MatSnackBarModule,
+    MatSidenavModule,
   ],
-  providers: [
-    httpInterceptorProviders,
-  ],
-  bootstrap: [AppComponent]
+  providers: [httpInterceptorProviders],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

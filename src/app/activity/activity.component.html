@@ -1,9 +1,14 @@
 <div *ngIf="activity?.object !== undefined && actor !== undefined">
-<mat-card class="activity-wrapper">
-  <app-activity-header [author]="actor"></app-activity-header>
-  <mat-card-content>
-    <app-note *ngIf="activity?.object?.type === 'Note'" [note]="activity?.object"></app-note>
-  </mat-card-content>
-  <app-activity-footer [publicationTime]="activity?.object?.published"></app-activity-footer>
-</mat-card>
+  <mat-card class="activity-wrapper">
+    <app-activity-header [author]="actor"></app-activity-header>
+    <mat-card-content>
+      <app-note
+        *ngIf="activity?.object?.type === 'Note'"
+        [note]="activity?.object"
+      ></app-note>
+    </mat-card-content>
+    <app-activity-footer
+      [publicationTime]="activity?.object?.published"
+    ></app-activity-footer>
+  </mat-card>
 </div>

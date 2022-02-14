@@ -1,12 +1,12 @@
-import { Link } from "./Link"
-import { ActivityPubObject } from "./ActivityPubObject"
+import { Link } from './Link';
+import { ActivityPubObject } from './ActivityPubObject';
 
 export interface Collection extends ActivityPubObject {
-  totalItems: number
-  current: Link
-  first: Link
-  last: Link
-  items: ActivityPubObject[]
+  totalItems: number;
+  current: Link;
+  first: Link;
+  last: Link;
+  items: ActivityPubObject[];
 }
 
 export interface CollectionPage extends Collection {
