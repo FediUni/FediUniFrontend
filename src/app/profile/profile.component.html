@@ -16,3 +16,7 @@
     <button mat-button>Follow</button>
   </mat-card-actions>
 </mat-card>
+
+  <div *ngFor="let activity of activities">
+    <app-activity [activity]="activity" [actor]="actor"></app-activity>
+  </div>
