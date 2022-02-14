@@ -17,8 +17,6 @@
   </mat-card-actions>
 </mat-card>
 
-<div *ngFor="let activity of outbox">
-  <div>
-
+  <div *ngFor="let activity of activities">
+    <app-activity [activity]="activity" [actor]="actor"></app-activity>
   </div>
-</div>
