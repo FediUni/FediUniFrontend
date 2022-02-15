@@ -28,6 +28,7 @@ import { ActivityHeaderComponent } from './activity-header/activity-header.compo
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityFooterComponent } from './activity-footer/activity-footer.component';
 import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SearchComponent } from './search/search.component';
     ActivityComponent,
     ActivityFooterComponent,
     SearchComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
