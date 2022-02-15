@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatToolbarModule } from '@angular/material/toolbar'
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
@@ -51,11 +53,13 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatFormFieldModule,
     MatGridListModule,
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatToolbarModule,
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
