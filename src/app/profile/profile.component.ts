@@ -9,14 +9,18 @@ import { Activity } from '../vocab/Activity';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   actor: Actor | undefined;
   host: string = '';
   activities: Activity[] = [];
 
-  constructor(private route: ActivatedRoute, private actorService: ActorService, private outboxService: OutboxService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private actorService: ActorService,
+    private outboxService: OutboxService
+  ) {}
 
   ngOnInit(): void {
     let identifier = String(this.route.snapshot.paramMap.get('id'));
@@ -30,14 +34,13 @@ export class ProfileComponent implements OnInit {
         let outbox = new OrderedCollectionPage(res);
         outbox.orderedItems.forEach((o) => {
           this.activities.push(o as Activity);
-
-        })
-      }
-    })
+        });
+      },
+    });
   }
 
   determineHost(actorID: string) {
     let url = new URL(actorID);
-    this.host = url.host
+    this.host = url.host;
   }
 }

@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   nginx:
@@ -17,7 +17,7 @@ services:
     image: phixyz/fediuni
     container_name: fediuni-xyz
     ports:
-    - "8080:8080"
+      - "8080:8080"
     secrets:
       - config
     deploy:
@@ -45,7 +45,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     networks:
       - fediuni
-
 
 networks:
   fediuni:

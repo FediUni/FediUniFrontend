@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
   message = new Subject<string>();
 
-  constructor() { }
+  constructor() {}
 
   sendMessage(message: string) {
-    this.message.next(message)
+    this.message.next(message);
   }
 
   clearMessages() {
@@ -18,6 +18,6 @@ export class MessageService {
   }
 
   onMessage(): Observable<string> {
-    return this.message.asObservable()
+    return this.message.asObservable();
   }
 }

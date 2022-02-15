@@ -1,3 +1,3 @@
 import { ActivityPubObject } from './ActivityPubObject';
 
-export interface Image extends ActivityPubObject { }
+export interface Image extends ActivityPubObject {}

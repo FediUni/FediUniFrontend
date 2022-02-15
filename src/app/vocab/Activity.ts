@@ -1,7 +1,7 @@
-import { ActivityPubObject } from "./ActivityPubObject";
-import { Actor } from "./Actor";
-import { Image } from "./Image";
-import { Link } from "./Link";
+import { ActivityPubObject } from './ActivityPubObject';
+import { Actor } from './Actor';
+import { Image } from './Image';
+import { Link } from './Link';
 
 export interface Activity extends ActivityPubObject {
   type: string;

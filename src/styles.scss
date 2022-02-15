@@ -1,10 +1,24 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 $default-typography: mat.define-typography-config(
   $font-family: "Ubuntu",
 );
 
-html, body {
+@include mat.core($default-typography);
+
+$dark-primary: mat.define-palette(mat.$light-blue-palette);
+$dark-accent: mat.define-palette(mat.$orange-palette);
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+    ),
+  )
+);
+
+html,
+body {
   height: 100%;
 }
 
@@ -12,4 +26,13 @@ body {
   margin: 0;
 }
 
-@include mat.core($default-typography);
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+mat-app-background {
+  height: 100vh;
+}
+
+@include mat.all-component-themes($dark-theme);

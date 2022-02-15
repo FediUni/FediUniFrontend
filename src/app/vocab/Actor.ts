@@ -26,8 +26,8 @@ export class Actor implements ActivityPubObject {
     this.preferredUsername = o.preferredUsername;
     this.icon = o.icon ?? [];
     this.url = o.url;
-    this.summary = o.summary
-    this.host = this.id.host
+    this.summary = o.summary;
+    this.host = this.id.host;
   }
 
   profilePicture(): String {

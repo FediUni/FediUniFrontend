@@ -8,12 +8,15 @@ import { Actor } from '../vocab/Actor';
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss']
+  styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent implements OnInit {
   activities: Activity[];
 
-  constructor(private auth: AuthenticationService, private timeline: TimelineService) {
+  constructor(
+    private auth: AuthenticationService,
+    private timeline: TimelineService
+  ) {
     this.activities = [];
   }
 
@@ -23,8 +26,9 @@ export class TimelineComponent implements OnInit {
 
   getPersonalTimeline(): void {
     this.timeline.getPersonalTimeline(this.auth.getUsername()).subscribe({
-      next: (orderedCollection) => this.handleIncomingCollection(orderedCollection),
-    })
+      next: (orderedCollection) =>
+        this.handleIncomingCollection(orderedCollection),
+    });
   }
 
   handleIncomingCollection(orderedCollection: OrderedCollection): void {

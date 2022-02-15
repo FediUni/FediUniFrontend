@@ -7,21 +7,24 @@ import { AuthenticationService } from '../authentication.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   register: FormGroup;
 
-  constructor(fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
+  constructor(
+    fb: FormBuilder,
+    private router: Router,
+    private auth: AuthenticationService
+  ) {
     this.register = fb.group({
-      'username': ['', [Validators.required, Validators.maxLength(12)]],
-      'password': ['', [Validators.required, Validators.maxLength(25)]],
-      'name': ['', [Validators.maxLength(25)]],
+      username: ['', [Validators.required, Validators.maxLength(12)]],
+      password: ['', [Validators.required, Validators.maxLength(25)]],
+      name: ['', [Validators.maxLength(25)]],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getUsernameErrorMessage() {
     if (this.register.controls['username'].getError('required')) {
@@ -55,7 +58,7 @@ export class RegisterComponent implements OnInit {
     let password = this.register.value['password'];
     let name = this.register.value['name'];
     this.auth.register(username, password, name).subscribe({
-      complete: () => this.router.navigate(['/'])
-    })
+      complete: () => this.router.navigate(['/']),
+    });
   }
 }

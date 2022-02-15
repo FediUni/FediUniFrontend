@@ -5,12 +5,12 @@ import { Image } from '../vocab/Image';
 @Component({
   selector: 'app-activity-header',
   templateUrl: './activity-header.component.html',
-  styleUrls: ['./activity-header.component.scss']
+  styleUrls: ['./activity-header.component.scss'],
 })
 export class ActivityHeaderComponent implements OnInit {
   profilePicture: string = '';
   private _author: Actor | undefined;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.getProfilePicture();
@@ -41,7 +41,7 @@ export class ActivityHeaderComponent implements OnInit {
 
   getIcon(author: Actor): Image | undefined {
     if (!Array.isArray(author?.icon)) {
-      return author?.icon as Image
+      return author?.icon as Image;
     }
     return author?.icon?.[0] as Image;
   }
@@ -53,8 +53,7 @@ export class ActivityHeaderComponent implements OnInit {
     if (!Array.isArray(icon?.url)) {
       return icon?.url?.href ?? '';
     }
-    console.log("Returning the First URL")
+    console.log('Returning the First URL');
     return icon?.url?.[0]?.href ?? '';
   }
-
 }

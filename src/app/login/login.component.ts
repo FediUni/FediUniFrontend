@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthenticationService } from "../authentication.service";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  login: FormGroup
+  login: FormGroup;
 
-  constructor(fb: FormBuilder, private auth: AuthenticationService, private msg: MessageService, private router: Router) {
+  constructor(
+    fb: FormBuilder,
+    private auth: AuthenticationService,
+    private msg: MessageService,
+    private router: Router
+  ) {
     this.login = fb.group({
-      'username': ['', [Validators.required, Validators.max(12)]],
-      'password': ['', [Validators.required, Validators.max(25)]]
+      username: ['', [Validators.required, Validators.max(12)]],
+      password: ['', [Validators.required, Validators.max(25)]],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getUsernameErrorMessage() {
     if (this.login.controls['username'].getError('required')) {
@@ -46,7 +50,7 @@ export class LoginComponent implements OnInit {
     let username = this.login.value['username'];
     let password = this.login.value['password'];
     this.auth.login(username, password).subscribe({
-      complete: () => this.router.navigate(['/timeline'])
+      complete: () => this.router.navigate(['/timeline']),
     });
   }
 }

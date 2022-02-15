@@ -3,14 +3,13 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-activity-footer',
   templateUrl: './activity-footer.component.html',
-  styleUrls: ['./activity-footer.component.scss']
+  styleUrls: ['./activity-footer.component.scss'],
 })
 export class ActivityFooterComponent implements OnInit {
   private _publicationTime: Date | undefined;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @Input()
   set publicationTime(published: Date | string | undefined) {
@@ -19,7 +18,7 @@ export class ActivityFooterComponent implements OnInit {
     }
     if (published instanceof Date) {
       this._publicationTime = published;
-      return
+      return;
     }
     this._publicationTime = new Date(published);
   }

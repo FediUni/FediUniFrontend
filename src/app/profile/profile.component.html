@@ -1,22 +1,24 @@
 <mat-card *ngIf="actor !== undefined">
   <mat-card-header>
-    <img mat-card-avatar src={{actor.profilePicture()}}>
-    <mat-card-title *ngIf="actor?.name !== '; useUsername'">{{actor?.name}}</mat-card-title>
+    <img mat-card-avatar src="{{ actor.profilePicture() }}" />
+    <mat-card-title *ngIf="actor?.name !== '; useUsername'">{{
+      actor?.name
+    }}</mat-card-title>
     <ng-template #useUsername>
-    <mat-card-title>actor?.preferredUsername</mat-card-title>
+      <mat-card-title>actor?.preferredUsername</mat-card-title>
     </ng-template>
     <mat-card-subtitle>
-      {{actor.identifier()}}
+      {{ actor.identifier() }}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p innerHTML="{{actor.summary}}"></p>
+    <p innerHTML="{{ actor.summary }}"></p>
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-button>Follow</button>
   </mat-card-actions>
 </mat-card>
 
-  <div *ngFor="let activity of activities">
-    <app-activity [activity]="activity" [actor]="actor"></app-activity>
-  </div>
+<div *ngFor="let activity of activities">
+  <app-activity [activity]="activity" [actor]="actor"></app-activity>
+</div>

@@ -1,3 +1,3 @@
 import { Activity } from './Activity';
 
-export interface Create extends Activity { }
+export interface Create extends Activity {}
