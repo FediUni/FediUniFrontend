@@ -1,9 +1,18 @@
 <mat-drawer-container class="mat-app-background">
   <mat-drawer-content>
-    <router-outlet></router-outlet>
+    <span fxLayout="column" fxLayoutAlign="center" gdAlignColumns="center">
+      <app-search></app-search>
+      <router-outlet></router-outlet>
+    </span>
     <app-message></app-message>
   </mat-drawer-content>
-  <mat-drawer mode="side" opened position="end">
+  <mat-drawer
+    class="side-bar"
+    mode="side"
+    opened
+    disableClose="true"
+    position="end"
+  >
     <nav>
       <a mat-stroked-button routerLink="/signin" routerLinkActive="active"
         >Sign In</a

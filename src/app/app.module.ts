@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatToolbarModule } from '@angular/material/toolbar'
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
@@ -27,6 +29,8 @@ import { MessageComponent } from './message/message.component';
 import { ActivityHeaderComponent } from './activity-header/activity-header.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityFooterComponent } from './activity-footer/activity-footer.component';
+import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -41,17 +45,21 @@ import { ActivityFooterComponent } from './activity-footer/activity-footer.compo
     ActivityHeaderComponent,
     ActivityComponent,
     ActivityFooterComponent,
+    SearchComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatFormFieldModule,
     MatGridListModule,
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatToolbarModule,
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
