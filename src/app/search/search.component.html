@@ -1,7 +1,14 @@
 <span [formGroup]="searchForm">
   <mat-form-field appearance="outline" id="search-wrapper">
     <mat-label>Search</mat-label>
-    <input matInput type="search" placeholder="Search" formControlName="query" />
-    <buttom mat-icon-button matSuffix (click)="submit()" ><mat-icon>search</mat-icon></buttom>
+    <input
+      matInput
+      type="search"
+      placeholder="Search"
+      formControlName="query"
+    />
+    <buttom mat-icon-button matSuffix (click)="submit()"
+      ><mat-icon>search</mat-icon></buttom
+    >
   </mat-form-field>
 </span>
