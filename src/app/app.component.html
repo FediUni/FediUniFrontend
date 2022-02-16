@@ -1,25 +1,34 @@
-<mat-drawer-container class="mat-app-background">
-  <mat-drawer-content>
-    <span fxLayout="column" fxLayoutAlign="center" gdAlignColumns="center">
-      <app-search></app-search>
-      <router-outlet></router-outlet>
+<mat-sidenav-container
+  class="mat-app-background"
+  fxLayout="row"
+  fxLayoutAlign="center"
+>
+  <mat-sidenav-content fxFlex="60">
+    <span class="primary-display" fxLayout="column" fxLayoutAlign="start none">
+      <div fxFlex fxFlexFill>
+        <app-search></app-search>
+      </div>
+      <div fxFlex fxFlexFill>
+        <router-outlet></router-outlet>
+      </div>
     </span>
     <app-message></app-message>
-  </mat-drawer-content>
-  <mat-drawer
-    class="side-bar"
+  </mat-sidenav-content>
+  <mat-sidenav
+    class="sidebar-links-container"
     mode="side"
     opened
     disableClose="true"
     position="end"
+    fxFlex="20"
   >
-    <nav>
-      <a mat-stroked-button routerLink="/signin" routerLinkActive="active"
-        >Sign In</a
-      ><br />
-      <a mat-stroked-button routerLink="/timeline" routerLinkActive="active">
-        Timeline
+    <mat-list>
+      <a routerLink="/timeline">
+        <mat-list-item>
+          <mat-icon mat-list-icon>mail</mat-icon>
+          Inbox
+        </mat-list-item>
       </a>
-    </nav>
-  </mat-drawer>
-</mat-drawer-container>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>
