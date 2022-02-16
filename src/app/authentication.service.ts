@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   register(username: string, password: string, name: string) {
     let registerForm: FormData = new FormData();
@@ -75,6 +75,12 @@ export class AuthenticationService {
 
   getUsername(): string {
     return this.cookieService.get('username');
+  }
+
+  isAuthenticated(): boolean {
+    let username = this.getUsername();
+    let jwt = this.getJWT();
+    return username !== "" && jwt !== "";
   }
 }
 

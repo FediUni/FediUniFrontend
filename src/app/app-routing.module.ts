@@ -4,11 +4,18 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes = [
-  { path: 'timeline', component: TimelineComponent },
   { path: 'signin', component: SignInComponent },
-  { path: 'actor/:id', component: ProfileComponent },
+  {
+    path: '', component: HomeComponent, children: [
+      { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
+      { path: 'actor/:id', component: ProfileComponent },
+    ]
+  },
+
 ];
 
 @NgModule({
@@ -16,4 +23,4 @@ const routes = [
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

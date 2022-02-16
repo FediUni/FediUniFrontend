@@ -1,11 +1,15 @@
-<div id="signinWrapper">
-  <mat-card id="signin">
-    <mat-card-content>
-      <mat-tab-group mat-align-tabs="center" animationDuration="450ms">
-        <mat-tab label="Register">
+<div id="sign-in-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card id="sign-in-card" fxFlex="50">
+    <mat-card-content id="sign-in-card-content">
+      <mat-tab-group
+        id="sign-in-tab-group"
+        mat-align-tabs="center"
+        animationDuration="450ms"
+      >
+        <mat-tab label="Register" class="sign-in-tab">
           <app-register></app-register>
         </mat-tab>
-        <mat-tab label="Login">
+        <mat-tab label="Login" class="sign-in-tab">
           <app-login></app-login>
         </mat-tab>
       </mat-tab-group>
