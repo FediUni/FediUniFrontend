@@ -5,6 +5,7 @@ import { OutboxService } from '../outbox.service';
 import { Actor } from '../vocab/Actor';
 import { OrderedCollection, OrderedCollectionPage } from '../vocab/Collection';
 import { Activity } from '../vocab/Activity';
+import { FollowService } from '../follow.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,8 +20,9 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private actorService: ActorService,
-    private outboxService: OutboxService
-  ) {}
+    private outboxService: OutboxService,
+    private follow: FollowService
+  ) { }
 
   ngOnInit(): void {
     let identifier = String(this.route.snapshot.paramMap.get('id'));
@@ -42,5 +44,13 @@ export class ProfileComponent implements OnInit {
   determineHost(actorID: string) {
     let url = new URL(actorID);
     this.host = url.host;
+  }
+  sendFollow() {
+    if (this.actor?.id === undefined) {
+      return
+    }
+    this.follow.sendFollowRequest(this.actor?.id.toString()).subscribe({
+      next: (res) => { console.log(res) },
+    })
   }
 }
