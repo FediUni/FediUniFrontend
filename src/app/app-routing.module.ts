@@ -11,9 +11,9 @@ const routes = [
   { path: 'signin', component: SignInComponent },
   {
     path: '', component: HomeComponent, children: [
-      { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
+      { path: 'timeline', component: TimelineComponent },
       { path: 'actor/:id', component: ProfileComponent },
-    ]
+    ], canActivate: [AuthGuard],
   },
 
 ];
