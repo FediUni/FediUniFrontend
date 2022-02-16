@@ -31,6 +31,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { ActivityFooterComponent } from './activity-footer/activity-footer.component';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ActivityFooterComponent,
     SearchComponent,
     SearchResultsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

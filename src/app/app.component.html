@@ -1,34 +1,3 @@
-<mat-sidenav-container
-  class="mat-app-background"
-  fxLayout="row"
-  fxLayoutAlign="center"
->
-  <mat-sidenav-content fxFlex="60">
-    <span class="primary-display" fxLayout="column" fxLayoutAlign="start none">
-      <div fxFlex fxFlexFill>
-        <app-search></app-search>
-      </div>
-      <div fxFlex fxFlexFill>
-        <router-outlet></router-outlet>
-      </div>
-    </span>
-    <app-message></app-message>
-  </mat-sidenav-content>
-  <mat-sidenav
-    class="sidebar-links-container"
-    mode="side"
-    opened
-    disableClose="true"
-    position="end"
-    fxFlex="20"
-  >
-    <mat-list>
-      <a routerLink="/timeline">
-        <mat-list-item>
-          <mat-icon mat-list-icon>mail</mat-icon>
-          Inbox
-        </mat-list-item>
-      </a>
-    </mat-list>
-  </mat-sidenav>
+<mat-sidenav-container class="mat-app-background">
+  <router-outlet> </router-outlet>
 </mat-sidenav-container>

@@ -5,11 +5,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes = [
   { path: 'signin', component: SignInComponent },
-  { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
-  { path: 'actor/:id', component: ProfileComponent },
+  {
+    path: '', component: HomeComponent, children: [
+      { path: 'timeline', component: TimelineComponent, canActivate: [AuthGuard] },
+      { path: 'actor/:id', component: ProfileComponent },
+    ]
+  },
+
 ];
 
 @NgModule({

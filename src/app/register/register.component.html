@@ -1,32 +1,26 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="register" id="register-tab">
-  <div>
-    <mat-form-field appearance="fill">
+  <div fxLayout="column" fxLayoutAlign="space-evenly center" id="register-form">
+    <mat-form-field appearance="fill" fxFlex>
       <mat-label>Username</mat-label>
       <input formControlName="username" matInput required />
       <mat-error *ngIf="register.get('username')?.invalid">{{
         getUsernameErrorMessage()
       }}</mat-error>
     </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" fxFlex>
       <mat-label>Password</mat-label>
       <input formControlName="password" matInput required type="password" />
       <mat-error *ngIf="register.get('password')?.invalid">{{
         getPasswordErrorMessage()
       }}</mat-error>
     </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" fxFlex>
       <mat-label>Name</mat-label>
       <input formControlName="name" matInput />
       <mat-error *ngIf="register.get('name')?.invalid">{{
         getNameErrorMessage()
       }}</mat-error>
     </mat-form-field>
-  </div>
-  <div id="button-wrapper">
-    <button color="primary" mat-raised-button>Register</button>
+    <button color="primary" mat-raised-button fxFlex>Register</button>
   </div>
 </form>

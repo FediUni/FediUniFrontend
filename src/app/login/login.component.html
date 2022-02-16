@@ -1,23 +1,19 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="login" id="login-tab">
-  <div>
-    <mat-form-field appearance="fill">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-form-field appearance="fill" fxFlex>
       <mat-label>Username</mat-label>
       <input formControlName="username" matInput required />
       <mat-error *ngIf="login.get('username')?.invalid">{{
         getUsernameErrorMessage()
       }}</mat-error>
     </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" fxFlex>
       <mat-label>Password</mat-label>
       <input formControlName="password" matInput required type="password" />
       <mat-error *ngIf="login.get('password')?.invalid">{{
         getPasswordErrorMessage()
       }}</mat-error>
     </mat-form-field>
-  </div>
-  <div id="loginButtonWrapper">
-    <button color="primary" mat-raised-button>Login</button>
+    <button color="primary" mat-raised-button fxFlex>Login</button>
   </div>
 </form>
