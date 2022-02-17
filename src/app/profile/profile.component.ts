@@ -5,7 +5,7 @@ import { OutboxService } from '../outbox.service';
 import { Actor } from '../vocab/Actor';
 import { OrderedCollection, OrderedCollectionPage } from '../vocab/Collection';
 import { Activity } from '../vocab/Activity';
-import { FollowService } from '../follow.service';
+import { FollowService, FollowStatus } from '../follow.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   actor: Actor | undefined;
   host: string = '';
   activities: Activity[] = [];
+  followStatus: FollowStatus = FollowStatus.NOT_FOLLOWER;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,11 @@ export class ProfileComponent implements OnInit {
         this.actor = new Actor(res);
       },
     });
+    this.follow.followerStatus(identifier).subscribe({
+      next: (res: any) => {
+        this.followStatus = res.followStatus as FollowStatus;
+      }
+    })
     this.outboxService.getOutboxPage(identifier).subscribe({
       next: (res) => {
         let outbox = new OrderedCollectionPage(res);
@@ -45,12 +51,14 @@ export class ProfileComponent implements OnInit {
     let url = new URL(actorID);
     this.host = url.host;
   }
+
   sendFollow() {
     if (this.actor?.id === undefined) {
       return
     }
-    this.follow.sendFollowRequest(this.actor?.id.toString()).subscribe({
+    this.follow.sendFollowRequest(this.actor?.identifier()).subscribe({
       next: (res) => { console.log(res) },
+      error: (err) => { console.log(err) },
     })
   }
 }

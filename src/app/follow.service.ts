@@ -10,6 +10,16 @@ export class FollowService {
   constructor(private http: HttpClient) { }
 
   sendFollowRequest(id: string) {
-    return this.http.post(`{environment.apiUrl}/follow`, { actorID: id });
+    return this.http.post(`${environment.apiUrl}/follow`, { actorID: id });
   }
+
+  followerStatus(id: string) {
+    return this.http.post(`${environment.apiUrl}/follow/status`, { actorID: id })
+  }
+}
+
+export enum FollowStatus {
+  NOT_FOLLOWER,
+  FOLLOW_REQUEST_PENDING,
+  FOLLOWER
 }

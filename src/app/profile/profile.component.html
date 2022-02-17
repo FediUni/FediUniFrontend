@@ -15,8 +15,21 @@
     <mat-card-content>
       <p innerHTML="{{ actor.summary }}"></p>
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button color="primary">Follow</button>
+    <mat-card-actions align="end" [ngSwitch]="followStatus">
+      <button
+        mat-raised-button
+        color="primary"
+        *ngSwitchCase="0"
+        (click)="sendFollow()"
+      >
+        Follow
+      </button>
+      <button mat-raised-button color="accent" *ngSwitchCase="1">
+        Pending
+      </button>
+      <button mat-raised-button color="warning" *ngSwitchCase="2">
+        Unfollow
+      </button>
     </mat-card-actions>
   </mat-card>
   <app-activity
