@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     });
     this.follow.followerStatus(identifier).subscribe({
       next: (res: any) => {
-        this.followStatus = res.followStatus as FollowStatus;
+        this.followStatus = res.followerStatus as FollowStatus;
       }
     })
     this.outboxService.getOutboxPage(identifier).subscribe({
@@ -57,8 +57,7 @@ export class ProfileComponent implements OnInit {
       return
     }
     this.follow.sendFollowRequest(this.actor?.identifier()).subscribe({
-      next: (res) => { console.log(res) },
-      error: (err) => { console.log(err) },
+      next: (res: any) => { this.followStatus = FollowStatus.FOLLOW_REQUEST_PENDING },
     })
   }
 }
