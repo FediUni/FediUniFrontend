@@ -6,9 +6,11 @@
       type="search"
       placeholder="Search"
       formControlName="query"
+      (keyup.enter)="submit()"
     />
     <buttom mat-icon-button matSuffix (click)="submit()"
       ><mat-icon>search</mat-icon></buttom
     >
   </mat-form-field>
 </span>
+q:q
