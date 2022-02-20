@@ -1,8 +1,25 @@
-<mat-card
-  *ngIf="activity?.object !== undefined && actor !== undefined"
-  class="activity-wrapper"
->
-  <app-activity-header [author]="actor"></app-activity-header>
+<mat-card *ngIf="activity?.type === 'Create'" class="activity-wrapper">
+  <mat-card-header>
+    <app-activity-header [author]="actor"></app-activity-header>
+  </mat-card-header>
+  <mat-card-content>
+    <app-note
+      *ngIf="activity?.object?.type === 'Note'"
+      [note]="activity?.object"
+    ></app-note>
+  </mat-card-content>
+  <app-activity-footer
+    [publicationTime]="activity?.object?.published"
+  ></app-activity-footer>
+</mat-card>
+
+{{ activity?.actor?.name }} <mat-icon>loop</mat-icon>
+<mat-card *ngIf="activity?.type === 'Announce'" class="activity-wrapper">
+  <mat-card-header>
+    <app-activity-header
+      [author]="activity?.object?.attributedTo"
+    ></app-activity-header>
+  </mat-card-header>
   <mat-card-content>
     <app-note
       *ngIf="activity?.object?.type === 'Note'"

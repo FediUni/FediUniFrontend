@@ -3,7 +3,6 @@ import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
 import { OrderedCollection } from '../vocab/Collection';
-import { Actor } from '../vocab/Actor';
 
 @Component({
   selector: 'app-timeline',
@@ -25,13 +24,16 @@ export class TimelineComponent implements OnInit {
   }
 
   getPersonalTimeline(): void {
-    this.timeline.getPersonalTimeline(this.auth.getUsername()).subscribe({
+    this.timeline.getPersonalTimelineCollection(this.auth.getUsername()).subscribe({
       next: (orderedCollection) =>
         this.handleIncomingCollection(orderedCollection),
     });
   }
 
   handleIncomingCollection(orderedCollection: OrderedCollection): void {
+    if (orderedCollection == undefined) {
+      return
+    }
     if (orderedCollection?.orderedItems?.length > 0) {
       let orderedItems = orderedCollection.orderedItems ?? [];
       orderedItems.map((item) => {
@@ -39,12 +41,21 @@ export class TimelineComponent implements OnInit {
         if (activity === undefined) {
           return;
         }
-        let actor = activity.actor;
-        if (actor !== undefined && !Array.isArray(actor)) {
-          activity.actor = [actor as Actor];
-        }
         this.activities.push(activity);
       });
+    } else {
+      this.timeline.getFirstPersonalTimelinePage(orderedCollection).subscribe({
+        next: (page) => {
+          let orderedItems = page.orderedItems ?? [];
+          orderedItems.map((item) => {
+            let activity = item as Activity;
+            if (activity === undefined) {
+              return;
+            }
+            this.activities.push(activity);
+          });
+        },
+      })
     }
   }
 }

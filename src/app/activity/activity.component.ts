@@ -11,9 +11,9 @@ export class ActivityComponent implements OnInit {
   private _activity: Activity | undefined;
   private _actor: Actor | undefined;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   @Input()
   set activity(activity: Activity | undefined) {
@@ -23,6 +23,7 @@ export class ActivityComponent implements OnInit {
   }
 
   get activity(): Activity | undefined {
+    console.log(this._activity)
     return this._activity;
   }
 
