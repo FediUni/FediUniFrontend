@@ -8,12 +8,10 @@ import { Link } from './vocab/Link';
   providedIn: 'root',
 })
 export class TimelineService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPersonalTimelineCollection(username: string) {
-    return this.http.get<OrderedCollection>(
-      `${environment.apiUrl}/actor/${username}/inbox`
-    );
+    return this.http.get(`${environment.apiUrl}/actor/${username}/inbox`);
   }
 
   getFirstPersonalTimelinePage(c: OrderedCollection) {
@@ -29,7 +27,7 @@ export class TimelineService {
 
   getNextPersonalTimelinePage(c: OrderedCollectionPage) {
     if (c?.next === undefined) {
-      return
+      return;
     }
     return this.http.get<OrderedCollectionPage>(c.next.href);
   }

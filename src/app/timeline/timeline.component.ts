@@ -25,8 +25,10 @@ export class TimelineComponent implements OnInit {
 
   getPersonalTimeline(): void {
     this.timeline.getPersonalTimelineCollection(this.auth.getUsername()).subscribe({
-      next: (orderedCollection) =>
-        this.handleIncomingCollection(orderedCollection),
+      next: (orderedCollection) => {
+        let c = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(c);
+      },
     });
   }
 
