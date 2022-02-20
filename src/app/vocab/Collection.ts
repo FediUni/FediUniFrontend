@@ -18,16 +18,16 @@ export interface CollectionPage extends Collection {
 export class OrderedCollection extends Object {
   totalItems: number = 0;
   current: Link = new Link();
-  first: Link | String = new Link();
-  last: Link | String = new Link();
+  first: Link | string = new Link();
+  last: Link | string = new Link();
   orderedItems: ActivityPubObject[] = [];
 
   constructor(o: any) {
     super();
     this.totalItems = o.totalItems;
     this.current = o.current;
-    this.first = o.first;
-    this.last = o.last;
+    this.first = o.first as string;
+    this.last = o.last as string;
     this.orderedItems = o.orderedItems ?? [];
   }
 }

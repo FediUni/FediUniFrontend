@@ -8,7 +8,7 @@ import { Link } from './vocab/Link';
   providedIn: 'root',
 })
 export class TimelineService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getPersonalTimelineCollection(username: string) {
     return this.http.get(`${environment.apiUrl}/actor/${username}/inbox`);
@@ -16,11 +16,10 @@ export class TimelineService {
 
   getFirstPersonalTimelinePage(c: OrderedCollection) {
     let url: string = '';
-    if (c.first instanceof String) {
-      url = c.first as string;
-    }
     if (c.first instanceof Link) {
       url = c.first.href;
+    } else {
+      url = c.first;
     }
     return this.http.get<OrderedCollectionPage>(url);
   }
