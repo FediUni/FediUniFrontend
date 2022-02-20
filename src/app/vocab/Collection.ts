@@ -28,7 +28,7 @@ export class OrderedCollection extends Object {
     this.current = o.current;
     this.first = o.first;
     this.last = o.last;
-    this.orderedItems = o.orderedItems;
+    this.orderedItems = o.orderedItems ?? [];
   }
 }
 
