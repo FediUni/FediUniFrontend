@@ -14,7 +14,7 @@ export interface Activity extends ActivityPubObject {
   inReplyTo?: ActivityPubObject | ActivityPubObject[] | undefined;
   published?: Date | string | undefined;
   url?: string | Link | Link[] | undefined;
-  actor?: Actor[] | Actor;
+  actor?: Actor;
   object?: ActivityPubObject;
   target?: ActivityPubObject;
   result?: ActivityPubObject;

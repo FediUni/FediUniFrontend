@@ -18,8 +18,8 @@ export interface CollectionPage extends Collection {
 export class OrderedCollection extends Object {
   totalItems: number = 0;
   current: Link = new Link();
-  first: Link = new Link();
-  last: Link = new Link();
+  first: Link | String = new Link();
+  last: Link | String = new Link();
   orderedItems: ActivityPubObject[] = [];
 
   constructor(o: any) {
