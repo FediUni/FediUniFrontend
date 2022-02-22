@@ -1,19 +1,21 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="login" id="login-tab">
-  <div fxLayout="column" fxLayoutAlign="space-around center">
-    <mat-form-field appearance="fill" fxFlex>
-      <mat-label>Username</mat-label>
-      <input formControlName="username" matInput required />
-      <mat-error *ngIf="login.get('username')?.invalid">{{
-        getUsernameErrorMessage()
-      }}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill" fxFlex>
-      <mat-label>Password</mat-label>
-      <input formControlName="password" matInput required type="password" />
-      <mat-error *ngIf="login.get('password')?.invalid">{{
-        getPasswordErrorMessage()
-      }}</mat-error>
-    </mat-form-field>
-    <button color="primary" mat-raised-button fxFlex>Login</button>
+  <div fxLayout="column" fxLayoutAlign="center center" id="login-form">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput required />
+        <mat-error *ngIf="login.get('username')?.invalid">{{
+          getUsernameErrorMessage()
+        }}</mat-error> </mat-form-field
+      ><br />
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput required type="password" />
+        <mat-error *ngIf="login.get('password')?.invalid">{{
+          getPasswordErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <button color="primary" mat-raised-button>Login</button>
   </div>
 </form>
