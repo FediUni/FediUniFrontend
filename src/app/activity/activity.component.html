@@ -1,11 +1,15 @@
 <mat-card *ngIf="activity?.type === 'Create'" class="activity-wrapper">
-  <app-activity-header [author]="actor"></app-activity-header>
+  <app-activity-header
+    [author]="actor"
+    [publicationTime]="activity?.object?.published"
+  ></app-activity-header>
   <mat-card-content>
     <app-note
       *ngIf="activity?.object?.type === 'Note'"
       [note]="activity?.object"
     ></app-note>
   </mat-card-content>
+  <mat-divider inset></mat-divider>
   <app-activity-footer
     [publicationTime]="activity?.object?.published"
   ></app-activity-footer>
@@ -14,6 +18,7 @@
 <mat-card *ngIf="activity?.type === 'Announce'" class="activity-wrapper">
   <app-activity-header
     [author]="activity?.object?.attributedTo"
+    [publicationTime]="activity?.object?.published"
   ></app-activity-header>
   <mat-card-content>
     <app-note

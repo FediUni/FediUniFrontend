@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ActivityFooterComponent implements OnInit {
   private _publicationTime: Date | undefined;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   @Input()
   set publicationTime(published: Date | string | undefined) {

@@ -10,7 +10,9 @@ import { Image } from '../vocab/Image';
 export class ActivityHeaderComponent implements OnInit {
   profilePicture: string = '';
   private _author: Actor | undefined;
-  constructor() {}
+  private _publicationTime: Date | undefined;
+
+  constructor() { }
 
   ngOnInit(): void {
     this.getProfilePicture();
@@ -26,6 +28,22 @@ export class ActivityHeaderComponent implements OnInit {
 
   get author(): Actor | undefined {
     return this._author;
+  }
+
+  @Input()
+  set publicationTime(published: Date | string | undefined) {
+    if (published === undefined) {
+      return;
+    }
+    if (published instanceof Date) {
+      this._publicationTime = published;
+      return;
+    }
+    this._publicationTime = new Date(published);
+  }
+
+  get publicationTime() {
+    return this._publicationTime;
   }
 
   getProfilePicture(): void {

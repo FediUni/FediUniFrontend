@@ -10,5 +10,6 @@
     <a routerLink="/actor/{{ author?.identifier() }}">{{
       author?.identifier()
     }}</a>
+    • {{ publicationTime | date }}
   </mat-card-subtitle>
 </mat-card-header>
