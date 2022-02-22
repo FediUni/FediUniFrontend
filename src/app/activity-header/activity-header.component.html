@@ -1,3 +1,4 @@
+<mat-card-header>
   <img
     mat-card-avatar
     src="{{ profilePicture }}"
@@ -9,4 +10,6 @@
     <a routerLink="/actor/{{ author?.identifier() }}">{{
       author?.identifier()
     }}</a>
+    • {{ publicationTime | date }}
   </mat-card-subtitle>
+</mat-card-header>

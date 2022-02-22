@@ -1,7 +1,11 @@
 #sign-in-card {
-  min-height: 64vh;
+  min-height: 52vh;
 }
 
-#sign-in-wrapper {
-  height: 100vh;
+.max-height {
+  height: 100%;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  height: 100%;
 }

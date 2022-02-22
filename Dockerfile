@@ -12,4 +12,4 @@ FROM nginx:latest as frontend
 
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
-COPY --from=build /app/dist/FediUniFrontend/ /var/www/fediuni.xyz
+COPY --from=build /app/dist/FediUniFrontend/ /usr/share/nginx/html

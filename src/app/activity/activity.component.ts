@@ -23,7 +23,6 @@ export class ActivityComponent implements OnInit {
   }
 
   get activity(): Activity | undefined {
-    console.log(this._activity)
     return this._activity;
   }
 
