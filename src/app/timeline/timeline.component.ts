@@ -48,7 +48,6 @@ export class TimelineComponent implements OnInit {
     } else {
       this.timeline.getFirstPersonalTimelinePage(orderedCollection).subscribe({
         next: (page) => {
-          console.log(page)
           let orderedItems = page.orderedItems ?? [];
           orderedItems.map((item) => {
             let activity = item as Activity;
