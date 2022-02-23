@@ -8,12 +8,14 @@ $default-typography: mat.define-typography-config(
 
 $dark-primary: mat.define-palette(mat.$light-blue-palette);
 $dark-accent: mat.define-palette(mat.$orange-palette);
+$dark-like: mat.define-palette(mat.$pink-palette);
 $dark-warn: mat.define-palette(mat.$red-palette);
 $dark-theme: mat.define-dark-theme(
   (
     color: (
       primary: $dark-primary,
       accent: $dark-accent,
+      like: $dark-like,
       warn: $dark-warn,
     ),
   )
@@ -29,7 +31,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: mat.get-color-from-palette($dark-primary);
   text-decoration: none;
 }
 
