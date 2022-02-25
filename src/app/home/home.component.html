@@ -1,23 +1,19 @@
-<mat-sidenav-container fxLayout="row" fxLayoutAlign="center">
-  <mat-sidenav-content fxFlex="60">
+<div>
+  <app-search></app-search>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-around start">
+  <span class="sidebar-links-container" fxFlex="20">
+    <app-create-post></app-create-post>
+  </span>
+  <span class="sidebar-links-container timeline" fxFlex="60">
     <span class="primary-display" fxLayout="column" fxLayoutAlign="start none">
-      <div fxFlex fxFlexFill>
-        <app-search></app-search>
-      </div>
-      <div fxFlex fxFlexFill>
+      <div fxFlex>
         <router-outlet></router-outlet>
       </div>
+      <app-message></app-message>
     </span>
-    <app-message></app-message>
-  </mat-sidenav-content>
-  <mat-sidenav
-    class="sidebar-links-container"
-    mode="side"
-    opened
-    disableClose="true"
-    position="end"
-    fxFlex="20"
-  >
+  </span>
+  <span class="sidebar-links-container" fxFlex="20">
     <mat-list>
       <a routerLink="/timeline">
         <mat-list-item>
@@ -26,5 +22,5 @@
         </mat-list-item>
       </a>
     </mat-list>
-  </mat-sidenav>
-</mat-sidenav-container>
+  </span>
+</div>

@@ -4,8 +4,10 @@
 
 .sidebar-links-container {
   border: 0px;
+  height: 100%;
 }
 
-#navigation-sidebar {
-  height: 100%;
+.timeline {
+  min-width: 470px;
+  max-width: 60%;
 }
