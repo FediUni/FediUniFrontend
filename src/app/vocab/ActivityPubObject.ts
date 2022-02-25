@@ -2,7 +2,7 @@ import { Link } from './Link';
 import { Image } from './Image';
 
 export interface ActivityPubObject {
-  "@context": string[];
+  "@context"?: string[];
   type: string;
   id?: URL;
   attributedTo?: ActivityPubObject[] | ActivityPubObject | URL;
