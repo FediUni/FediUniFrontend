@@ -4,7 +4,7 @@ import { Image } from './Image';
 export interface ActivityPubObject {
   type: string;
   id?: URL;
-  attributedTo?: ActivityPubObject[] | ActivityPubObject;
+  attributedTo?: ActivityPubObject[] | ActivityPubObject | URL;
   content?: string;
   name?: string;
   icon?: Image[] | Image;
@@ -12,5 +12,7 @@ export interface ActivityPubObject {
   inReplyTo?: ActivityPubObject[] | ActivityPubObject;
   published?: Date | string;
   url?: Link[] | Link | string;
+  to?: string[];
+  cc?: string[];
   summary?: string;
 }

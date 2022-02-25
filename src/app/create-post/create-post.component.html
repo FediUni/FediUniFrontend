@@ -1,0 +1,19 @@
+<div>
+  <form
+    fxLayout="column"
+    fxFlexAlign="center"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="post"
+  >
+    <mat-form-field appearance="fill" id="note-input-wrapper" fxFlex>
+      <mat-label>Create a Post</mat-label>
+      <textarea
+        id="note-content"
+        matInput
+        placeholder="Thoughts..?"
+        formControlName="content"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Post</button>
+  </form>
+</div>

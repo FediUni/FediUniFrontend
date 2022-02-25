@@ -33,6 +33,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
 import { AnnounceComponent } from './announce/announce.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AnnounceComponent } from './announce/announce.component';
     SearchResultsComponent,
     HomeComponent,
     AnnounceComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
