@@ -3,6 +3,7 @@ import { Image } from './Image';
 import { Link } from './Link';
 
 export class Note implements ActivityPubObject {
+  "@context": string[] = [];
   type: string = '';
   id?: URL;
   attributedTo?: ActivityPubObject[] | URL = [];

@@ -12,6 +12,7 @@ export class PostService {
 
   post(userID: URL, username: string, content: string, to: string, cc: string) {
     let note: Note = {
+      "@context": ["https://www.w3.org/ns/activitystreams"],
       type: "Note",
       content: content,
       published: new Date(),
