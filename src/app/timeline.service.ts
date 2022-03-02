@@ -22,7 +22,7 @@ export class TimelineService {
     return this.http.get(`${environment.apiUrl}/inbox`);
   }
 
-  getFirstPersonalTimelinePage(c: OrderedCollection) {
+  getFirstPage(c: OrderedCollection) {
     let url: string = '';
     if (c.first instanceof Link) {
       url = c.first.href;

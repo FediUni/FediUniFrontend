@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     let username = this.login.value['username'];
     let password = this.login.value['password'];
     this.auth.login(username, password).subscribe({
-      complete: () => this.router.navigate(['/timeline']),
+      complete: () => this.router.navigate(['']),
     });
   }
 }

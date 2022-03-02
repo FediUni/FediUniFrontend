@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
+import { ActivityPubObject } from '../vocab/ActivityPubObject';
 import { OrderedCollection } from '../vocab/Collection';
 import {ActivatedRoute} from "@angular/router";
 
@@ -22,18 +23,21 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let identifier = String(this.route.snapshot.paramMap.get('timeline'));
-    switch (identifier) {
-      case "personal":
-        this.getPersonalTimeline();
-        break;
-      case "local":
-        this.getLocalTimeline();
-        break;
-      case "federated":
-        this.getPersonalTimeline();
-        break;
-    }
+    this.route.paramMap.subscribe(routeParams => {
+      // Remove all activities when the parameter changes.
+      this.activities = [];
+      switch (routeParams.get('timeline')) {
+        case "personal":
+          this.getPersonalTimeline();
+          break;
+        case "local":
+          this.getLocalTimeline();
+          break;
+        case "public":
+          this.getFederatedTimeline();
+          break;
+      }
+    })
   }
 
   getPersonalTimeline(): void {
@@ -67,28 +71,21 @@ export class TimelineComponent implements OnInit {
     if (orderedCollection == undefined) {
       return
     }
-    if (orderedCollection?.orderedItems?.length > 0) {
-      let orderedItems = orderedCollection.orderedItems ?? [];
-      orderedItems.map((item) => {
-        let activity = item as Activity;
-        if (activity === undefined) {
-          return;
-        }
-        this.activities.push(activity);
-      });
-    } else {
-      this.timeline.getFirstPersonalTimelinePage(orderedCollection).subscribe({
+      this.timeline.getFirstPage(orderedCollection).subscribe({
         next: (page) => {
           let orderedItems = page.orderedItems ?? [];
-          orderedItems.map((item) => {
-            let activity = item as Activity;
-            if (activity === undefined) {
-              return;
-            }
-            this.activities.push(activity);
-          });
+          if (Array.isArray(orderedItems)) {
+            orderedItems.map((item) => {
+              let activity = item as Activity;
+              if (activity === undefined) {
+                return;
+              }
+              this.activities.push(activity);
+            });
+          } else {
+            this.activities.push(orderedItems as Activity);
+          }
         },
       })
     }
-  }
 }

@@ -40,16 +40,15 @@ export class ProfileComponent implements OnInit {
     this.outboxService.getOutboxPage(identifier).subscribe({
       next: (res) => {
         let outbox = new OrderedCollectionPage(res);
-        outbox.orderedItems.forEach((o) => {
-          this.activities.push(o as Activity);
-        });
+        if (!Array.isArray(outbox.orderedItems)) {
+          this.activities.push(outbox.orderedItems as Activity);
+        } else {
+          outbox.orderedItems.forEach((o) => {
+            this.activities.push(o as Activity);
+          });
+        }
       },
     });
-  }
-
-  determineHost(actorID: string) {
-    let url = new URL(actorID);
-    this.host = url.host;
   }
 
   sendFollow() {

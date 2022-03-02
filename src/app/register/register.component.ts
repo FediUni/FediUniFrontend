@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private auth: AuthenticationService
   ) {
     this.register = fb.group({
-      username: ['', [Validators.required, Validators.maxLength(12)]],
+      username: ['', [Validators.required, Validators.maxLength(20)]],
       password: ['', [Validators.required, Validators.maxLength(25)]],
       name: ['', [Validators.maxLength(25)]],
     });
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       return 'Username is a required field';
     }
     if (this.register.controls['username'].getError('maxlength')) {
-      return 'Username cannot exceed 12 characters';
+      return 'Username cannot exceed 20 characters';
     }
     return '';
   }
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
     let password = this.register.value['password'];
     let name = this.register.value['name'];
     this.auth.register(username, password, name).subscribe({
-      complete: () => this.router.navigate(['/']),
+      complete: () => this.router.navigate(['']),
     });
   }
 }

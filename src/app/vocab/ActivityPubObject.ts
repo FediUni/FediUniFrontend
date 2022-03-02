@@ -1,8 +1,8 @@
 import { Link } from './Link';
 import { Image } from './Image';
 
-export interface ActivityPubObject {
-  type: string;
+export class ActivityPubObject {
+  type: string = "";
   id?: URL;
   attributedTo?: ActivityPubObject[] | ActivityPubObject | URL;
   content?: string;

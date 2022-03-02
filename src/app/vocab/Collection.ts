@@ -20,7 +20,7 @@ export class OrderedCollection extends Object {
   current: Link = new Link();
   first: Link | string = new Link();
   last: Link | string = new Link();
-  orderedItems: ActivityPubObject[] = [];
+  orderedItems: ActivityPubObject[] | ActivityPubObject = [];
 
   constructor(o: any) {
     super();
@@ -28,7 +28,7 @@ export class OrderedCollection extends Object {
     this.current = o.current;
     this.first = o.first as string;
     this.last = o.last as string;
-    this.orderedItems = o.orderedItems ?? [];
+    this.orderedItems = o.orderedItems;
   }
 }
 

@@ -6,7 +6,6 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
-import {PersonalTimelineComponent} from "./personal-timeline/personal-timeline.component";
 
 const routes = [
   { path: 'signin', component: SignInComponent },
