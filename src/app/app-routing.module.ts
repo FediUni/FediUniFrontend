@@ -6,12 +6,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
+import {PersonalTimelineComponent} from "./personal-timeline/personal-timeline.component";
 
 const routes = [
   { path: 'signin', component: SignInComponent },
+  { path: '', redirectTo: 'timeline/personal', pathMatch: 'full'},
   {
     path: '', component: HomeComponent, children: [
-      { path: 'timeline', component: TimelineComponent },
+      { path: 'timeline/:timeline', component: TimelineComponent },
       { path: 'actor/:id', component: ProfileComponent },
     ], canActivate: [AuthGuard],
   },

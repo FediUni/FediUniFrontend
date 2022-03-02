@@ -1,61 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineService } from '../timeline.service';
-import { AuthenticationService } from '../authentication.service';
-import { Activity } from '../vocab/Activity';
-import { OrderedCollection } from '../vocab/Collection';
-import {ActivatedRoute} from "@angular/router";
+import {Activity} from "../vocab/Activity";
+import {AuthenticationService} from "../authentication.service";
+import {TimelineService} from "../timeline.service";
+import {OrderedCollection} from "../vocab/Collection";
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.scss'],
+  selector: 'app-personal-timeline',
+  templateUrl: './personal-timeline.component.html',
+  styleUrls: ['./personal-timeline.component.scss']
 })
-export class TimelineComponent implements OnInit {
+export class PersonalTimelineComponent implements OnInit {
   activities: Activity[];
 
   constructor(
-    private route: ActivatedRoute,
     private auth: AuthenticationService,
-    private timeline: TimelineService,
+    private timeline: TimelineService
   ) {
     this.activities = [];
   }
 
   ngOnInit(): void {
-    let identifier = String(this.route.snapshot.paramMap.get('timeline'));
-    switch (identifier) {
-      case "personal":
-        this.getPersonalTimeline();
-        break;
-      case "local":
-        this.getLocalTimeline();
-        break;
-      case "federated":
-        this.getPersonalTimeline();
-        break;
-    }
+    this.getPersonalTimeline();
   }
 
   getPersonalTimeline(): void {
     this.timeline.getPersonalTimelineCollection(this.auth.getUsername()).subscribe({
-      next: (orderedCollection) => {
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
-      },
-    });
-  }
-
-  getLocalTimeline(): void {
-    this.timeline.getLocalTimelineCollection().subscribe({
-      next: (orderedCollection) => {
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
-      },
-    });
-  }
-
-  getFederatedTimeline(): void {
-    this.timeline.getFederatedTimelineCollection().subscribe({
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);

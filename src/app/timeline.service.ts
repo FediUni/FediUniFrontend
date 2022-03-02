@@ -14,6 +14,14 @@ export class TimelineService {
     return this.http.get(`${environment.apiUrl}/actor/${username}/inbox`);
   }
 
+  getLocalTimelineCollection() {
+    return this.http.get(`${environment.apiUrl}/inbox?local=true`);
+  }
+
+  getFederatedTimelineCollection() {
+    return this.http.get(`${environment.apiUrl}/inbox`);
+  }
+
   getFirstPersonalTimelinePage(c: OrderedCollection) {
     let url: string = '';
     if (c.first instanceof Link) {
