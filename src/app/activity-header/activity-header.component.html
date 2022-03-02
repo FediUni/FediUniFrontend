@@ -2,10 +2,12 @@
   <img
     mat-card-avatar
     src="{{ profilePicture }}"
-    *ngIf="profilePicture !== ''"
     routerLink="/actor/{{ author?.identifier() }}"
   />
-  <mat-card-title>{{ author?.name }}</mat-card-title>
+  <mat-card-title>
+    <ng-container *ngIf="author?.name !== ''; else nameUnset">{{ author?.name }}</ng-container>
+    <ng-template #nameUnset>{{ author?.preferredUsername }}</ng-template>
+  </mat-card-title>
   <mat-card-subtitle>
     <a routerLink="/actor/{{ author?.identifier() }}">{{
       author?.identifier()

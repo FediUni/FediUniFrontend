@@ -9,8 +9,8 @@ export class Actor implements ActivityPubObject {
   content?: string = '';
   name: string = '';
   preferredUsername?: string = '';
-  icon?: Image[] | Image = [];
-  image?: Image[] | Image = [];
+  icon?: Image;
+  image?: Image;
   inReplyTo?: ActivityPubObject[] | ActivityPubObject = [];
   published?: Date = new Date();
   url?: Link[] | Link = [];
@@ -22,23 +22,19 @@ export class Actor implements ActivityPubObject {
     this.id = new URL(o.id);
     this.attributedTo = o.attributedTo;
     this.content = o.content;
-    this.name = o.name;
+    this.name = o.name || '';
     this.preferredUsername = o.preferredUsername;
-    this.icon = o.icon ?? [];
+    this.icon = o.icon;
     this.url = o.url;
     this.summary = o.summary;
     this.host = this.id.host;
   }
 
   profilePicture(): String {
-    let icon: Image;
-    if (Array.isArray(this.icon)) {
-      icon = this.icon?.[0];
-    } else if (this.icon !== undefined) {
-      icon = this.icon;
-    } else {
+    if (this.icon === undefined) {
       return '';
     }
+    let icon = this.icon;
     if (Array.isArray(icon.url)) {
       return icon.url?.[0]?.href ?? '';
     } else if (icon.url instanceof Link) {
