@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
-import { ActivityPubObject } from '../vocab/ActivityPubObject';
 import { OrderedCollection } from '../vocab/Collection';
 import {ActivatedRoute} from "@angular/router";
 

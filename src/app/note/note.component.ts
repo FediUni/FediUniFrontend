@@ -9,6 +9,7 @@ import { ActivityPubObject } from '../vocab/ActivityPubObject';
 })
 export class NoteComponent implements OnInit {
   private _note: Note = new Note();
+  attachments: any = [];
 
   constructor() {}
 
@@ -18,6 +19,14 @@ export class NoteComponent implements OnInit {
   set note(note: ActivityPubObject | undefined) {
     if (note?.type === 'Note') {
       this._note = note as Note;
+      console.log(note?.attachment);
+      if (Array.isArray(note?.attachment)) {
+        note?.attachment?.map((o) => {
+          this.attachments.push(o as ActivityPubObject);
+        })
+      } else {
+        this.attachments.push(note?.attachment);
+      }
     }
   }
 

@@ -15,4 +15,5 @@ export class ActivityPubObject {
   to?: string[];
   cc?: string[];
   summary?: string;
+  attachment?: ActivityPubObject[] | ActivityPubObject;
 }

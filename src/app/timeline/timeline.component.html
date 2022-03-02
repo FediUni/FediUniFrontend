@@ -1,9 +1,7 @@
-<span fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
-  <app-activity
-    fxFlex
-    fxFlexFill
-    *ngFor="let activity of activities"
-    [activity]="activity"
-    [actor]="activity.actor"
-  ></app-activity>
+<span fxLayout="column" fxLayoutGap="10">
+    <app-activity
+      *ngFor="let activity of activities"
+      [activity]="activity"
+      [actor]="activity.actor"
+    ></app-activity>
 </span>
