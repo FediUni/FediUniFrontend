@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as moment from 'moment';
 import { Actor } from '../vocab/Actor';
 import { Image } from '../vocab/Image';
 
@@ -44,6 +45,11 @@ export class ActivityHeaderComponent implements OnInit {
 
   get publicationTime() {
     return this._publicationTime;
+  }
+
+  get relativeTime() {
+    let publishedTime = moment(this.publicationTime);
+    return publishedTime.fromNow();
   }
 
   getProfilePicture(): void {

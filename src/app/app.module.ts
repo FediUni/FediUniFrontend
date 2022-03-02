@@ -34,6 +34,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HomeComponent } from './home/home.component';
 import { AnnounceComponent } from './announce/announce.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -54,25 +55,26 @@ import { CreatePostComponent } from './create-post/create-post.component';
     AnnounceComponent,
     CreatePostComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FlexLayoutModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatCardModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatSidenavModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FlexLayoutModule,
+        MatFormFieldModule,
+        MatGridListModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatCardModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatSidenavModule,
+        MatTooltipModule,
+    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
