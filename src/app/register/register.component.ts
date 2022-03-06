@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getUsernameErrorMessage() {
     if (this.register.controls['username'].getError('required')) {
@@ -46,18 +46,10 @@ export class RegisterComponent implements OnInit {
     return '';
   }
 
-  getNameErrorMessage() {
-    if (this.register.controls['name'].getError('maxlength')) {
-      return 'Name cannot exceed 25 characters';
-    }
-    return '';
-  }
-
   onSubmit() {
     let username = this.register.value['username'];
     let password = this.register.value['password'];
-    let name = this.register.value['name'];
-    this.auth.register(username, password, name).subscribe({
+    this.auth.register(username, password).subscribe({
       complete: () => this.router.navigate(['']),
     });
   }

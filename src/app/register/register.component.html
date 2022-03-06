@@ -7,25 +7,31 @@
   >
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
-      <input formControlName="username" matInput required />
+      <input
+        id="new-username"
+        autocomplete="new-username"
+        formControlName="username"
+        matInput
+        required
+      />
       <mat-error *ngIf="register.get('username')?.invalid">{{
         getUsernameErrorMessage()
       }}</mat-error> </mat-form-field
     ><br />
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input formControlName="password" matInput required type="password" />
+      <input
+        id="new-password"
+        autocomplete="new-password"
+        type="password"
+        formControlName="password"
+        matInput
+        required
+      />
       <mat-error *ngIf="register.get('password')?.invalid">{{
         getPasswordErrorMessage()
       }}</mat-error> </mat-form-field
     ><br />
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input formControlName="name" matInput />
-      <mat-error *ngIf="register.get('name')?.invalid">{{
-        getNameErrorMessage()
-      }}</mat-error>
-    </mat-form-field>
     <button color="primary" mat-raised-button>Register</button>
   </div>
 </form>

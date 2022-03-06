@@ -10,11 +10,10 @@ import { environment } from '../environments/environment';
 export class AuthenticationService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  register(username: string, password: string, name: string) {
+  register(username: string, password: string) {
     let registerForm: FormData = new FormData();
     registerForm.append('username', username);
     registerForm.append('password', password);
-    registerForm.append('name', name);
     return this.http
       .post<JWTResponse>(`${environment.apiUrl}/register`, registerForm)
       .pipe(
