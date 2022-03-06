@@ -1,19 +1,19 @@
 <span fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
-  <mat-card *ngIf="actor !== undefined">
+  <mat-card>
     <mat-card-header>
-      <img mat-card-avatar src="{{ actor.profilePicture() }}" />
-      <mat-card-title *ngIf="actor?.name !== '; useUsername'">{{
-        actor?.name
-      }}</mat-card-title>
-      <ng-template #useUsername>
-        <mat-card-title>actor?.preferredUsername</mat-card-title>
-      </ng-template>
+      <img mat-card-avatar src="{{ actor?.profilePicture() }}" />
+      <mat-card-title>
+        <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
+          actor?.name
+        }}</ng-container>
+        <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+      </mat-card-title>
       <mat-card-subtitle>
-        {{ actor.identifier() }}
+        {{ actor?.identifier() }}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p innerHTML="{{ actor.summary }}"></p>
+      <p innerHTML="{{ actor?.summary }}"></p>
     </mat-card-content>
     <mat-card-actions align="end" [ngSwitch]="followStatus">
       <button

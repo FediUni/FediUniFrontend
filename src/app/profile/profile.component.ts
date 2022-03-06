@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActorService } from '../actor.service';
 import { OutboxService } from '../outbox.service';
 import { Actor } from '../vocab/Actor';
-import { OrderedCollection, OrderedCollectionPage } from '../vocab/Collection';
+import { switchMap } from 'rxjs';
+import { OrderedCollectionPage } from '../vocab/Collection';
 import { Activity } from '../vocab/Activity';
 import { FollowService, FollowStatus } from '../follow.service';
 
@@ -20,34 +20,31 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private actorService: ActorService,
     private outboxService: OutboxService,
     private follow: FollowService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    let identifier = String(this.route.snapshot.paramMap.get('id'));
-    this.actorService.getActor(identifier).subscribe({
-      next: (res) => {
-        this.actor = new Actor(res);
-      },
-    });
-    this.follow.followerStatus(identifier).subscribe({
-      next: (res: any) => {
-        this.followStatus = res.followerStatus as FollowStatus;
-      }
-    })
-    this.outboxService.getOutboxPage(identifier).subscribe({
-      next: (res) => {
-        let outbox = new OrderedCollectionPage(res);
-        if (!Array.isArray(outbox.orderedItems)) {
-          this.activities.push(outbox.orderedItems as Activity);
-        } else {
-          outbox.orderedItems.forEach((o) => {
-            this.activities.push(o as Activity);
-          });
+    this.route.data.subscribe((res) => {
+      this.actor = new Actor(res['actor'])
+      this.follow.followerStatus(this.actor?.identifier()).subscribe({
+        next: (res: any) => {
+          this.followStatus = res.followerStatus as FollowStatus;
         }
-      },
+      })
+      this.outboxService.getOutboxPage(this.actor.identifier()).subscribe({
+        next: (res) => {
+          let outbox = new OrderedCollectionPage(res);
+          if (!Array.isArray(outbox.orderedItems)) {
+            this.activities.push(outbox.orderedItems as Activity);
+          } else {
+            outbox.orderedItems.forEach((o) => {
+              this.activities.push(o as Activity);
+            });
+          }
+        },
+      });
     });
   }
 

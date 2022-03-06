@@ -6,14 +6,21 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
+import { ActorService } from './actor.service';
 
 const routes = [
   { path: 'signin', component: SignInComponent },
-  { path: '', redirectTo: 'timeline/personal', pathMatch: 'full'},
+  { path: '', redirectTo: 'timeline/personal', pathMatch: 'full' },
   {
     path: '', component: HomeComponent, children: [
       { path: 'timeline/:timeline', component: TimelineComponent },
-      { path: 'actor/:id', component: ProfileComponent },
+      {
+        path: 'actor/:identifier',
+        component: ProfileComponent,
+        resolve: {
+          actor: ActorService,
+        },
+      },
     ], canActivate: [AuthGuard],
   },
 
