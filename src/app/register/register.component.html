@@ -5,33 +5,40 @@
     fxLayoutGap="8px"
     id="register-form"
   >
-    <mat-form-field appearance="fill">
-      <mat-label>Username</mat-label>
-      <input
-        id="new-username"
-        autocomplete="new-username"
-        formControlName="username"
-        matInput
-        required
-      />
-      <mat-error *ngIf="register.get('username')?.invalid">{{
-        getUsernameErrorMessage()
-      }}</mat-error> </mat-form-field
-    ><br />
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input
-        id="new-password"
-        autocomplete="new-password"
-        type="password"
-        formControlName="password"
-        matInput
-        required
-      />
-      <mat-error *ngIf="register.get('password')?.invalid">{{
-        getPasswordErrorMessage()
-      }}</mat-error> </mat-form-field
-    ><br />
-    <button color="primary" mat-raised-button>Register</button>
+    <ng-container *ngIf="!registrationInFlight; else loading">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          id="new-username"
+          autocomplete="new-username"
+          formControlName="username"
+          matInput
+          required
+        />
+        <mat-error *ngIf="register.get('username')?.invalid">{{
+          getUsernameErrorMessage()
+        }}</mat-error> </mat-form-field
+      ><br />
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          id="new-password"
+          autocomplete="new-password"
+          type="password"
+          formControlName="password"
+          matInput
+          required
+        />
+        <mat-error *ngIf="register.get('password')?.invalid">{{
+          getPasswordErrorMessage()
+        }}</mat-error> </mat-form-field
+      ><br />
+    </ng-container>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+    <button color="primary" [disabled]="registrationInFlight" mat-raised-button>
+      Register
+    </button>
   </div>
 </form>

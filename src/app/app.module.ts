@@ -18,8 +18,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FlexLayoutModule } from '@angular/flex-layout'
-import { MatToolbarModule } from '@angular/material/toolbar'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
@@ -34,7 +35,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HomeComponent } from './home/home.component';
 import { AnnounceComponent } from './announce/announce.component';
 import { CreatePostComponent } from './create-post/create-post.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -55,26 +56,27 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     AnnounceComponent,
     CreatePostComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FlexLayoutModule,
-        MatFormFieldModule,
-        MatGridListModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatCardModule,
-        MatListModule,
-        MatSnackBarModule,
-        MatSidenavModule,
-        MatTooltipModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatTooltipModule,
+  ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })

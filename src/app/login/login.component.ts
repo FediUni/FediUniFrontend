@@ -11,6 +11,7 @@ import { MessageService } from '../message.service';
 })
 export class LoginComponent implements OnInit {
   login: FormGroup;
+  loginInFlight: Boolean = false;
 
   constructor(
     fb: FormBuilder,
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getUsernameErrorMessage() {
     if (this.login.controls['username'].getError('required')) {
@@ -49,8 +50,18 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     let username = this.login.value['username'];
     let password = this.login.value['password'];
+    if (this.login.invalid) {
+      return
+    }
+    this.loginInFlight = true;
     this.auth.login(username, password).subscribe({
-      complete: () => this.router.navigate(['']),
+      complete: () => {
+        this.loginInFlight = false;
+        this.router.navigate(['']);
+      },
+      error: () => {
+        this.loginInFlight = false;
+      }
     });
   }
 }

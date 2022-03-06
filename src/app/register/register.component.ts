@@ -11,6 +11,7 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class RegisterComponent implements OnInit {
   register: FormGroup;
+  registrationInFlight: Boolean = false;
 
   constructor(
     fb: FormBuilder,
@@ -49,8 +50,18 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     let username = this.register.value['username'];
     let password = this.register.value['password'];
+    if (this.register.invalid) {
+      return;
+    }
+    this.registrationInFlight = true;
     this.auth.register(username, password).subscribe({
-      complete: () => this.router.navigate(['']),
+      complete: () => {
+        this.registrationInFlight = false;
+        this.router.navigate([''])
+      },
+      error: () => {
+        this.registrationInFlight = false
+      },
     });
   }
 }
