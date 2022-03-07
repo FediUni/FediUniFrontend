@@ -53,7 +53,7 @@ export class CreatePostComponent implements OnInit {
     if (content.getError('required')) {
       return 'Cannot submit an empty post';
     }
-    if (content.getError('maxLength')) {
+    if (content.getError('maxlength')) {
       return `${content.value.length} / 500`;
     }
     if (content.getError('pattern')) {

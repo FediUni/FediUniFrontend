@@ -14,14 +14,12 @@
         placeholder="Thoughts..?"
         formControlName="content"
       ></textarea>
-      <mat-hint align="end">
+      <mat-hint align="start">
         <ng-container *ngIf="content.value.length <= 500"
           >{{ content.value.length }} / 500</ng-container
         >
       </mat-hint>
-      <mat-error align="end" *ngIf="post.invalid">{{
-        getContentErrorMessage()
-      }}</mat-error>
+      <mat-error *ngIf="post.invalid">{{ getContentErrorMessage() }}</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary">Post</button>
   </form>
