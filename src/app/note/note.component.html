@@ -1,8 +1,19 @@
-<div *ngIf="attachments?.length > 0" class="image-display" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayoutGap="4px">
-  <ng-container *ngFor="let a of attachments">
-    <img fxFlex="49" *ngIf="a?.mediaType?.startsWith('image')" src="{{a?.url}}" alt="a?.name">
-  </ng-container>
-</div>
 <mat-card-content>
   <p [innerHTML]="note?.content"></p>
+  <div
+    *ngIf="attachments?.length > 0"
+    class="image-display"
+    fxLayout="row wrap"
+    fxLayoutAlign="center stretch"
+    fxLayoutGap="4px"
+  >
+    <ng-container *ngFor="let a of attachments">
+      <img
+        fxFlex="49"
+        *ngIf="a?.mediaType?.startsWith('image')"
+        src="{{ a?.url }}"
+        alt="a?.name"
+      />
+    </ng-container>
+  </div>
 </mat-card-content>

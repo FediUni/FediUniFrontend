@@ -1,11 +1,9 @@
-<div class="search-wrapper" fxLayout="row" fxLayoutAlign="center">
-  <app-search fxFlex="60"></app-search>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-around start">
-  <span class="sidebar-links-container" fxFlex="20">
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="16px">
+  <span class="sidebar-links-container" fxLayout="column" fxFlex="25">
+    <app-search></app-search>
     <app-create-post></app-create-post>
   </span>
-  <span class="sidebar-links-container timeline" fxFlex="60">
+  <span class="sidebar-links-container timeline" fxFlex="50">
     <span class="primary-display" fxLayout="column" fxLayoutAlign="start none">
       <div fxFlex>
         <router-outlet></router-outlet>
@@ -13,7 +11,7 @@
       <app-message></app-message>
     </span>
   </span>
-  <span class="sidebar-links-container" fxFlex="20">
+  <span class="sidebar-links-container" fxFlex="25">
     <mat-list>
       <a routerLink="/timeline/personal">
         <mat-list-item>

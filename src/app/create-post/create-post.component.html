@@ -1,19 +1,27 @@
-<div>
   <form
     fxLayout="column"
     fxFlexAlign="center"
+    fxLayoutGap="8px"
     (ngSubmit)="onSubmit()"
     [formGroup]="post"
   >
     <mat-form-field appearance="fill" id="note-input-wrapper" fxFlex>
       <mat-label>Create a Post</mat-label>
       <textarea
+        #content
         id="note-content"
         matInput
         placeholder="Thoughts..?"
         formControlName="content"
       ></textarea>
+      <mat-hint align="end">
+        <ng-container *ngIf="content.value.length <= 500"
+          >{{ content.value.length }} / 500</ng-container
+        >
+      </mat-hint>
+      <mat-error align="end" *ngIf="post.invalid">{{
+        getContentErrorMessage()
+      }}</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary">Post</button>
   </form>
-</div>
