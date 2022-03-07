@@ -8,12 +8,12 @@
     fxLayoutGap="4px"
   >
     <ng-container *ngFor="let a of attachments">
-      <img
-        fxFlex="49"
-        *ngIf="a?.mediaType?.startsWith('image')"
-        src="{{ a?.url }}"
-        alt="a?.name"
-      />
+      <ng-container *ngIf="a?.mediaType?.startsWith('image')">
+        <img fxFlex="49" src="{{ a?.url }}" alt="a?.name" />
+      </ng-container>
+      <ng-container *ngIf="a?.mediaType?.startsWith('video')">
+        <div plyr plyrTitle=""></div>
+      </ng-container>
     </ng-container>
   </div>
 </mat-card-content>
