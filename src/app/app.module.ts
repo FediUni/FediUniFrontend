@@ -19,6 +19,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -35,6 +39,7 @@ import { HomeComponent } from './home/home.component';
 import { AnnounceComponent } from './announce/announce.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     HomeComponent,
     AnnounceComponent,
     CreatePostComponent,
+    VideoComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +78,10 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatTabsModule,
     MatCardModule,
     MatListModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     MatSnackBarModule,
     MatSidenavModule,
     MatTooltipModule,

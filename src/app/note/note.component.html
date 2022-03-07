@@ -1,19 +1,22 @@
 <mat-card-content>
   <p [innerHTML]="note?.content"></p>
-  <div
-    *ngIf="attachments?.length > 0"
-    class="image-display"
-    fxLayout="row wrap"
-    fxLayoutAlign="center stretch"
-    fxLayoutGap="4px"
-  >
-    <ng-container *ngFor="let a of attachments">
-      <ng-container *ngIf="a?.mediaType?.startsWith('image')">
-        <img fxFlex="49" src="{{ a?.url }}" alt="a?.name" />
-      </ng-container>
-      <ng-container *ngIf="a?.mediaType?.startsWith('video')">
-        <div plyr plyrTitle=""></div>
-      </ng-container>
-    </ng-container>
-  </div>
+  <ng-container *ngIf="attachments?.length !== 0">
+    <mat-grid-list cols="2">
+      <mat-grid-tile
+        *ngFor="let a of attachments"
+        [rowspan]="a.rowspan"
+        [colspan]="a.colspan"
+      >
+        <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('image')">
+          <img src="{{ a?.attachment?.url }}" alt="a?.attachment?.name" />
+        </ng-container>
+        <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('video')">
+          <app-video
+            source="{{ a?.attachment?.url }}"
+            type="{{ a?.attachment?.mediaType }}"
+          ></app-video>
+        </ng-container>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-container>
 </mat-card-content>
