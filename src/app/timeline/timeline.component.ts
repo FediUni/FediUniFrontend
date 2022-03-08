@@ -81,6 +81,7 @@ export class TimelineComponent implements OnInit {
     }
     this.timeline.getFirstPage(orderedCollection).subscribe({
       next: (page) => {
+        console.log(page);
         let orderedItems = page.orderedItems ?? [];
         if (Array.isArray(orderedItems)) {
           orderedItems.map((item) => {
@@ -90,7 +91,7 @@ export class TimelineComponent implements OnInit {
             }
             this.activities.push(activity);
           });
-        } else {
+        } else if (orderedItems !== undefined) {
           this.activities.push(orderedItems as Activity);
         }
       },
