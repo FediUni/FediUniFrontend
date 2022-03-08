@@ -8,7 +8,7 @@ import { Activity } from '../vocab/Activity';
   styleUrls: ['./focused-activity.component.scss']
 })
 export class FocusedActivityComponent implements OnInit {
-  activity: Activity | undefined;
+  activity: Activity;
 
   constructor(private route: ActivatedRoute) { }
 

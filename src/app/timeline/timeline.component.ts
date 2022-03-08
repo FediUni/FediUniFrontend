@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TimelineComponent implements OnInit {
   activities: Activity[];
+  loadingActivities: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(routeParams => {
+      this.loadingActivities = true;
       // Remove all activities when the parameter changes.
       this.activities = [];
       switch (routeParams.get('timeline')) {
@@ -40,11 +42,14 @@ export class TimelineComponent implements OnInit {
   }
 
   getPersonalTimeline(): void {
+    this.loadingActivities = true;
     this.timeline.getPersonalTimelineCollection(this.auth.getUsername()).subscribe({
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
+        this.loadingActivities = false;
       },
+      error: () => this.loadingActivities = false,
     });
   }
 
@@ -53,7 +58,9 @@ export class TimelineComponent implements OnInit {
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
+        this.loadingActivities = false;
       },
+      error: () => this.loadingActivities = false,
     });
   }
 
@@ -62,7 +69,9 @@ export class TimelineComponent implements OnInit {
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
+        this.loadingActivities = false;
       },
+      error: () => this.loadingActivities = false,
     });
   }
 

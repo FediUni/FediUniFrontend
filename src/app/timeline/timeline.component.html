@@ -1,7 +1,13 @@
-<span fxLayout="column" fxLayoutGap="10">
+<span class="timeline" fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center stretch">
+  <ng-container *ngIf="loadingActivities === false; else loading"></ng-container>
     <app-activity
       *ngFor="let activity of activities"
       [activity]="activity"
       [actor]="activity.actor"
     ></app-activity>
+  <ng-template #loading>
+    <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </span>
