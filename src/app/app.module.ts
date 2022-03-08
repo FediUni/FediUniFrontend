@@ -40,6 +40,7 @@ import { AnnounceComponent } from './announce/announce.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { VideoComponent } from './video/video.component';
+import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { VideoComponent } from './video/video.component';
     AnnounceComponent,
     CreatePostComponent,
     VideoComponent,
+    FocusedActivityComponent,
   ],
   imports: [
     BrowserModule,

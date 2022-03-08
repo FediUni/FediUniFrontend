@@ -6,7 +6,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
-import { ActorService } from './actor.service';
+import { ActivityResolver } from "./activity.resolver";
+import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
+import {ActorResolver} from "./actor.resolver";
 
 const routes = [
   { path: 'signin', component: SignInComponent },
@@ -18,9 +20,17 @@ const routes = [
         path: 'actor/:identifier',
         component: ProfileComponent,
         resolve: {
-          actor: ActorService,
+          actor: ActorResolver,
         },
       },
+      {
+        path: 'activity',
+        queryParams: { id: ":id"},
+        component: FocusedActivityComponent,
+        resolve: {
+          activity: ActivityResolver,
+        }
+      }
     ], canActivate: [AuthGuard],
   },
 

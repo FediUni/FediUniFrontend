@@ -3,7 +3,7 @@
     [author]="actor"
     [publicationTime]="activity?.object?.published"
   ></app-activity-header>
-  <mat-card-content>
+  <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
     <app-note
       *ngIf="activity?.object?.type === 'Note'"
       [note]="activity?.object"
@@ -20,7 +20,7 @@
     [author]="activity?.object?.attributedTo"
     [publicationTime]="activity?.object?.published"
   ></app-activity-header>
-  <mat-card-content>
+  <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
     <app-note
       *ngIf="activity?.object?.type === 'Note'"
       [note]="activity?.object"

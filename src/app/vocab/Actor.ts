@@ -4,7 +4,7 @@ import { Link } from './Link';
 
 export class Actor implements ActivityPubObject {
   type: string = '';
-  id?: URL;
+  id: URL | string;
   attributedTo?: ActivityPubObject[] | ActivityPubObject = [];
   content?: string = '';
   name: string = '';

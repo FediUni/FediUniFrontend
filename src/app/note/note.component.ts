@@ -9,7 +9,7 @@ import { ActivityPubObject } from '../vocab/ActivityPubObject';
 })
 export class NoteComponent implements OnInit {
   private _note: Note = new Note();
-  attachments: any = [];
+  attachments: Array<any> = [];
 
   constructor() { }
 
@@ -28,7 +28,7 @@ export class NoteComponent implements OnInit {
           }]
         } else {
           note?.attachment?.map((o) => {
-            this.attachments.append({
+            this.attachments.push({
               attachment: o,
               colspan: 1,
               rowspan: 1,

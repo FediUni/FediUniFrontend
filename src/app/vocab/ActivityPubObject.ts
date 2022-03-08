@@ -3,7 +3,7 @@ import { Image } from './Image';
 
 export class ActivityPubObject {
   type: string = "";
-  id?: URL;
+  id: URL | string;
   attributedTo?: ActivityPubObject[] | ActivityPubObject | URL;
   content?: string;
   name?: string;
