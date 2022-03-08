@@ -3,7 +3,7 @@ import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
 import { OrderedCollection } from '../vocab/Collection';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-timeline',
@@ -76,24 +76,24 @@ export class TimelineComponent implements OnInit {
   }
 
   handleIncomingCollection(orderedCollection: OrderedCollection): void {
-    if (orderedCollection == undefined) {
+    if (orderedCollection === undefined) {
       return
     }
-      this.timeline.getFirstPage(orderedCollection).subscribe({
-        next: (page) => {
-          let orderedItems = page.orderedItems ?? [];
-          if (Array.isArray(orderedItems)) {
-            orderedItems.map((item) => {
-              let activity = item as Activity;
-              if (activity === undefined) {
-                return;
-              }
-              this.activities.push(activity);
-            });
-          } else {
-            this.activities.push(orderedItems as Activity);
-          }
-        },
-      })
-    }
+    this.timeline.getFirstPage(orderedCollection).subscribe({
+      next: (page) => {
+        let orderedItems = page.orderedItems ?? [];
+        if (Array.isArray(orderedItems)) {
+          orderedItems.map((item) => {
+            let activity = item as Activity;
+            if (activity === undefined) {
+              return;
+            }
+            this.activities.push(activity);
+          });
+        } else {
+          this.activities.push(orderedItems as Activity);
+        }
+      },
+    })
+  }
 }

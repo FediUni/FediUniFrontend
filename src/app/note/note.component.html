@@ -1,22 +1,42 @@
 <mat-card-content>
   <p [innerHTML]="note?.content"></p>
   <ng-container *ngIf="attachments?.length !== 0">
-    <mat-grid-list cols="2" rowHeight="1:1">
-      <mat-grid-tile
-        *ngFor="let a of attachments"
-        [rowspan]="a.rowspan"
-        [colspan]="a.colspan"
+    <ng-container *ngIf="attachments.length > 1; else singleAttachment">
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile
+          *ngFor="let a of attachments"
+          [rowspan]="a.rowspan"
+          [colspan]="a.colspan"
+        >
+          <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('image')">
+            <img src="{{ a?.attachment?.url }}" alt="a?.attachment?.name" />
+          </ng-container>
+          <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('video')">
+            <app-video
+              source="{{ a?.attachment?.url }}"
+              type="{{ a?.attachment?.mediaType }}"
+            ></app-video>
+          </ng-container>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </ng-container>
+    <ng-template #singleAttachment fxLayout="row" fxLayout="center">
+      <ng-container
+        *ngIf="attachments[0]?.attachment?.mediaType?.startsWith('image')"
       >
-        <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('image')">
-          <img src="{{ a?.attachment?.url }}" alt="a?.attachment?.name" />
-        </ng-container>
-        <ng-container *ngIf="a?.attachment?.mediaType?.startsWith('video')">
-          <app-video
-            source="{{ a?.attachment?.url }}"
-            type="{{ a?.attachment?.mediaType }}"
-          ></app-video>
-        </ng-container>
-      </mat-grid-tile>
-    </mat-grid-list>
+        <img
+          src="{{ attachments[0]?.attachment?.url }}"
+          alt="a?.attachment?.name"
+        />
+      </ng-container>
+      <ng-container
+        *ngIf="attachments[0]?.attachment?.mediaType?.startsWith('video')"
+      >
+        <app-video
+          source="{{ attachments[0]?.attachment?.url }}"
+          type="{{ attachments[0]?.attachment?.mediaType }}"
+        ></app-video>
+      </ng-container>
+    </ng-template>
   </ng-container>
 </mat-card-content>
