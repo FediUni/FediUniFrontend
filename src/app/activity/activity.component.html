@@ -16,6 +16,14 @@
 </mat-card>
 
 <mat-card *ngIf="activity?.type === 'Announce'" class="activity-wrapper">
+  <div class="repost-display" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon>loop</mat-icon>
+    <span>
+    <a class="repost-username" routerLink="/actor/{{ actor?.identifier() }}">
+      <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{ actor?.name }}</ng-container>
+      <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+    </a> reposted.</span>
+  </div>
   <app-activity-header
     [author]="activity?.object?.attributedTo"
     [publicationTime]="activity?.object?.published"

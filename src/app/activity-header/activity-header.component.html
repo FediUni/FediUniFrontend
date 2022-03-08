@@ -3,6 +3,7 @@
     mat-card-avatar
     src="{{ profilePicture }}"
     routerLink="/actor/{{ author?.identifier() }}"
+    alt="Profile Picture"
   />
   <mat-card-title>
     <ng-container *ngIf="author?.name !== ''; else nameUnset">{{ author?.name }}</ng-container>
