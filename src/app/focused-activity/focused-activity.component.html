@@ -1,7 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="8">
   <app-activity [activity]="activity" [actor]="activity?.actor"> </app-activity>
-  <ng-container *ngIf="replies !== undefined; else loading">
-    <!-- Display Self Replies First -->
+  <ng-container *ngIf="replies.length > 0; else loading">
     <mat-card *ngFor="let reply of replies">
       <app-activity-header [author]="reply.attributedTo"></app-activity-header>
       <ng-container *ngIf="reply.type === 'Note'">
