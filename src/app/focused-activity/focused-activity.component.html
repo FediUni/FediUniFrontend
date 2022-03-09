@@ -1,23 +1,19 @@
-<app-activity [activity]="activity" [actor]="activity?.actor"> </app-activity>
-<ng-container *ngIf="replies !== undefined; else loading">
-  <div fxLayout="column" fxLayoutAlign="center stretch">
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="8">
+  <app-activity [activity]="activity" [actor]="activity?.actor"> </app-activity>
+  <ng-container *ngIf="replies !== undefined; else loading">
     <!-- Display Self Replies First -->
-    <mat-card *ngFor="let reply of replies?.first?.items">
+    <mat-card *ngFor="let reply of replies">
+      <app-activity-header [author]="reply.attributedTo"></app-activity-header>
       <ng-container *ngIf="reply.type === 'Note'">
         <app-note [note]="reply"></app-note>
       </ng-container>
+      <mat-divider></mat-divider>
+      <app-activity-footer></app-activity-footer>
     </mat-card>
-    <!-- Display the next page of replies -->
-    <mat-card *ngFor="let reply of replies?.first?.next?.items">
-      <app-activity-header [author]="reply?.attributedTo"></app-activity-header>
-      <ng-container *ngIf="reply.type === 'Note'">
-        <app-note [note]="reply"></app-note>
-      </ng-container>
-    </mat-card>
-  </div>
-</ng-container>
-<ng-template #loading>
-  <div fxLayout="column" fxLayoutAlign="center stretch">
-    <mat-spinner fxFlex></mat-spinner>
-  </div>
-</ng-template>
+  </ng-container>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center stretch">
+      <mat-spinner fxFlex></mat-spinner>
+    </div>
+  </ng-template>
+</div>

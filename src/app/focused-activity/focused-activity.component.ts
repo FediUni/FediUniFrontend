@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Activity } from '../vocab/Activity';
 import {Collection} from "../vocab/Collection";
 import {ActivityService} from "../activity.service";
+import {ActivityPubObject} from "../vocab/ActivityPubObject";
 
 @Component({
   selector: 'app-focused-activity',
@@ -11,14 +12,28 @@ import {ActivityService} from "../activity.service";
 })
 export class FocusedActivityComponent implements OnInit {
   activity: Activity;
-  replies: Collection;
+  replies: ActivityPubObject[];
 
   constructor(private route: ActivatedRoute, private activityService: ActivityService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe((res) => {
       this.activity = new Activity(res['activity']);
-      this.activityService.getActivityWithReplies(this.activity.id).subscribe((res) => this.replies = new Collection(res?.object?.replies))
+      this.activityService.getActivityWithReplies(this.activity.id).subscribe((res) => {
+        this.replies = [];
+        let collection = new Collection(res?.object?.replies);
+        let first = collection?.first;
+        if (first === undefined) {
+          return
+        }
+        first.items.map((o) => this.replies.push(o))
+        let next = first.next;
+        if (next === undefined) {
+          return
+        }
+        next.items.map((o) => this.replies.push(o))
+        console.log(this.replies)
+      })
     });
   }
 

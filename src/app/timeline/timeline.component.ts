@@ -81,7 +81,6 @@ export class TimelineComponent implements OnInit {
     }
     this.timeline.getFirstPage(orderedCollection).subscribe({
       next: (page) => {
-        console.log(page);
         let orderedItems = page.orderedItems ?? [];
         if (Array.isArray(orderedItems)) {
           orderedItems.map((item) => {
