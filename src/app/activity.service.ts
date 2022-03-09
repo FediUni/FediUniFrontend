@@ -15,4 +15,8 @@ export class ActivityService {
     }
     return this.http.get<Activity>(`${environment.apiUrl}/activity?id=${activityID}`);
   }
+
+  getActivityWithReplies(activityID: URL | string) {
+    return this.http.get<Activity>(`${environment.apiUrl}/activity?id=${activityID}&replies=true`);
+  }
 }

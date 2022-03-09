@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Activity } from '../vocab/Activity';
 import {Collection} from "../vocab/Collection";
+import {ActivityService} from "../activity.service";
 
 @Component({
   selector: 'app-focused-activity',
@@ -12,14 +13,12 @@ export class FocusedActivityComponent implements OnInit {
   activity: Activity;
   replies: Collection;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private activityService: ActivityService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe((res) => {
       this.activity = new Activity(res['activity']);
-      console.log(this.activity)
-      this.replies = new Collection(this.activity?.object?.replies);
-      console.log(this.replies);
+      this.activityService.getActivityWithReplies(this.activity.id).subscribe((res) => this.replies = new Collection(res?.object?.replies))
     });
   }
 
