@@ -1,1 +1,15 @@
 <app-activity [activity]="activity" [actor]="activity?.actor"> </app-activity>
+<div fxLayout="column" fxLayoutAlign="center stretch">
+  <!-- Display Self Replies First -->
+  <mat-card *ngFor="let reply of replies?.first?.items">
+    <ng-container *ngIf="reply.type === 'Note'">
+      <app-note [note]="reply"></app-note>
+    </ng-container>
+  </mat-card>
+  <mat-card *ngFor="let reply of replies?.first?.next?.items">
+    <app-activity-header [author]="reply?.attributedTo"></app-activity-header>
+    <ng-container *ngIf="reply.type === 'Note'">
+      <app-note [note]="reply"></app-note>
+    </ng-container>
+  </mat-card>
+</div>

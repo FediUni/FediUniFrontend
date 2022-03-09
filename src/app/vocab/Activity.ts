@@ -2,6 +2,7 @@ import { ActivityPubObject } from './ActivityPubObject';
 import { Actor } from './Actor';
 import { Image } from './Image';
 import { Link } from './Link';
+import {Note} from "./Note";
 
 export class Activity implements ActivityPubObject {
   type: string = "";

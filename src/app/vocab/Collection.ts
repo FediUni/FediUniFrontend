@@ -1,18 +1,47 @@
 import { Link } from './Link';
 import { ActivityPubObject } from './ActivityPubObject';
+import {Image} from "./Image";
 
-export interface Collection extends ActivityPubObject {
+export class Collection implements ActivityPubObject {
+  type: string = "";
+  id: URL | string;
+  attributedTo?: ActivityPubObject[] | ActivityPubObject | URL;
+  content?: string;
+  name?: string;
+  icon?: Image[] | Image;
+  image?: Image[] | Image;
+  inReplyTo?: ActivityPubObject[] | ActivityPubObject;
+  replies?: Collection;
+  published?: Date | string;
+  url?: Link[] | Link | string;
+  to?: string[];
+  cc?: string[];
+  summary?: string;
+  attachment?: ActivityPubObject[] | ActivityPubObject;
   totalItems: number;
   current: Link;
-  first: Link;
-  last: Link;
-  items: ActivityPubObject[];
+  first: CollectionPage;
+  last: CollectionPage;
+  next: CollectionPage;
+  prev: CollectionPage;
+  items: ActivityPubObject[]
+
+  constructor(c: any) {
+    this.type = c.type;
+    this.id = new URL(c.id);
+    this.totalItems = c.totalItems;
+    this.current = c.current;
+    this.first = c.first;
+    this.last = c.last;
+    this.next = c.next;
+    this.items = c.items;
+  }
 }
 
 export interface CollectionPage extends Collection {
   partOf?: Link;
-  next?: Link;
-  prev?: Link;
+  next: CollectionPage;
+  prev: CollectionPage;
 }
 
 export class OrderedCollection extends Object {
