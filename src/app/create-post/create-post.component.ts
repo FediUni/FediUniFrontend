@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class CreatePostComponent implements OnInit {
   post: FormGroup;
+  postInFlight: boolean = false;
 
   constructor(private fb: FormBuilder, private postService: PostService, private auth: AuthenticationService) {
     this.post = fb.group({
@@ -25,6 +26,7 @@ export class CreatePostComponent implements OnInit {
     if (this.post.invalid) {
       return
     }
+    this.postInFlight = true;
     let content: string = this.post.value['content'];
     content = content.trim();
     let username = this.auth.getUsername();
@@ -32,7 +34,13 @@ export class CreatePostComponent implements OnInit {
     let to: string = "https://www.w3.org/ns/activitystreams#Public";
     let cc: string = `${environment.apiUrl}/actor/${username}/followers`;
     this.postService.post(userID, username, content, to, cc).subscribe({
-      next: (res) => { },
+      next: (res) => {
+        this.postInFlight = false;
+        this.post.reset();
+        },
+      error: (err) => {
+        this.postInFlight = false;
+      }
     });
   }
 
