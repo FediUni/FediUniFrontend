@@ -1,5 +1,7 @@
 <mat-card-content>
-  <p [innerHTML]="note?.content"></p>
+  <ng-container>
+    <p [innerHTML]="note?.content"></p>
+  </ng-container>
   <ng-container *ngIf="attachments?.length !== 0">
     <ng-container *ngIf="attachments.length > 1; else singleAttachment">
       <mat-grid-list cols="2" rowHeight="2:1">
