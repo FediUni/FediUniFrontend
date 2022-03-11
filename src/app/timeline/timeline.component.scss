@@ -1,5 +1,8 @@
 .timeline {
-  height: auto;
   min-height: 25vh;
 }
 
+.timeline, .post, .activity {
+  height: auto;
+  width: 100%;
+}

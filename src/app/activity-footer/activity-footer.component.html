@@ -1,7 +1,10 @@
-<mat-card-footer fxLayout="row" fxLayoutAlign="space-around center">
+<mat-card-footer >
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
   <button mat-icon-button>
     <mat-icon class="like" *ngIf="liked">favorite</mat-icon>
     <mat-icon class="like" *ngIf="!liked">favorite_border</mat-icon>
   </button>
   <button mat-icon-button><mat-icon>loop</mat-icon></button>
+  </div>
 </mat-card-footer>

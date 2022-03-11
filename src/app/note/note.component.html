@@ -1,5 +1,5 @@
-<mat-card-content>
-  <ng-container>
+<div>
+  <ng-container *ngIf="note?.content?.length !== 0">
     <p [innerHTML]="note?.content"></p>
   </ng-container>
   <ng-container *ngIf="attachments?.length !== 0">
@@ -43,4 +43,4 @@
       </div>
     </ng-template>
   </ng-container>
-</mat-card-content>
+</div>

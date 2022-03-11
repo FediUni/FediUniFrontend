@@ -1,3 +1,4 @@
+<!--
 <span
   class="timeline"
   fxLayout="column"
@@ -23,3 +24,15 @@
     </div>
   </ng-container>
 </span>
+-->
+
+<mat-list class="timeline">
+  <ng-container *ngFor="let activity of activities">
+    <mat-list-item class="post">
+      <app-activity
+        class="activity"
+        [activity]="activity"
+        [actor]="activity.actor"></app-activity>
+    </mat-list-item>
+  </ng-container>
+</mat-list>

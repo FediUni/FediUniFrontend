@@ -1,13 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="16px">
   <span class="sidebar-links-container" fxFlex="25">
   </span>
-  <span class="sidebar-links-container timeline" fxFlex="50" fxLayoutGap="16px">
+  <span class="sidebar-links-container timeline" fxFlex="50" >
     <app-search></app-search>
     <app-create-post></app-create-post>
-    <span class="primary-display" fxLayout="column" fxLayoutAlign="start none">
-      <div fxFlex>
-        <router-outlet></router-outlet>
-      </div>
+    <span class="primary-display">
+      <router-outlet></router-outlet>
       <app-message></app-message>
     </span>
   </span>
