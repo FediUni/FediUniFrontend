@@ -2,11 +2,17 @@ div {
   max-width: 424px;
 }
 
-#Note-input-wrapper {
+#note-input-wrapper {
   min-width: 250px;
 }
 
 #note-content {
   max-height: 25vh;
   min-height: 15vh;
+  resize: none;
+  padding: 4px;
+}
+
+#input-footer {
+  width: 100%;
 }

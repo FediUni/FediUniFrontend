@@ -5,7 +5,7 @@
     (ngSubmit)="onSubmit()"
     [formGroup]="post"
   >
-    <mat-form-field appearance="fill" id="note-input-wrapper" fxFlex>
+    <mat-form-field appearance="fill" id="note-input-wrapper">
       <mat-label>Create a Post</mat-label>
       <textarea
         #content
@@ -14,12 +14,14 @@
         placeholder="Thoughts..?"
         formControlName="content"
       ></textarea>
+      <span id="input-footer" fxLayout="row" fxLayoutAlign="end end">
+        <button id="post-button" mat-raised-button color="primary" [disabled]="postInFlight">Post</button>
+      </span>
       <mat-hint align="start">
-        <ng-container *ngIf="content.value.length <= 500"
+        <ng-container *ngIf="!post.invalid"
           >{{ content.value.length }} / 500</ng-container
         >
       </mat-hint>
       <mat-error *ngIf="post.invalid">{{ getContentErrorMessage() }}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="postInFlight">Post</button>
   </form>
