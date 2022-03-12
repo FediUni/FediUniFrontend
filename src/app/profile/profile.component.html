@@ -30,11 +30,18 @@
       <button mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
     </mat-card-actions>
   </mat-card>
-  <app-activity
-    fxFlex
-    fxFlexFill
-    *ngFor="let activity of activities"
-    [activity]="activity"
-    [actor]="actor"
-  ></app-activity>
+  <ng-container *ngIf="activities.length > 0; else loading">
+    <app-activity
+      fxFlex
+      fxFlexFill
+      *ngFor="let activity of activities"
+      [activity]="activity"
+      [actor]="actor"
+    ></app-activity>
+  </ng-container>
+  <ng-template #loading>
+    <div class="loading-wrapper" fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </span>
