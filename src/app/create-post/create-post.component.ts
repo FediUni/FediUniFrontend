@@ -37,6 +37,7 @@ export class CreatePostComponent implements OnInit {
       next: (res) => {
         this.postInFlight = false;
         this.post.reset();
+        this.post.controls['content'].setErrors(null)
         },
       error: (err) => {
         this.postInFlight = false;
