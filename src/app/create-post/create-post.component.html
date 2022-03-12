@@ -3,6 +3,7 @@
     fxFlexAlign="center"
     fxLayoutGap="8px"
     (ngSubmit)="onSubmit()"
+    (keyup.enter)="onSubmit()"
     [formGroup]="post"
   >
     <mat-form-field appearance="fill" id="note-input-wrapper">
@@ -18,7 +19,7 @@
         <button id="post-button" mat-raised-button color="primary" [disabled]="postInFlight">Post</button>
       </span>
       <mat-hint align="start">
-        <ng-container *ngIf="!post.invalid"
+        <ng-container *ngIf="content.value.length <= 500"
           >{{ content.value.length }} / 500</ng-container
         >
       </mat-hint>
