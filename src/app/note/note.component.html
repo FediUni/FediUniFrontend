@@ -4,7 +4,7 @@
   </ng-container>
   <ng-container *ngIf="attachments?.length !== 0">
     <ng-container *ngIf="attachments.length > 1; else singleAttachment">
-      <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-list cols="2" rowHeight="3:2">
         <mat-grid-tile
           *ngFor="let a of attachments"
           [rowspan]="a.rowspan"

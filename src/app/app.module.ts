@@ -36,11 +36,11 @@ import { ActivityFooterComponent } from './activity-footer/activity-footer.compo
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
-import { AnnounceComponent } from './announce/announce.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { VideoComponent } from './video/video.component';
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
+import { NavigationListComponent } from './navigation-list/navigation-list.component';
 
 @NgModule({
   declarations: [
@@ -58,10 +58,10 @@ import { FocusedActivityComponent } from './focused-activity/focused-activity.co
     SearchComponent,
     SearchResultsComponent,
     HomeComponent,
-    AnnounceComponent,
     CreatePostComponent,
     VideoComponent,
     FocusedActivityComponent,
+    NavigationListComponent,
   ],
   imports: [
     BrowserModule,

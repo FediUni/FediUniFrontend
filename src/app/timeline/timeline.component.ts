@@ -47,7 +47,6 @@ export class TimelineComponent implements OnInit {
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
-        this.loadingActivities = false;
       },
       error: () => this.loadingActivities = false,
     });
@@ -58,7 +57,6 @@ export class TimelineComponent implements OnInit {
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
-        this.loadingActivities = false;
       },
       error: () => this.loadingActivities = false,
     });
@@ -69,7 +67,6 @@ export class TimelineComponent implements OnInit {
       next: (orderedCollection) => {
         let c = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(c);
-        this.loadingActivities = false;
       },
       error: () => this.loadingActivities = false,
     });
@@ -93,6 +90,7 @@ export class TimelineComponent implements OnInit {
         } else if (orderedItems !== undefined) {
           this.activities.push(orderedItems as Activity);
         }
+        this.loadingActivities = false;
       },
     })
   }
