@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "./src/app/note/_note-theme" as note;
 
 $default-typography: mat.define-typography-config(
   $font-family: "Ubuntu",
@@ -10,16 +11,15 @@ $dark-primary: mat.define-palette(mat.$light-blue-palette);
 $dark-accent: mat.define-palette(mat.$orange-palette);
 $dark-like: mat.define-palette(mat.$pink-palette);
 $dark-warn: mat.define-palette(mat.$red-palette);
-$dark-theme: mat.define-dark-theme(
-  (
+$dark-theme: mat.define-dark-theme((
     color: (
       primary: $dark-primary,
       accent: $dark-accent,
       like: $dark-like,
       warn: $dark-warn,
     ),
-  )
-);
+    typography: $default-typography,
+));
 
 html,
 body {
@@ -40,6 +40,8 @@ mat-app-background {
 }
 
 @include mat.core-theme($dark-theme);
-@include mat.button-theme($dark-theme);
-@include mat.snack-bar-theme($dark-theme);
+@include mat.all-component-colors($dark-theme);
 @include mat.all-component-themes($dark-theme);
+@include mat.all-component-typographies($dark-theme);
+
+@include note.theme($dark-theme);
