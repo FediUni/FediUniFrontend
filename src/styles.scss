@@ -39,4 +39,7 @@ mat-app-background {
   height: 100vh;
 }
 
+@include mat.core-theme($dark-theme);
+@include mat.button-theme($dark-theme);
+@include mat.snack-bar-theme($dark-theme);
 @include mat.all-component-themes($dark-theme);

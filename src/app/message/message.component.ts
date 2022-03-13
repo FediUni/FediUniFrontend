@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from '../message.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-message',
@@ -11,10 +11,14 @@ export class MessageComponent implements OnInit {
   constructor(private msg: MessageService, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
+    let config: MatSnackBarConfig = {
+      duration: 2000,
+      panelClass: ['darkMode'],
+    }
     this.msg
-      .onMessage()
-      .subscribe((errorMessage) =>
-        this._snackBar.open(errorMessage, 'Dismiss')
-      );
+    .onMessage()
+    .subscribe((errorMessage) =>
+      this._snackBar.open(errorMessage, 'Dismiss', config)
+    );
   }
 }
