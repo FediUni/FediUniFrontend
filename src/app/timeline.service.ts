@@ -22,6 +22,10 @@ export class TimelineService {
     return this.http.get(`${environment.apiUrl}/inbox`);
   }
 
+  getInstituteTimelineCollection() {
+    return this.http.get(`${environment.apiUrl}/inbox?institute=true`);
+  }
+
   getFirstPage(c: OrderedCollection) {
     let url: string = '';
     if (c.first instanceof Link) {

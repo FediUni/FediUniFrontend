@@ -37,6 +37,9 @@ export class TimelineComponent implements OnInit {
         case "public":
           this.getFederatedTimeline();
           break;
+        case "institute":
+          this.getInstituteTimeline();
+          break;
       }
     })
   }
@@ -72,6 +75,16 @@ export class TimelineComponent implements OnInit {
     });
   }
 
+  getInstituteTimeline(): void {
+    this.timeline.getInstituteTimelineCollection().subscribe({
+      next: (orderedCollection) => {
+        console.log(orderedCollection)
+        let c = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(c);
+      },
+      error: () => this.loadingActivities = false,
+    });
+  }
   handleIncomingCollection(orderedCollection: OrderedCollection): void {
     if (orderedCollection === undefined) {
       return
