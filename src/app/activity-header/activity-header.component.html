@@ -1,20 +1,24 @@
 <mat-card-header>
   <div mat-card-avatar>
-    <ng-container *ngIf="profilePicture !== ''; else placeholder">
-      <img
-        mat-card-avatar
-        src="{{ profilePicture }}"
-        routerLink="/actor/{{ author?.identifier() }}"
-        alt="Profile Picture"
-      />
-    </ng-container>
-    <ng-template #placeholder>
-    <svg mat-card-avatar [data-jdenticon-value]="author?.identifier()"></svg>
-    </ng-template>
+    <a routerLink="/actor/{{ author?.identifier() }}">
+      <ng-container *ngIf="profilePicture !== ''; else placeholder">
+        <img
+          mat-card-avatar
+          src="{{ profilePicture }}"
+          routerLink="/actor/{{ author?.identifier() }}"
+          alt="Profile Picture"
+        />
+      </ng-container>
+      <ng-template #placeholder>
+      <svg mat-card-avatar [data-jdenticon-value]="author?.identifier()"></svg>
+      </ng-template>
+    </a>
   </div>
   <mat-card-title class="name">
-    <ng-container *ngIf="author?.name !== ''; else nameUnset">{{ author?.name }}</ng-container>
-    <ng-template #nameUnset>{{ author?.preferredUsername }}</ng-template>
+    <a routerLink="/actor/{{ author?.identifier() }}">
+      <ng-container *ngIf="author?.name !== ''; else nameUnset">{{ author?.name }}</ng-container>
+      <ng-template #nameUnset>{{ author?.preferredUsername }}</ng-template>
+    </a>
   </mat-card-title>
   <mat-card-subtitle class="username">
     <a routerLink="/actor/{{ author?.identifier() }}">{{

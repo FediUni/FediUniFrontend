@@ -1,5 +1,5 @@
 <ng-container *ngIf="activity !== undefined">
-<mat-card class="post">
+<mat-card class="post"  [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
   <ng-container *ngIf="activity?.type === 'Announce'">
     <div class="repost-display" fxLayout="row" fxLayoutAlign="start center">
       <mat-icon>loop</mat-icon>
@@ -22,7 +22,7 @@
         [publicationTime]="activity?.object?.published"
       ></app-activity-header>
   </ng-template>
-  <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
+  <mat-card-content>
   <app-note
     *ngIf="activity?.object?.type === 'Note'"
     [note]="activity?.object"
