@@ -19,10 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { VgCoreModule } from '@videogular/ngx-videogular/core';
-import { VgControlsModule } from '@videogular/ngx-videogular/controls';
-import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
-import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { NgxJdenticonModule } from 'ngx-jdenticon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -80,13 +77,10 @@ import { NavigationListComponent } from './navigation-list/navigation-list.compo
     MatTabsModule,
     MatCardModule,
     MatListModule,
-    VgCoreModule,
-    VgControlsModule,
-    VgOverlayPlayModule,
-    VgBufferingModule,
     MatSnackBarModule,
     MatSidenavModule,
     MatTooltipModule,
+    NgxJdenticonModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

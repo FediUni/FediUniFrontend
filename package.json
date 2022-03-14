@@ -25,8 +25,10 @@
     "@angular/router": "~13.2.5",
     "@videogular/ngx-videogular": "^5.0.1",
     "activity-streams": "^4.3.8",
+    "jdenticon": "^3.1.1",
     "moment": "^2.29.1",
     "ngx-cookie-service": "^13.1.2",
+    "ngx-jdenticon": "^1.0.4",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

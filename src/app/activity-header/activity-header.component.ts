@@ -77,7 +77,6 @@ export class ActivityHeaderComponent implements OnInit {
     if (!Array.isArray(icon?.url)) {
       return icon?.url?.href ?? '';
     }
-    console.log('Returning the First URL');
     return icon?.url?.[0]?.href ?? '';
   }
 }
