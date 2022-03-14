@@ -1,7 +1,19 @@
-<span fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10">
   <mat-card>
     <mat-card-header>
-      <img mat-card-avatar src="{{ actor?.profilePicture() }}" />
+      <div mat-card-avatar>
+        <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+          <img
+            mat-card-avatar
+            src="{{ actor?.profilePicture() }}"
+            routerLink="/actor/{{ actor?.identifier() }}"
+            alt="Profile Picture"
+          />
+        </ng-container>
+        <ng-template #placeholder>
+        <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
+        </ng-template>
+      </div>
       <mat-card-title>
         <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
           actor?.name
@@ -30,18 +42,24 @@
       <button mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
     </mat-card-actions>
   </mat-card>
-  <ng-container *ngIf="activities.length > 0; else loading">
-    <app-activity
-      fxFlex
-      fxFlexFill
-      *ngFor="let activity of activities"
-      [activity]="activity"
-      [actor]="actor"
-    ></app-activity>
-  </ng-container>
-  <ng-template #loading>
-    <div class="loading-wrapper" fxLayout="column" fxLayoutAlign="center center">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
-</span>
+  <div class="outbox" fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center stretch">
+    <ng-container *ngIf="!loadingOutbox; else loading">
+      <app-activity
+        fxFlex
+        *ngFor="let activity of activities"
+        [activity]="activity"
+        [actor]="actor"
+      ></app-activity>
+    </ng-container>
+    <ng-template #loading>
+      <div class="loading-wrapper" fxLayout="column" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+    <ng-container *ngIf="!loadingOutbox && activities.length === 0">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h1>This user hasn't made any posts...</h1>
+        </div>
+    </ng-container>
+  </div>
+</div>

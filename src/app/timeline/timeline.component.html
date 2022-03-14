@@ -4,7 +4,7 @@
   fxLayoutGap="10"
   fxLayoutAlign="center stretch">
   <app-create-post></app-create-post>
-  <ng-container *ngIf="loadingActivities === false; else loading">
+  <ng-container *ngIf="!loadingActivities; else loading">
     <ng-container *ngIf="activities.length === 0">
       <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
         <h1>Your feed is looking pretty lonely...</h1>

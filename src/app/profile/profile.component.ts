@@ -14,9 +14,9 @@ import { FollowService, FollowStatus } from '../follow.service';
 })
 export class ProfileComponent implements OnInit {
   actor: Actor | undefined;
-  host: string = '';
   activities: Activity[] = [];
   followStatus: FollowStatus = FollowStatus.NOT_FOLLOWER;
+  loadingOutbox: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,17 +33,20 @@ export class ProfileComponent implements OnInit {
           this.followStatus = res.followerStatus as FollowStatus;
         }
       })
+      this.loadingOutbox = true;
       this.outboxService.getOutboxPage(this.actor.identifier()).subscribe({
         next: (res) => {
           let outbox = new OrderedCollectionPage(res);
           if (!Array.isArray(outbox.orderedItems)) {
             this.activities.push(outbox.orderedItems as Activity);
-          } else {
+          } else if (outbox?.orderedItems !== undefined) {
             outbox.orderedItems.forEach((o) => {
               this.activities.push(o as Activity);
             });
           }
+          this.loadingOutbox = false;
         },
+        error: () => this.loadingOutbox = false,
       });
     });
   }
