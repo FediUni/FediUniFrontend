@@ -1,0 +1,25 @@
+<mat-card routerLink="/actor/{{ actor?.identifier() }}">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+        <img
+          mat-card-avatar
+          src="{{ actor?.profilePicture() }}"
+          routerLink="/actor/{{ actor?.identifier() }}"
+          alt="Profile Picture"
+        />
+      </ng-container>
+      <ng-template #placeholder>
+        <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
+      </ng-template>
+    </div>
+    <mat-card-title>
+      <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
+        actor?.name
+        }}</ng-container>
+      <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ actor?.identifier() }}
+    </mat-card-subtitle>
+  </mat-card-header>

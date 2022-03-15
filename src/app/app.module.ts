@@ -38,6 +38,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { VideoComponent } from './video/video.component';
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 import { NavigationListComponent } from './navigation-list/navigation-list.component';
+import { ProfilePreviewComponent } from './profile-preview/profile-preview.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NavigationListComponent } from './navigation-list/navigation-list.compo
     VideoComponent,
     FocusedActivityComponent,
     NavigationListComponent,
+    ProfilePreviewComponent,
   ],
   imports: [
     BrowserModule,
