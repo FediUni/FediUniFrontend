@@ -21,6 +21,22 @@
       <mat-card-subtitle>
         <p [innerHTML]="actor?.identifier()"></p>
       </mat-card-subtitle>
+      <div fxFlex></div>
+      <ng-container [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername">
+        <button
+          mat-raised-button
+          class="follow"
+          color="primary"
+          *ngSwitchCase="0"
+          (click)="sendFollow()"
+        >
+          Follow
+        </button>
+        <button class="follow" mat-raised-button color="accent" *ngSwitchCase="1">
+          Pending
+        </button>
+        <button class="follow" mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
+      </ng-container>
     </mat-card-header>
       <mat-card-content>
         <p [innerHTML]="actor?.summary"></p>
@@ -32,21 +48,6 @@
           <h4 >{{actor?.outbox?.totalItems || 0}} Posts</h4>
           <h4 >{{actor?.followers?.totalItems || 0}} Followers</h4>
           <h4 >{{actor?.following?.totalItems || 0}} Following</h4>
-          <ng-container [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername">
-            <button
-              mat-raised-button
-              class="follow"
-              color="primary"
-              *ngSwitchCase="0"
-              (click)="sendFollow()"
-            >
-              Follow
-            </button>
-            <button class="follow" mat-raised-button color="accent" *ngSwitchCase="1">
-              Pending
-            </button>
-            <button class="follow" mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
-          </ng-container>
         </span>
       </ng-container>
     </mat-card-actions>
