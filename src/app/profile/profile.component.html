@@ -22,8 +22,11 @@
         <p [innerHTML]="actor?.identifier()"></p>
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      <p [innerHTML]="actor?.summary"></p>
+      <mat-card-content fxLayout="row" fxLayoutAlign="space-around center">
+        <p [innerHTML]="actor?.summary" fxFlex="100"></p>
+        <span fxFlex="33">{{actor?.outbox?.totalItems || "?"}} Posts</span>
+        <span fxFlex="33">{{actor?.followers?.totalItems || "?"}} Followers</span>
+        <span fxFlex="33">{{actor?.following?.totalItems || "?"}} Following</span>
     </mat-card-content>
     <mat-card-actions align="end" [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername">
       <button

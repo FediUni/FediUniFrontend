@@ -1,6 +1,7 @@
 import { ActivityPubObject } from './ActivityPubObject';
 import { Image } from './Image';
 import { Link } from './Link';
+import {Collection, OrderedCollection} from "./Collection";
 
 export class Actor implements ActivityPubObject {
   type: string = '';
@@ -16,6 +17,9 @@ export class Actor implements ActivityPubObject {
   url?: Link[] | Link = [];
   host?: string;
   summary?: string = '';
+  outbox?: OrderedCollection;
+  followers?: OrderedCollection;
+  following?: OrderedCollection;
 
   constructor(o: any) {
     this.type = o.type;
@@ -28,6 +32,9 @@ export class Actor implements ActivityPubObject {
     this.url = o.url;
     this.summary = o.summary;
     this.host = this.id.host;
+    this.outbox = o.outbox;
+    this.followers = o.followers;
+    this.following = o.following;
   }
 
   profilePicture(): String {

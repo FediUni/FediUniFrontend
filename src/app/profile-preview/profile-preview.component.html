@@ -1,25 +1,40 @@
-<mat-card routerLink="/actor/{{ actor?.identifier() }}">
-  <mat-card-header>
-    <div mat-card-avatar>
-      <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
-        <img
-          mat-card-avatar
-          src="{{ actor?.profilePicture() }}"
-          routerLink="/actor/{{ actor?.identifier() }}"
-          alt="Profile Picture"
-        />
+<ng-container *ngIf="actor !== undefined; else loading">
+  <mat-card routerLink="/actor/{{ actor?.identifier() }}">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+          <img
+            mat-card-avatar
+            src="{{ actor?.profilePicture() }}"
+            routerLink="/actor/{{ actor?.identifier() }}"
+            alt="Profile Picture"
+          />
+        </ng-container>
+        <ng-template #placeholder>
+          <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
+        </ng-template>
+      </div>
+      <mat-card-title>
+        <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
+          actor?.name
+          }}</ng-container>
+        <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ actor?.identifier() }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="space-around center">
+      <ng-container *ngIf="actor?.outbox.totalItems !== undefined || actor?.followers?.totalItems !== undefined || actor?.following?.totalItems !== undefined">
+        <span>{{actor?.outbox?.totalItems || "?"}} Posts</span>
+        <span>{{actor?.followers?.totalItems || "?"}} Followers</span>
+        <span>{{actor?.following?.totalItems || "?"}} Following</span>
       </ng-container>
-      <ng-template #placeholder>
-        <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
-      </ng-template>
-    </div>
-    <mat-card-title>
-      <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
-        actor?.name
-        }}</ng-container>
-      <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
-    </mat-card-title>
-    <mat-card-subtitle>
-      {{ actor?.identifier() }}
-    </mat-card-subtitle>
-  </mat-card-header>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-template #loading>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

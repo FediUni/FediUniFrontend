@@ -14,7 +14,10 @@ export class ProfilePreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.actorService.getCurrentActor().subscribe({
-      next: (res) =>  this.actor = new Actor(res),
+      next: (res) => {
+        this.actor = new Actor(res);
+        console.log(this.actor);
+      },
     })
   }
 }

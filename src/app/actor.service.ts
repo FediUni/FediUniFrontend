@@ -18,8 +18,14 @@ export class ActorService {
     );
   }
 
+  getActorWithDetails(identifier: string) {
+    return this.http.get<Actor>(
+      `${environment.apiUrl}/actor?identifier=${identifier}&statistics=true`
+    );
+  }
+
   getCurrentActor() {
     let username = this.auth.getUsername();
-    return this.http.get(`${environment.apiUrl}/actor/${username}`);
+    return this.http.get(`${environment.apiUrl}/actor/${username}?statistics=true`);
   }
 }
