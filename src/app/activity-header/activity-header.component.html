@@ -16,14 +16,12 @@
   </div>
   <mat-card-title class="name">
     <a routerLink="/actor/{{ author?.identifier() }}">
-      <ng-container *ngIf="author?.name !== ''; else nameUnset">{{ author?.name }}</ng-container>
-      <ng-template #nameUnset>{{ author?.preferredUsername }}</ng-template>
+      <ng-container *ngIf="author?.name !== ''; else nameUnset"><p [innerHTML]="author?.name"></p></ng-container>
+      <ng-template #nameUnset><p [innerHTML]="author?.preferredUsername"></p></ng-template>
     </a>
   </mat-card-title>
   <mat-card-subtitle class="username">
-    <a routerLink="/actor/{{ author?.identifier() }}">{{
-      author?.identifier()
-    }}</a>
+    <a routerLink="/actor/{{ author?.identifier() }}" [innerHTML]="author?.identifier()"></a>
     • {{ relativeTime }}
   </mat-card-subtitle>
 </mat-card-header>

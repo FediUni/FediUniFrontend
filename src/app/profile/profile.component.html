@@ -15,17 +15,15 @@
         </ng-template>
       </div>
       <mat-card-title>
-        <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{
-          actor?.name
-        }}</ng-container>
-        <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+        <ng-container *ngIf="actor?.name !== ''; else nameUnset"><p [innerHTML]="actor?.name"></p></ng-container>
+        <ng-template #nameUnset><p [innerHTML]="actor?.preferredUsername"></p></ng-template>
       </mat-card-title>
       <mat-card-subtitle>
-        {{ actor?.identifier() }}
+        <p [innerHTML]="actor?.identifier()"></p>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p innerHTML="{{ actor?.summary }}"></p>
+      <p [innerHTML]="actor?.summary"></p>
     </mat-card-content>
     <mat-card-actions align="end" [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername">
       <button
