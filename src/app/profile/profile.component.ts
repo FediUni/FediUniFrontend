@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OutboxService } from '../outbox.service';
 import { Actor } from '../vocab/Actor';
-import { switchMap } from 'rxjs';
 import { OrderedCollectionPage } from '../vocab/Collection';
 import { Activity } from '../vocab/Activity';
 import { FollowService, FollowStatus } from '../follow.service';
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +21,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private outboxService: OutboxService,
-    private follow: FollowService
+    private follow: FollowService,
+    private auth: AuthenticationService,
   ) {
   }
 
