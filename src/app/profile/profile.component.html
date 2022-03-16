@@ -27,7 +27,7 @@
     <mat-card-content>
       <p innerHTML="{{ actor?.summary }}"></p>
     </mat-card-content>
-    <mat-card-actions align="end" [ngSwitch]="followStatus" *ngIf-="actor?.preferredUsername !== this.auth.getUsername()">
+    <mat-card-actions align="end" [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername">
       <button
         mat-raised-button
         color="primary"
