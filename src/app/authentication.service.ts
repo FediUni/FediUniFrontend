@@ -11,6 +11,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   register(username: string, password: string) {
+    username = username.toLowerCase();
     let registerForm: FormData = new FormData();
     registerForm.append('username', username);
     registerForm.append('password', password);
@@ -28,6 +29,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
+    username = username.toLowerCase();
     let loginForm: FormData = new FormData();
     loginForm.append('username', username);
     loginForm.append('password', password);
@@ -63,7 +65,7 @@ export class AuthenticationService {
   handleUsername(username: string, expirationTime: number): void {
     this.cookieService.set(
       'username',
-      username,
+      username.toLowerCase(),
       expirationTime,
       '/',
       environment.domain,
