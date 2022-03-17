@@ -1,5 +1,5 @@
 <ng-container *ngIf="actor !== undefined; else loading">
-  <mat-card routerLink="/actor/{{ actor?.identifier() }}">
+  <mat-card id='profile-preview' routerLink="/actor/{{ actor?.identifier() }}">
     <mat-card-header>
       <div mat-card-avatar>
         <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
