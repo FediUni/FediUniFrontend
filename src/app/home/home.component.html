@@ -1,7 +1,9 @@
-<app-search></app-search>
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="16px">
+  <app-search></app-search>
+</div>
 <div fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch" fxLayoutGap="16px">
-  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center center">
-    <app-profile-preview fxFlex="90"></app-profile-preview>
+  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch">
+    <app-navigation-list></app-navigation-list>
   </span>
   <span class="sidebar-links-container timeline" fxFlex="50" fxLayoutAlign.lt-lg="center stretch">
     <span class="primary-display" fxFlex.lt-lg="90">
@@ -9,7 +11,7 @@
       <app-message></app-message>
     </span>
   </span>
-  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center start">
-    <app-navigation-list></app-navigation-list>
+  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center center" fxHIde.lt-lg>
+    <app-profile-preview fxFlex="90"></app-profile-preview>
   </span>
 </div>
