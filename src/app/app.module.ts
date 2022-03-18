@@ -41,6 +41,7 @@ import { FocusedActivityComponent } from './focused-activity/focused-activity.co
 import { NavigationListComponent } from './navigation-list/navigation-list.component';
 import { ProfilePreviewComponent } from './profile-preview/profile-preview.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
     FocusedActivityComponent,
     NavigationListComponent,
     ProfilePreviewComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

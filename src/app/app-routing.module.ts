@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { ActivityResolver } from "./activity.resolver";
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 import {ActorResolver} from "./actor.resolver";
+import {SettingsComponent} from "./settings/settings.component";
 
 const routes = [
   { path: 'signin', component: SignInComponent },
@@ -30,7 +31,11 @@ const routes = [
         resolve: {
           activity: ActivityResolver,
         }
-      }
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+      },
     ], canActivate: [AuthGuard],
   },
 
