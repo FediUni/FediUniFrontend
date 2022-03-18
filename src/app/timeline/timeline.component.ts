@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 import { TimelineService } from '../timeline.service';
 import { AuthenticationService } from '../authentication.service';
 import { Activity } from '../vocab/Activity';
-import { OrderedCollection } from '../vocab/Collection';
-import { ActivatedRoute } from "@angular/router";
+import { OrderedCollection, OrderedCollectionPage } from '../vocab/Collection';
 
 @Component({
   selector: 'app-timeline',
@@ -11,6 +11,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent implements OnInit {
+  orderedCollection: OrderedCollection
+  currentPage: OrderedCollectionPage
   activities: Activity[];
   loadingActivities: boolean;
 
@@ -48,8 +50,8 @@ export class TimelineComponent implements OnInit {
     this.loadingActivities = true;
     this.timeline.getPersonalTimelineCollection(this.auth.getUsername()).subscribe({
       next: (orderedCollection) => {
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
+        this.orderedCollection = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(this.orderedCollection);
       },
       error: () => this.loadingActivities = false,
     });
@@ -58,8 +60,8 @@ export class TimelineComponent implements OnInit {
   getLocalTimeline(): void {
     this.timeline.getLocalTimelineCollection().subscribe({
       next: (orderedCollection) => {
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
+        this.orderedCollection = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(this.orderedCollection);
       },
       error: () => this.loadingActivities = false,
     });
@@ -68,8 +70,8 @@ export class TimelineComponent implements OnInit {
   getFederatedTimeline(): void {
     this.timeline.getFederatedTimelineCollection().subscribe({
       next: (orderedCollection) => {
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
+        this.orderedCollection = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(this.orderedCollection);
       },
       error: () => this.loadingActivities = false,
     });
@@ -79,32 +81,44 @@ export class TimelineComponent implements OnInit {
     this.timeline.getInstituteTimelineCollection().subscribe({
       next: (orderedCollection) => {
         console.log(orderedCollection)
-        let c = new OrderedCollection(orderedCollection);
-        this.handleIncomingCollection(c);
+        this.orderedCollection = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(this.orderedCollection);
       },
       error: () => this.loadingActivities = false,
     });
   }
+
+  nextPage(): void {
+    console.log("Scrolling!")
+    console.log(this.currentPage);
+  }
+
   handleIncomingCollection(orderedCollection: OrderedCollection): void {
     if (orderedCollection === undefined) {
       return
     }
     this.timeline.getFirstPage(orderedCollection).subscribe({
       next: (page) => {
-        let orderedItems = page.orderedItems ?? [];
-        if (Array.isArray(orderedItems)) {
-          orderedItems.map((item) => {
-            let activity = item as Activity;
-            if (activity === undefined) {
-              return;
-            }
-            this.activities.push(activity);
-          });
-        } else if (orderedItems !== undefined) {
-          this.activities.push(orderedItems as Activity);
-        }
-        this.loadingActivities = false;
+        this.currentPage = page;
+        this.handleOrderedCollectionPage(page);
       },
+      error: () => this.loadingActivities = false,
     })
+  }
+
+  handleOrderedCollectionPage(page: OrderedCollectionPage): void  {
+    let orderedItems = page.orderedItems ?? [];
+    if (Array.isArray(orderedItems)) {
+      orderedItems.map((item) => {
+        let activity = item as Activity;
+        if (activity === undefined) {
+          return;
+        }
+        this.activities.push(activity);
+      });
+    } else if (orderedItems !== undefined) {
+      this.activities.push(orderedItems as Activity);
+    }
+    this.loadingActivities = false;
   }
 }

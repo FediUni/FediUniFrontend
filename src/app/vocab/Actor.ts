@@ -5,7 +5,7 @@ import {Collection, OrderedCollection} from "./Collection";
 
 export class Actor implements ActivityPubObject {
   type: string = '';
-  id: URL | string;
+  id: URL;
   attributedTo?: ActivityPubObject[] | ActivityPubObject = [];
   content?: string = '';
   name: string = '';

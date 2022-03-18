@@ -26,6 +26,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { NoteComponent } from './note/note.component';
 import { httpInterceptorProviders } from './interceptors';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { MessageComponent } from './message/message.component';
 import { ActivityHeaderComponent } from './activity-header/activity-header.component';
 import { ActivityComponent } from './activity/activity.component';
@@ -39,6 +40,7 @@ import { VideoComponent } from './video/video.component';
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 import { NavigationListComponent } from './navigation-list/navigation-list.component';
 import { ProfilePreviewComponent } from './profile-preview/profile-preview.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { ProfilePreviewComponent } from './profile-preview/profile-preview.compo
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,
+    InfiniteScrollModule,
     MatFormFieldModule,
     MatGridListModule,
     MatInputModule,
@@ -83,6 +86,7 @@ import { ProfilePreviewComponent } from './profile-preview/profile-preview.compo
     MatSidenavModule,
     MatTooltipModule,
     NgxJdenticonModule,
+    ScrollingModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

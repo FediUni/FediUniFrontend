@@ -16,7 +16,6 @@ export class ProfilePreviewComponent implements OnInit {
     this.actorService.getCurrentActor().subscribe({
       next: (res) => {
         this.actor = new Actor(res);
-        console.log(this.actor);
       },
     })
   }
