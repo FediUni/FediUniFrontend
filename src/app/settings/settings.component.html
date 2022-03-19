@@ -43,6 +43,11 @@
     <mat-card-content>
       <form [formGroup]="update">
         <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8">
+            <input type="file" class="file-input" (change)="onFileChanged($event)" #fileUpload>
+            <button mat-raised-button color="primary" (click)="fileUpload.click()">Upload</button>
+            <span [innerHTML]="filename || 'No file chosen...'"></span>
+          </div>
           <mat-form-field appearance="fill">
             <mat-label>Display Name</mat-label>
             <input
