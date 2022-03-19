@@ -3,14 +3,22 @@
     <h2>Preview</h2>
     <mat-card-header>
       <div mat-card-avatar>
-        <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+        <ng-container *ngIf="profilePicturePreview !== ''; else noPreview">
           <img
             mat-card-avatar
-            src="{{ actor?.profilePicture() }}"
-            routerLink="/actor/{{ actor?.identifier() }}"
+            src="{{profilePicturePreview }}"
             alt="Profile Picture"
           />
         </ng-container>
+        <ng-template #noPreview>
+          <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+            <img
+              mat-card-avatar
+              src="{{ actor?.profilePicture() }}"
+              alt="Profile Picture"
+            />
+          </ng-container>
+        </ng-template>
         <ng-template #placeholder>
           <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
         </ng-template>
@@ -46,7 +54,12 @@
           <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8">
             <input type="file" class="file-input" (change)="onFileChanged($event)" #fileUpload>
             <button mat-raised-button color="primary" (click)="fileUpload.click()">Upload</button>
-            <span [innerHTML]="filename || 'No file chosen...'"></span>
+            <ng-container *ngIf="profilePictureError === ''; else fileError">
+              <span [innerHTML]="filename || 'No file chosen...'"></span>
+            </ng-container>
+            <ng-template #fileError>
+              <mat-error>{{profilePictureError}}</mat-error>
+            </ng-template>
           </div>
           <mat-form-field appearance="fill">
             <mat-label>Display Name</mat-label>

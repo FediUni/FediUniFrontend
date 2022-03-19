@@ -13,6 +13,8 @@ export class SettingsComponent implements OnInit {
   update: FormGroup;
   actor: Actor | undefined;
   filename: String = '';
+  profilePictureError: String = '';
+  profilePicturePreview: any = '';
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute) {
     this.route.data.subscribe((res) => {
@@ -29,26 +31,32 @@ export class SettingsComponent implements OnInit {
   }
 
   onFileChanged(event: any): void {
+    this.profilePictureError = '';
     let files: File[] = event?.target?.files || [];
     if (files?.length != 1) {
       return
     }
     const file: File = files[0];
-    console.log(file);
     if (file) {
       let reader = new FileReader();
       let fileType = file?.type?.toLowerCase();
       if (!this.allowedTypes.includes(fileType)) {
+        this.profilePictureError = 'Invalid file extension presented';
         return
       }
       this.filename = file.name;
       reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.update.setValue({
+      reader.onload = (e) => {
+        this.update.controls['profilePicture'].patchValue({
           profilePicture: reader.result,
         });
+        this.profilePicturePreview = e?.target?.result;
+        this.profilePictureError = '';
       };
     }
+  }
+
+  submitUpdate(): void {
   }
 
   getDisplayNameError(): string {
