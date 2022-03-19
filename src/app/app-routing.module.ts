@@ -10,6 +10,7 @@ import { ActivityResolver } from "./activity.resolver";
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 import {ActorResolver} from "./actor.resolver";
 import {SettingsComponent} from "./settings/settings.component";
+import {CurrentActorResolver} from "./current-actor.resolver";
 
 const routes = [
   { path: 'signin', component: SignInComponent },
@@ -35,6 +36,9 @@ const routes = [
       {
         path: 'settings',
         component: SettingsComponent,
+        resolve: {
+          actor: CurrentActorResolver,
+        },
       },
     ], canActivate: [AuthGuard],
   },

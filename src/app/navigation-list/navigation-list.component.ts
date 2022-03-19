@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-navigation-list',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation-list.component.scss']
 })
 export class NavigationListComponent implements OnInit {
-
-  constructor() { }
+  identifier: String = '';
+  constructor(private auth: AuthenticationService) {
+    this.identifier = this.auth.getIdentifier();
+  }
 
   ngOnInit(): void {
   }

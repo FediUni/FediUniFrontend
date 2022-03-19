@@ -23,7 +23,7 @@
       </mat-card-subtitle>
       <div fxFlex></div>
         <div class="follow" fxLayout="column" fxFlexAlign="center center">
-          <ng-container [ngSwitch]="followStatus" *ngIf="actor?.preferredUsername !== currentUsername; else currentUser">
+          <ng-container [ngSwitch]="followStatus" *ngIf="actor?.identifier() !== currentIdentifier; else sameUser">
             <button
               mat-raised-button
               class="follow"
@@ -38,7 +38,7 @@
             </button>
             <button class="follow" mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
           </ng-container>
-          <ng-template #currentUser>
+          <ng-template #sameUser>
             <button mat-icon-button><mat-icon>edit</mat-icon></button>
           </ng-template>
         </div>

@@ -1,1 +1,72 @@
-<p>settings works!</p>
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="16">
+  <mat-card>
+    <h2>Preview</h2>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <ng-container *ngIf="actor?.profilePicture() !== ''; else placeholder">
+          <img
+            mat-card-avatar
+            src="{{ actor?.profilePicture() }}"
+            routerLink="/actor/{{ actor?.identifier() }}"
+            alt="Profile Picture"
+          />
+        </ng-container>
+        <ng-template #placeholder>
+          <svg mat-card-avatar [data-jdenticon-value]="actor?.identifier()"></svg>
+        </ng-template>
+      </div>
+      <mat-card-title>
+        <ng-container *ngIf="this.update.value['displayName'] !== ''; else nameUnset"><p [innerHTML]="this.update.value['displayName'].substring(0,20)"></p></ng-container>
+        <ng-template #nameUnset><p [innerHTML]="actor?.preferredUsername"></p></ng-template>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <p [innerHTML]="actor?.identifier()"></p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p [innerHTML]="this.update.value['summary']"></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-divider inset></mat-divider>
+      <ng-container *ngIf="actor?.outbox !== undefined || actor?.followers !== undefined || actor?.following !== undefined">
+        <span fxLayout="row" fxLayoutAlign="space-evenly center">
+          <p class="count">{{actor?.outbox?.totalItems || 0}} Posts</p>
+          <p class="count">{{actor?.followers?.totalItems || 0}} Followers</p>
+          <p class="count">{{actor?.following?.totalItems || 0}} Following</p>
+        </span>
+      </ng-container>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <h2>Edit Profile</h2>
+    <mat-card-content>
+      <form [formGroup]="update">
+        <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10">
+          <mat-form-field appearance="fill">
+            <mat-label>Display Name</mat-label>
+            <input
+              formControlName="displayName"
+              matInput
+            />
+            <mat-error *ngIf="update.get('displayName')?.invalid">{{getDisplayNameError()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Summary</mat-label>
+            <textarea
+              id="summary"
+              formControlName="summary"
+              matInput
+            ></textarea>
+            <mat-error *ngIf="update.get('summary')?.invalid">{{getSummaryError()}}</mat-error>
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button color="primary" mat-raised-button>
+              Update
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

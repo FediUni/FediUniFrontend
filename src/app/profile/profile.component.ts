@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   activities: Activity[] = [];
   followStatus: FollowStatus = FollowStatus.NOT_FOLLOWER;
   loadingOutbox: boolean = false;
-  currentUsername: string = '';
+  currentIdentifier: String = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
         error: () => this.loadingOutbox = false,
       });
     });
-    this.currentUsername = this.auth.getUsername();
+    this.currentIdentifier = this.auth.getIdentifier();
   }
 
   sendFollow() {

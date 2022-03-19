@@ -26,6 +26,6 @@ export class ActorService {
 
   getCurrentActor() {
     let username = this.auth.getUsername();
-    return this.http.get(`${environment.apiUrl}/actor/${username}?statistics=true`);
+    return this.http.get<Actor>(`${environment.apiUrl}/actor/${username}?statistics=true`);
   }
 }

@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs';
 import { environment } from '../environments/environment';
+import { Actor } from "./vocab/Actor";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
+  actor: Actor | undefined;
+
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   register(username: string, password: string) {
@@ -76,6 +79,10 @@ export class AuthenticationService {
 
   getUsername(): string {
     return this.cookieService.get('username');
+  }
+
+  getIdentifier(): string {
+    return `@${this.getUsername()}@${environment.domain}`;
   }
 
   isAuthenticated(): boolean {
