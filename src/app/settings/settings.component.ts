@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Actor } from "../vocab/Actor";
+import {ActorService} from "../actor.service";
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +17,7 @@ export class SettingsComponent implements OnInit {
   profilePictureError: String = '';
   profilePicturePreview: any = '';
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private actorService: ActorService) {
     this.route.data.subscribe((res) => {
       this.actor = new Actor(res['actor'])
       this.update = this.fb.group({
@@ -47,9 +48,7 @@ export class SettingsComponent implements OnInit {
       this.filename = file.name;
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        this.update.controls['profilePicture'].patchValue({
-          profilePicture: reader.result,
-        });
+        this.update.controls['profilePicture'].patchValue(file);
         this.profilePicturePreview = e?.target?.result;
         this.profilePictureError = '';
       };
@@ -57,6 +56,15 @@ export class SettingsComponent implements OnInit {
   }
 
   submitUpdate(): void {
+    let displayName: string = this.update.value['displayName'];
+    let summary: string = this.update.value['summary'];
+    let profilePicture: any = this.update.value['profilePicture'];
+    if (this.update.invalid) {
+      return
+    }
+    this.actorService.updateActor(displayName, summary, profilePicture).subscribe({
+      complete: () => console.log("Success!"),
+    });
   }
 
   getDisplayNameError(): string {

@@ -49,11 +49,11 @@
   <mat-card>
     <h2>Edit Profile</h2>
     <mat-card-content>
-      <form [formGroup]="update">
+      <form [formGroup]="update" (ngSubmit)="submitUpdate()">
         <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10">
           <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8">
             <input type="file" class="file-input" (change)="onFileChanged($event)" #fileUpload>
-            <button mat-raised-button color="primary" (click)="fileUpload.click()">Upload</button>
+            <button mat-raised-button type="button" color="primary" (click)="fileUpload.click()">Upload</button>
             <ng-container *ngIf="profilePictureError === ''; else fileError">
               <span [innerHTML]="filename || 'No file chosen...'"></span>
             </ng-container>

@@ -28,4 +28,13 @@ export class ActorService {
     let username = this.auth.getUsername();
     return this.http.get<Actor>(`${environment.apiUrl}/actor/${username}?statistics=true`);
   }
+
+  updateActor(displayName: string, summary: string, profilePicture: any) {
+    let username = this.auth.getUsername();
+    let registerForm: FormData = new FormData();
+    registerForm.append('displayName', displayName);
+    registerForm.append('summary', summary);
+    registerForm.append('profilePicture', profilePicture)
+    return this.http.post(`${environment.apiUrl}/actor/${username}/update`, registerForm);
+  }
 }
