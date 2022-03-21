@@ -39,7 +39,9 @@
             <button class="follow" mat-raised-button color="warn" *ngSwitchCase="2">Unfollow</button>
           </ng-container>
           <ng-template #sameUser>
-            <button mat-icon-button><mat-icon>edit</mat-icon></button>
+            <a routerLink="/settings">
+              <button mat-icon-button><mat-icon>edit</mat-icon></button>
+            </a>
           </ng-template>
         </div>
     </mat-card-header>

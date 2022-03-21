@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { Actor } from "../vocab/Actor";
 import {ActorService} from "../actor.service";
 
@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
   profilePictureError: String = '';
   profilePicturePreview: any = '';
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private actorService: ActorService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private actorService: ActorService) {
     this.route.data.subscribe((res) => {
       this.actor = new Actor(res['actor'])
       this.update = this.fb.group({
@@ -63,7 +63,7 @@ export class SettingsComponent implements OnInit {
       return
     }
     this.actorService.updateActor(displayName, summary, profilePicture).subscribe({
-      complete: () => console.log("Success!"),
+      complete: () => this.router.navigate(['']),
     });
   }
 
