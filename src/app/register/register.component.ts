@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private auth: AuthenticationService
   ) {
     this.register = fb.group({
-      username: ['', [Validators.required, Validators.maxLength(20), Validators.min(3)]],
+      username: ['', [Validators.required, Validators.maxLength(20), Validators.min(3), Validators.pattern("/[a-zA-Z0-9-_]/")]],
       password: ['', [Validators.required, Validators.maxLength(25), Validators.min(5)]],
       name: ['', [Validators.maxLength(25)]],
     });
@@ -32,6 +32,9 @@ export class RegisterComponent implements OnInit {
     }
     if (this.register.controls['username'].getError('maxlength')) {
       return 'Username cannot exceed 20 characters';
+    }
+    if (this.register.controls['username'].getError('pattern')) {
+      return 'Username must only contain alphanumeric characters'
     }
     return '';
   }
