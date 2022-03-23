@@ -4,7 +4,7 @@
   </ng-container>
   <ng-container *ngIf="attachments?.length !== 0">
     <ng-container *ngIf="attachments.length > 1; else singleAttachment">
-      <mat-grid-list cols="2" rowHeight="3:2">
+      <mat-grid-list class="image-display" cols="2" rowHeight="3:2">
         <mat-grid-tile
           class="attachment"
           *ngFor="let a of attachments"
@@ -24,7 +24,7 @@
       </mat-grid-list>
     </ng-container>
     <ng-template #singleAttachment>
-      <div class="attachment" fxLayout="row" fxLayoutAlign="center">
+      <div class="attachment" fxLayout="row" fxLayoutAlign="center center">
         <ng-container
           *ngIf="attachments[0]?.attachment?.mediaType?.startsWith('image')"
         >
