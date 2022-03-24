@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.login = fb.group({
-      username: ['', [Validators.required, Validators.max(12), , Validators.pattern("^[a-zA-Z0-9_]*$")]],
+      username: ['', [Validators.required, Validators.max(12), Validators.pattern("^[a-zA-Z0-9_]*$")]],
       password: ['', [Validators.required, Validators.max(25)]],
     });
   }
