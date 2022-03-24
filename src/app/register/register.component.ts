@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private auth: AuthenticationService
   ) {
     this.register = fb.group({
-      username: ['', [Validators.required, Validators.maxLength(20), Validators.min(3), Validators.pattern("/[a-zA-Z0-9-_]/")]],
+      username: ['', [Validators.required, Validators.maxLength(20), Validators.min(3), Validators.pattern("^[a-zA-Z0-9_]*$")]],
       password: ['', [Validators.required, Validators.maxLength(25), Validators.min(5)]],
       name: ['', [Validators.maxLength(25)]],
     });

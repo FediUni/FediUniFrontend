@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.login = fb.group({
-      username: ['', [Validators.required, Validators.max(12)]],
+      username: ['', [Validators.required, Validators.max(12), , Validators.pattern("^[a-zA-Z0-9_]*$")]],
       password: ['', [Validators.required, Validators.max(25)]],
     });
   }
@@ -34,6 +34,9 @@ export class LoginComponent implements OnInit {
     if (this.login.controls['username'].getError('max')) {
       return 'Username cannot exceed 12 characters';
     }
+    if (this.login.controls['username'].getError('pattern')) {
+      return 'Username must only contain alphanumeric characters'
+    }
     return '';
   }
 
@@ -43,6 +46,9 @@ export class LoginComponent implements OnInit {
     }
     if (this.login.controls['password'].getError('max')) {
       return 'Password cannot exceed 25 characters';
+    }
+    if (this.login.controls['username'].getError('pattern')) {
+      return 'Username must only contain alphanumeric characters'
     }
     return '';
   }
