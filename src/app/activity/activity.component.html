@@ -29,5 +29,5 @@
   ></app-note>
   </mat-card-content>
   <mat-divider inset></mat-divider>
-  <app-activity-footer id="activity-footer"></app-activity-footer>
+  <app-activity-footer id="activity-footer" [objectID]="activity?.object?.id" [authorID]="actor?.id"></app-activity-footer>
 </mat-card>

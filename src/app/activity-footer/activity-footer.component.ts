@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {PostService} from "../post.service";
+import {AuthenticationService} from "../authentication.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-activity-footer',
@@ -6,25 +9,28 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./activity-footer.component.scss'],
 })
 export class ActivityFooterComponent implements OnInit {
-  private _publicationTime: Date | undefined;
-  liked: boolean = false
-  constructor() { }
+  @Input()
+  objectID?: URL | string;
+  @Input()
+  authorID?: URL | string;
+  liked: boolean = false;
+  constructor(private post: PostService, private auth: AuthenticationService) { }
 
   ngOnInit(): void { }
 
-  @Input()
-  set publicationTime(published: Date | string | undefined) {
-    if (published === undefined) {
+  like(): void {
+    if (this.objectID === undefined || this.authorID === undefined) {
       return;
     }
-    if (published instanceof Date) {
-      this._publicationTime = published;
-      return;
-    }
-    this._publicationTime = new Date(published);
-  }
-
-  get publicationTime() {
-    return this._publicationTime;
+    let username = this.auth.getUsername();
+    let userID = new URL(`${environment.apiUrl}/actor/${username}`);
+    this.post.like(userID, username, this.objectID, this.authorID).subscribe({
+      next: () => {
+        this.liked = true;
+      },
+      error: () => {
+       this.liked = false;
+     },
+    })
   }
 }

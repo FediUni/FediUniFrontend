@@ -20,4 +20,15 @@ export class PostService {
       'attributedTo': userID,
     })
   }
+
+  like(userID: URL, username: string, objectToLike: URL | string, authorID: URL | string) {
+    return this.http.post(`${environment.apiUrl}/actor/${username}/outbox`, {
+      '@context': ['https://www.w3.org/ns/activitystreams'],
+      'type': 'Like',
+      'actor': userID,
+      'object': objectToLike,
+      'publish': new Date(),
+      'to': authorID,
+    })
+  }
 }
