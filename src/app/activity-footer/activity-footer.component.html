@@ -4,7 +4,10 @@
       <mat-icon class="like" *ngIf="liked">favorite</mat-icon>
       <mat-icon class="like" *ngIf="!liked">favorite_border</mat-icon>
     </button>
-    <button mat-icon-button type="button"><mat-icon>loop</mat-icon></button>
+    <button mat-icon-button type="button" (click)="announce()">
+      <mat-icon *ngIf="!announced">loop</mat-icon>
+      <mat-icon color="primary" *ngIf="announced">loop</mat-icon>
+    </button>
     <button mat-icon-button type="button"><mat-icon>reply</mat-icon></button>
   </div>
 </mat-card-footer>

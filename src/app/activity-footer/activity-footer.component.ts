@@ -14,6 +14,7 @@ export class ActivityFooterComponent implements OnInit {
   @Input()
   authorID?: URL | string;
   liked: Boolean = false;
+  announced: Boolean = false;
   constructor(private post: PostService, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
@@ -35,6 +36,27 @@ export class ActivityFooterComponent implements OnInit {
       error: () => {
        this.liked = false;
      },
+    })
+  }
+
+  announce(): void {
+    if (this.objectID === undefined || this.authorID === undefined) {
+      return;
+    }
+    let username = this.auth.getUsername();
+    let userID = new URL(`${environment.apiUrl}/actor/${username}`);
+    let to = ["https://www.w3.org/ns/activitystreams#Public"]
+    let cc = [
+      this.authorID,
+      `${environment.apiUrl}/actor/${username}/followers`,
+    ]
+    this.post.announce(userID, username, this.objectID, to, cc).subscribe({
+      next: () => {
+        this.announced = true;
+      },
+      error: () => {
+        this.announced = false;
+      },
     })
   }
 }

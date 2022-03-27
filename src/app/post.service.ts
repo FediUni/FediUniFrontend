@@ -35,4 +35,16 @@ export class PostService {
   likeStatus(objectID: URL | string) {
     return this.http.post(`${environment.apiUrl}/activity/likes/status`, { objectID: objectID })
   }
+
+  announce(userID: URL, username: String, objectID: URL | String, to: (URL | string)[], cc: (URL | string)[]) {
+    return this.http.post(`${environment.apiUrl}/actor/${username}/outbox`, {
+      '@context': ['https://www.w3.org/ns/activitystreams'],
+      'type': 'Announce',
+      'actor': userID,
+      'object': objectID,
+      'publish': new Date(),
+      'to': to,
+      'cc': cc,
+    })
+  }
 }
