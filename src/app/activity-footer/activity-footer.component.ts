@@ -13,10 +13,14 @@ export class ActivityFooterComponent implements OnInit {
   objectID?: URL | string;
   @Input()
   authorID?: URL | string;
-  liked: boolean = false;
+  liked: Boolean = false;
   constructor(private post: PostService, private auth: AuthenticationService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.post.likeStatus(this.objectID || '').subscribe({
+    next: (data: any) => this.liked = data.likeStatus as Boolean
+    })
+  }
 
   like(): void {
     if (this.objectID === undefined || this.authorID === undefined) {

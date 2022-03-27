@@ -31,4 +31,8 @@ export class PostService {
       'to': authorID,
     })
   }
+
+  likeStatus(objectID: URL | string) {
+    return this.http.post(`${environment.apiUrl}/activity/likes/status`, { objectID: objectID })
+  }
 }
