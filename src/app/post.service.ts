@@ -47,4 +47,8 @@ export class PostService {
       'cc': cc,
     })
   }
+
+  announceStatus(objectID: URL | string) {
+    return this.http.post(`${environment.apiUrl}/activity/announce/status`, { objectID: objectID })
+  }
 }

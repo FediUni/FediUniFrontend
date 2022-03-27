@@ -19,7 +19,12 @@ export class ActivityFooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.post.likeStatus(this.objectID || '').subscribe({
-    next: (data: any) => this.liked = data.likeStatus as Boolean
+      next: (data: any) => this.liked = data.likeStatus as Boolean,
+      error: () => this.liked = false,
+    })
+    this.post.announceStatus(this.objectID || '').subscribe({
+      next: (data: any) => this.announced = data.announceStatus as Boolean,
+      error: () => this.announced = false,
     })
   }
 
