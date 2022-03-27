@@ -36,10 +36,11 @@ export class TimelineService {
     return this.http.get<OrderedCollectionPage>(url);
   }
 
-  getNextPersonalTimelinePage(c: OrderedCollectionPage) {
+
+  getNextPage(c: OrderedCollectionPage) {
     if (c?.next === undefined) {
       return;
     }
-    return this.http.get<OrderedCollectionPage>(c.next.href);
+    return this.http.get<OrderedCollectionPage>(c.next);
   }
 }

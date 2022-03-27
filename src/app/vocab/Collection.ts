@@ -63,7 +63,7 @@ export class OrderedCollection extends Object {
 
 export class OrderedCollectionPage extends OrderedCollection {
   partOf?: Link;
-  next?: Link;
+  next?: string;
   prev?: Link;
 
   constructor(o: any) {

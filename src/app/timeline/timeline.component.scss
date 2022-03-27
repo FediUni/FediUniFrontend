@@ -1,5 +1,7 @@
 .timeline {
   min-height: 25vh;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .post, .activity {

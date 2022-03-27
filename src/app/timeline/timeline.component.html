@@ -1,25 +1,32 @@
 <div
-  class="timeline"
-  fxLayout="column"
-  fxLayoutGap="10"
-  fxLayoutAlign="center stretch">
-  <app-create-post></app-create-post>
-  <ng-container *ngIf="!loadingActivities; else loading">
-    <ng-container *ngIf="activities.length === 0">
+    class="timeline"
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    (scrolled)="nextPage()"
+    [scrollWindow]="false"
+  >
+  <div
+    fxLayout="column"
+    fxLayoutGap="10"
+    fxLayoutAlign="center stretch">
+    <app-create-post></app-create-post>
+    <ng-container *ngIf="!loadingActivities; else loading">
+      <ng-container *ngIf="activities.length === 0">
+        <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
+          <h1>Your feed is looking pretty lonely...</h1>
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let activity of activities">
+          <app-activity
+            class="activity"
+            [activity]="activity"
+            [actor]="activity.actor"></app-activity>
+      </ng-container>
+    </ng-container>
+    <ng-template #loading>
       <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
-        <h1>Your feed is looking pretty lonely...</h1>
+        <mat-spinner></mat-spinner>
       </div>
-    </ng-container>
-    <ng-container *ngFor="let activity of activities">
-        <app-activity
-          class="activity"
-          [activity]="activity"
-          [actor]="activity.actor"></app-activity>
-    </ng-container>
-  </ng-container>
-  <ng-template #loading>
-    <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 </div>

@@ -89,8 +89,12 @@ export class TimelineComponent implements OnInit {
   }
 
   nextPage(): void {
-    console.log("Scrolling!")
-    console.log(this.currentPage);
+    this.timeline.getNextPage(this.currentPage)?.subscribe({
+      next: (orderedCollectionPage) => {
+        this.currentPage = new OrderedCollectionPage(orderedCollectionPage);
+        this.handleOrderedCollectionPage(this.currentPage);
+      },
+    });
   }
 
   handleIncomingCollection(orderedCollection: OrderedCollection): void {
