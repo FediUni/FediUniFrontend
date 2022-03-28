@@ -1,1 +1,45 @@
-<p>create-event works!</p>
+<form
+  fxLayout="column"
+  fxFlexAlign="center"
+  fxLayoutGap="8px"
+  [formGroup]="event"
+  (ngSubmit)="onSubmit()"
+>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field appearance="fill" fxFlex>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field appearance="fill" fxFlex>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="summary"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker" formGroupName="eventRange">
+        <input matStartDate placeholder="Start Date" formControlName="startDate">
+        <input matEndDate placeholder="End Date" formControlName="endDate">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Start Time</mat-label>
+      <input matInput type="time" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>End Time</mat-label>
+      <input matInput type="time" formControlName="endTime">
+    </mat-form-field>
+  </div>
+  <span id="input-footer" fxLayout="row" fxLayoutAlign="end end">
+    <button id="post-button" mat-raised-button color="primary" [disabled]="postInFlight">Post</button>
+  </span>
+</form>
