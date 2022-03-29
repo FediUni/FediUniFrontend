@@ -23,16 +23,19 @@ $dark-theme: mat.define-dark-theme((
 
 html,
 body {
-  height: 100%;
-}
-
-body {
   margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 a {
   color: mat.get-color-from-palette($dark-primary);
   text-decoration: none;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
 }
 
 mat-app-background {
