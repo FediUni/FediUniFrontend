@@ -28,6 +28,7 @@ export class CreateEventComponent implements OnInit {
       }),
       startTime: ['', [Validators.required]],
       endTime: ['', [Validators.required]],
+      location: ['', [Validators.required]]
     })
   }
 
@@ -41,6 +42,7 @@ export class CreateEventComponent implements OnInit {
     this.postInFlight = true;
     let name = this.event.value['name'];
     let summary = this.event.value['summary'];
+    let location = this.event.value['location'];
     let startTime = this.event.value['startTime'];
     let endTime = this.event.value['endTime'];
     let startDate = this.event.value['eventRange'].startDate;

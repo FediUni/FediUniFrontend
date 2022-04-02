@@ -12,7 +12,7 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     let config: MatSnackBarConfig = {
-      duration: 2000,
+      duration: 5000,
       panelClass: ['darkMode'],
     }
     this.msg

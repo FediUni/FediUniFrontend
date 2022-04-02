@@ -1,29 +1,31 @@
-<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="16px">
-  <app-search></app-search>
-</div>
-<div fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch" fxLayoutGap="16px">
-  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch">
-    <app-navigation-list fxFlex="90"></app-navigation-list>
-  </span>
-  <span class="sidebar-links-container" fxFlex="50" fxLayoutAlign.lt-lg="center stretch">
-    <span class="primary-display" fxFlex.lt-lg="90" fxLayout="column" fxLayoutGap="10">
-      <mat-tab-group mat-align-tabs="center" animationDuration="450ms" dynamicHeight>
-        <mat-tab label="Post">
-          <div class="content-creator-wrapper">
-            <app-create-post></app-create-post>
-          </div>
-        </mat-tab>
-        <mat-tab label="Event">
-          <div class="content-creator-wrapper">
-            <app-create-event></app-create-event>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-      <router-outlet></router-outlet>
-      <app-message></app-message>
+<div fxLayout="column" fxFlex="100">
+  <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="16px">
+    <app-search></app-search>
+  </div>
+  <div fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch" fxLayoutGap="16px">
+    <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center start" fxLayoutAlign.lt-lg="center stretch">
+      <app-navigation-list fxFlex="90"></app-navigation-list>
     </span>
-  </span>
-  <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center center" fxHide.lt-lg>
-    <app-profile-preview fxFlex="90"></app-profile-preview>
-  </span>
+    <span class="sidebar-links-container" fxFlex="50" fxLayoutAlign.lt-lg="center stretch">
+      <span class="primary-display" fxFlex.lt-lg="90" fxLayout="column" fxLayoutGap="10">
+        <mat-tab-group mat-align-tabs="center" animationDuration="450ms" dynamicHeight>
+          <mat-tab label="Post">
+            <div class="content-creator-wrapper">
+              <app-create-post></app-create-post>
+            </div>
+          </mat-tab>
+          <mat-tab label="Event">
+            <div class="content-creator-wrapper">
+              <app-create-event></app-create-event>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <router-outlet></router-outlet>
+        <app-message></app-message>
+      </span>
+    </span>
+    <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center center" fxHide.lt-lg>
+      <app-profile-preview fxFlex="90"></app-profile-preview>
+    </span>
+  </div>
 </div>

@@ -22,6 +22,10 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker" formGroupName="eventRange">
         <input matStartDate placeholder="Start Date" formControlName="startDate">
