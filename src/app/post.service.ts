@@ -52,7 +52,7 @@ export class PostService {
     return this.http.post(`${environment.apiUrl}/activity/announce/status`, { objectID: objectID })
   }
 
-  event(username: String, userID: String, name: String, content: String, to: String[], cc: String[], startTime: Date, endTime: Date) {
+    event(username: String, userID: String, name: String, content: String, to: String[], cc: String[], startTime: Date, endTime: Date, location: String) {
     let body = {
       '@context': ['https://www.w3.org/ns/activitystreams'],
       'type': 'Event',
@@ -60,11 +60,14 @@ export class PostService {
       'published': new Date(),
       'startTime': startTime,
       'endTime': endTime,
-      'to': [to],
-      'cc': [cc],
+      'location': {
+        'type': 'Place',
+        'name': location,
+      },
+      'to': to,
+      'cc': cc,
       'attributedTo': userID,
     };
-    console.log(body);
-    return this.http.post(`${environment.apiUrl}/actor/${username}/outbox`, body)
+    return this.http.post(`${environment.apiUrl}/actor/${username}/outbox`, body);
   }
 }

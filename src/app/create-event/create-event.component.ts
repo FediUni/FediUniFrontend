@@ -16,7 +16,20 @@ import * as moment from "moment";
 })
 export class CreateEventComponent implements OnInit {
   postInFlight: boolean = false;
-  event: FormGroup
+  event: FormGroup;
+  visibilities: any[] = [
+    {
+      icon: "public",
+      viewValue: "Public",
+      value: "public",
+    },
+    {
+      icon: "people",
+      viewValue: "Followers Only",
+      value: "followers",
+    },
+  ];
+  selectedVisibility: any;
 
   constructor(private fb: FormBuilder, private postService: PostService, private auth: AuthenticationService) {
     this.event = this.fb.group({
@@ -28,7 +41,8 @@ export class CreateEventComponent implements OnInit {
       }),
       startTime: ['', [Validators.required]],
       endTime: ['', [Validators.required]],
-      location: ['', [Validators.required]]
+      location: ['', [Validators.required]],
+      visibility: ['', [Validators.required]],
     })
   }
 
@@ -43,23 +57,33 @@ export class CreateEventComponent implements OnInit {
     let name = this.event.value['name'];
     let summary = this.event.value['summary'];
     let location = this.event.value['location'];
+    let visibility = this.event.value['visibility'];
     let startTime = this.event.value['startTime'];
     let endTime = this.event.value['endTime'];
     let startDate = this.event.value['eventRange'].startDate;
     let endDate = this.event.value['eventRange'].endDate;
     let username = this.auth.getUsername();
     let userID = new URL(`${environment.apiUrl}/actor/${username}`);
-    let to: String[] = ["https://www.w3.org/ns/activitystreams#Public"];
-    let cc: String[] = [`${environment.apiUrl}/actor/${username}/followers`];
-    let start: any = moment(`${startDate} ${startTime}`)
-    let end: any = moment(`${endDate} ${endTime}`)
-    this.postService.event(username, userID.toString(), name, summary, to, cc, start, end).subscribe({
+    let to: String[];
+    let cc: String[];
+    console.log(visibility)
+    if (visibility.value === 'public') {
+      to = ["https://www.w3.org/ns/activitystreams#Public"];
+      cc = [`${environment.apiUrl}/actor/${username}/followers`];
+    } else if (visibility.value === 'followers') {
+      to = [];
+      cc = [`${environment.apiUrl}/actor/${username}/followers`];
+    } else {
+      return;
+    }
+    let start: any = moment(`${startDate.format('YYYY-MM-DD')} ${startTime}`)
+    let end: any = moment(`${endDate.format('YYYY-MM-DD')} ${endTime}`)
+    this.postService.event(username, userID.toString(), name, summary, to, cc, start.toDate(), end.toDate(), location).subscribe({
       next:() => {
         this.postInFlight = false;
-        this.event.reset()
+        this.event.reset();
       },
       error:() => { this.postInFlight = false },
     })
   }
-
 }
