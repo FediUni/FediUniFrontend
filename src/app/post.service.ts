@@ -51,4 +51,23 @@ export class PostService {
   announceStatus(objectID: URL | string) {
     return this.http.post(`${environment.apiUrl}/activity/announce/status`, { objectID: objectID })
   }
+
+    event(username: String, userID: String, name: String, content: String, to: String[], cc: String[], startTime: Date, endTime: Date, location: String) {
+    let body = {
+      '@context': ['https://www.w3.org/ns/activitystreams'],
+      'type': 'Event',
+      'content': content,
+      'published': new Date(),
+      'startTime': startTime,
+      'endTime': endTime,
+      'location': {
+        'type': 'Place',
+        'name': location,
+      },
+      'to': to,
+      'cc': cc,
+      'attributedTo': userID,
+    };
+    return this.http.post(`${environment.apiUrl}/actor/${username}/outbox`, body);
+  }
 }

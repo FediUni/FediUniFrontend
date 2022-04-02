@@ -1,33 +1,34 @@
 <ng-container *ngIf="activity !== undefined">
-<mat-card class="post" >
-  <ng-container *ngIf="activity?.type === 'Announce'">
-    <div class="repost-display" fxLayout="row" fxLayoutAlign="start center">
-      <mat-icon>loop</mat-icon>
-      <span>
-      <a class="repost-username" routerLink="/actor/{{ actor?.identifier() }}">
-        <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{ actor?.name }}</ng-container>
-        <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
-      </a> reposted.</span>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="activity?.type === 'Announce'; else create">
-      <app-activity-header
-        [author]="activity?.object?.attributedTo"
-        [publicationTime]="activity?.object?.published"
-      ></app-activity-header>
-  </ng-container>
-  <ng-template #create>
-      <app-activity-header
-        [author]="actor"
-        [publicationTime]="activity?.object?.published"
-      ></app-activity-header>
-  </ng-template>
-  <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
-  <app-note
-    *ngIf="activity?.object?.type === 'Note'"
-    [note]="activity?.object"
-  ></app-note>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <app-activity-footer id="activity-footer" [objectID]="activity?.object?.id" [authorID]="actor?.id"></app-activity-footer>
-</mat-card>
+  <mat-card class="post">
+    <ng-container *ngIf="activity?.type === 'Announce'">
+      <div class="repost-display" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon>loop</mat-icon>
+        <span>
+        <a class="repost-username" routerLink="/actor/{{ actor?.identifier() }}">
+          <ng-container *ngIf="actor?.name !== ''; else nameUnset">{{ actor?.name }}</ng-container>
+          <ng-template #nameUnset>{{ actor?.preferredUsername }}</ng-template>
+        </a> reposted.</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activity?.type === 'Announce'; else create">
+        <app-activity-header
+          [author]="activity?.object?.attributedTo"
+          [publicationTime]="activity?.object?.published"
+        ></app-activity-header>
+    </ng-container>
+    <ng-template #create>
+        <app-activity-header
+          [author]="actor"
+          [publicationTime]="activity?.object?.published"
+        ></app-activity-header>
+    </ng-template>
+    <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
+    <app-note
+      *ngIf="activity?.object?.type === 'Note'"
+      [note]="activity?.object"
+    ></app-note>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <app-activity-footer id="activity-footer" [objectID]="activity?.object?.id" [authorID]="actor?.id"></app-activity-footer>
+  </mat-card>
+</ng-container>

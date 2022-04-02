@@ -25,7 +25,6 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { NoteComponent } from './note/note.component';
-import { httpInterceptorProviders } from './interceptors';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { MessageComponent } from './message/message.component';
 import { ActivityHeaderComponent } from './activity-header/activity-header.component';
@@ -40,8 +39,13 @@ import { VideoComponent } from './video/video.component';
 import { FocusedActivityComponent } from './focused-activity/focused-activity.component';
 import { NavigationListComponent } from './navigation-list/navigation-list.component';
 import { ProfilePreviewComponent } from './profile-preview/profile-preview.component';
-import {ScrollingModule} from "@angular/cdk/scrolling";
+import { httpInterceptorProviders } from './interceptors';
+import { ScrollingModule } from "@angular/cdk/scrolling";
 import { SettingsComponent } from './settings/settings.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -65,6 +69,7 @@ import { SettingsComponent } from './settings/settings.component';
     NavigationListComponent,
     ProfilePreviewComponent,
     SettingsComponent,
+    CreateEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,12 +88,15 @@ import { SettingsComponent } from './settings/settings.component';
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
+    MatMomentDateModule,
     MatListModule,
     MatSnackBarModule,
     MatSidenavModule,
     MatTooltipModule,
     NgxJdenticonModule,
     ScrollingModule,
+    MatDatepickerModule,
+    MatSelectModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

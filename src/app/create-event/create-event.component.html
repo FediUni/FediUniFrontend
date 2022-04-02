@@ -1,0 +1,59 @@
+<form
+  fxLayout="column"
+  fxFlexAlign="center"
+  fxLayoutGap="4px"
+  [formGroup]="event"
+  (ngSubmit)="onSubmit()"
+>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location">
+    </mat-form-field>
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>Visibility</mat-label>
+      <mat-select #visibilitySelect formControlName="visibility" [(value)]="selectedVisibility">
+        <mat-select-trigger *ngIf="visibilitySelect.value">{{visibilitySelect.value.viewValue}}</mat-select-trigger>
+        <mat-option *ngFor="let v of visibilities" [value]="v">
+          <mat-icon>{{v.icon}}</mat-icon>
+          {{v.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field appearance="fill" fxFlex>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="summary"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker" formGroupName="eventRange">
+        <input matStartDate placeholder="Start Date" formControlName="startDate">
+        <input matEndDate placeholder="End Date" formControlName="endDate">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>Start Time</mat-label>
+      <input matInput type="time" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field appearance="fill" fxFlex="32">
+      <mat-label>End Time</mat-label>
+      <input matInput type="time" formControlName="endTime">
+    </mat-form-field>
+  </div>
+  <span id="input-footer" fxLayout="row" fxLayoutAlign="end center">
+    <button id="post-button" mat-raised-button color="primary" [disabled]="postInFlight">Post</button>
+  </span>
+</form>
