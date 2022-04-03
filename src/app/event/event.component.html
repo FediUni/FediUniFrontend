@@ -4,13 +4,14 @@
       <mat-icon>event</mat-icon><span [innerHTML]="event?.name"></span>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <mat-icon>description</mat-icon><span [innerHTML]="event?.content"></span>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="start center">
       <mat-icon>place</mat-icon><span>{{event?.location?.name}}</span>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <mat-icon>schedule</mat-icon>{{event?.startTime | date:"HH:mm"}} <mat-icon>trending_flat</mat-icon> {{event?.endTime | date:"HH:mm"}}
+      <mat-icon>schedule</mat-icon> <span>{{event?.startTime | date:"HH:mm"}}</span>
+      <mat-icon>trending_flat</mat-icon> <span>{{event?.endTime | date:"HH:mm"}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>description</mat-icon><span [innerHTML]="event?.content"></span>
     </div>
   </div>
 </div>
