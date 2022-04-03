@@ -27,6 +27,10 @@
       *ngIf="activity?.object?.type === 'Note'"
       [note]="activity?.object"
     ></app-note>
+    <app-event
+      *ngIf="activity?.object?.type === 'Event'"
+      [event]="activity?.object"
+    ></app-event>
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <app-activity-footer id="activity-footer" [objectID]="activity?.object?.id" [authorID]="actor?.id"></app-activity-footer>

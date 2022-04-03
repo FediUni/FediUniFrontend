@@ -56,6 +56,7 @@ export class PostService {
     let body = {
       '@context': ['https://www.w3.org/ns/activitystreams'],
       'type': 'Event',
+      'name': name,
       'content': content,
       'published': new Date(),
       'startTime': startTime,
