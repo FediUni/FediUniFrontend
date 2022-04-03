@@ -1,0 +1,16 @@
+<div>
+  <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="8">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>event</mat-icon><span [innerHTML]="event?.name"></span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>description</mat-icon><span [innerHTML]="event?.content"></span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>place</mat-icon><span>{{event?.location?.name}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon>schedule</mat-icon>{{event?.startTime | date:"HH:mm"}} <mat-icon>trending_flat</mat-icon> {{event?.endTime | date:"HH:mm"}}
+    </div>
+  </div>
+</div>

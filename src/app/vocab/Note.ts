@@ -12,7 +12,8 @@ export class Note implements ActivityPubObject {
   image?: Image[] = [];
   inReplyTo?: ActivityPubObject[] = [];
   to?: string[] = [];
-  cc?: string[] = []; published?: Date = new Date();
+  cc?: string[] = [];
+  published?: Date = new Date();
   url?: Link[] = [];
   attachment?: ActivityPubObject[] | ActivityPubObject;
 }

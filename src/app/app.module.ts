@@ -46,6 +46,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {MatSelectModule} from "@angular/material/select";
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import {MatSelectModule} from "@angular/material/select";
     ProfilePreviewComponent,
     SettingsComponent,
     CreateEventComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Link } from './Link';
 import { Image } from './Image';
 import {Collection, OrderedCollection} from "./Collection";
+import {Place} from "./Place";
 
 export class ActivityPubObject {
   type: string = "";
@@ -10,6 +11,9 @@ export class ActivityPubObject {
   name?: string;
   icon?: Image[] | Image;
   image?: Image[] | Image;
+  location?: Place;
+  startTime?: Date | string;
+  endTime?: Date | string;
   inReplyTo?: ActivityPubObject[] | ActivityPubObject;
   replies?: Collection;
   published?: Date | string;
