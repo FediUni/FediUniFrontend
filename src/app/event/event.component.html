@@ -10,7 +10,7 @@
       <mat-icon>place</mat-icon><span>{{event?.location?.name}}</span>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <mat-icon>schedule</mat-icon>{{event?.startTime | date:"HH:mm"}} <mat-icon>trending_flat</mat-icon> {{event?.endTime | date:"HH:mm"}}
+      <mat-icon>schedule</mat-icon>{{event?.startTime | date:"d MMM, y, HH:mm"}} <mat-icon>trending_flat</mat-icon> {{event?.endTime | date:"d MMM, y, HH:mm"}}
     </div>
   </div>
 </div>
