@@ -49,6 +49,11 @@ export class AuthenticationService {
       );
   }
 
+  logout() {
+    this.cookieService.delete('jwt', '/');
+    this.cookieService.delete('username', '/');
+  }
+
   handleJWT(token: string, expirationTime: number): void {
     this.cookieService.set(
       'jwt',

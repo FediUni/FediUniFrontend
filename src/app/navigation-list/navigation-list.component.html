@@ -15,9 +15,17 @@
     <mat-icon mat-list-icon>location_city</mat-icon>
     Institute
   </a>
+  <a class="link" mat-list-item routerLink="/timeline/institute">
+    <mat-icon mat-list-icon>event</mat-icon>
+    Events
+  </a>
   <mat-divider></mat-divider>
   <a class="link" mat-list-item routerLink="/settings">
     <mat-icon mat-list-icon>settings</mat-icon>
     Settings
+  </a>
+  <a class="link" mat-list-item (click)="logout()">
+    <mat-icon mat-list-icon>logout</mat-icon>
+    Logout
   </a>
 </mat-nav-list>
