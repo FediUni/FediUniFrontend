@@ -8,9 +8,9 @@ import { environment } from '../environments/environment';
 export class OutboxService {
   constructor(private http: HttpClient) {}
 
-  getOutboxPage(identifier: string) {
+  getOutboxPage(identifier: String, page: Number) {
     return this.http.get(
-      `${environment.apiUrl}/actor/outbox?identifier=${identifier}`
+      `${environment.apiUrl}/actor/outbox?identifier=${identifier}&page=${page}`
     );
   }
 }

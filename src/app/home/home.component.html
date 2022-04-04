@@ -8,18 +8,6 @@
     </span>
     <span class="sidebar-links-container" fxFlex="50" fxLayoutAlign.lt-lg="center stretch">
       <span class="primary-display" fxFlex.lt-lg="90" fxLayout="column" fxLayoutGap="10">
-        <mat-tab-group mat-align-tabs="center" animationDuration="450ms" dynamicHeight>
-          <mat-tab label="Post">
-            <div class="content-creator-wrapper">
-              <app-create-post></app-create-post>
-            </div>
-          </mat-tab>
-          <mat-tab label="Event">
-            <div class="content-creator-wrapper">
-              <app-create-event></app-create-event>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
         <router-outlet></router-outlet>
         <app-message></app-message>
       </span>
