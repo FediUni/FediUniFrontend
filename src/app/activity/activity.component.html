@@ -1,4 +1,4 @@
-<ng-container *ngIf="activity !== undefined">
+<ng-container *ngIf="activity !== undefined && activity?.object !== undefined && actor !== undefined">
   <mat-card class="post">
     <ng-container *ngIf="activity?.type === 'Announce'">
       <div class="repost-display" fxLayout="row" fxLayoutAlign="start center">

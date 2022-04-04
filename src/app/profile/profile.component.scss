@@ -3,9 +3,15 @@
   min-height: 50vh;
   width: 100%;
 }
+
 .outbox {
+  min-height: 15vh;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.post, .activity {
   height: auto;
-  min-height: 50vh;
   width: 100%;
 }
 

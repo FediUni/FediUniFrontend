@@ -61,24 +61,35 @@
       </ng-container>
     </mat-card-actions>
   </mat-card>
-  <div class="outbox" fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center stretch">
-    <ng-container *ngIf="!loadingOutbox; else loading">
-      <app-activity
-        fxFlex
-        *ngFor="let activity of activities"
-        [activity]="activity"
-        [actor]="actor"
-      ></app-activity>
-    </ng-container>
-    <ng-template #loading>
-      <div class="loading-wrapper" fxLayout="column" fxLayoutAlign="center center">
-        <mat-spinner></mat-spinner>
-      </div>
-    </ng-template>
-    <ng-container *ngIf="!loadingOutbox && activities.length === 0">
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <h1>This user hasn't made any posts...</h1>
+  <div
+    class="outbox"
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    (scrolled)="nextPage()"
+    [scrollWindow]="false"
+  >
+    <div
+      fxLayout="column"
+      fxLayoutGap="10"
+      fxLayoutAlign="center stretch">
+      <ng-container *ngIf="!loadingOutbox; else loading">
+        <ng-container *ngIf="activities.length === 0">
+          <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
+            <h1>Your feed is looking pretty lonely...</h1>
+          </div>
+        </ng-container>
+        <ng-container *ngFor="let activity of activities">
+          <app-activity
+            class="activity"
+            [activity]="activity"
+            [actor]="activity.actor"></app-activity>
+        </ng-container>
+      </ng-container>
+      <ng-template #loading>
+        <div class="timeline" fxLayout="column" fxLayoutAlign="center center">
+          <mat-spinner></mat-spinner>
         </div>
-    </ng-container>
+      </ng-template>
+    </div>
   </div>
 </div>
