@@ -1,21 +1,32 @@
 <mat-nav-list>
-  <a class="link" mat-list-item routerLink="/timeline/personal">
+  <a class="link" mat-list-item routerLink="/timeline/personal"
+     matTooltip="This is your personal timeline. This timeline consists of posts made by the people you follow."
+     matTooltipPosition="right"
+     matTooltipShowDelay="250">
     <mat-icon mat-list-icon>house</mat-icon>
     Home
   </a>
-  <a class="link" mat-list-item routerLink="/timeline/local">
+  <a class="link" mat-list-item routerLink="/timeline/local" matTooltip="This is the local timeline. This timeline consists of all public posts by users of this server."
+     matTooltipPosition="right"
+     matTooltipShowDelay="250">
     <mat-icon mat-list-icon>dns</mat-icon>
     Local
   </a>
-  <a class="link" mat-list-item routerLink="/timeline/public">
+  <a class="link" mat-list-item routerLink="/timeline/public" matTooltip="This is the public timeline. This timeline consists of all public posts by any users."
+     matTooltipPosition="right"
+     matTooltipShowDelay="250">
     <mat-icon mat-list-icon>public</mat-icon>
     Global
   </a>
-  <a class="link" mat-list-item routerLink="/timeline/institute">
+  <a class="link" mat-list-item routerLink="/timeline/institute" matTooltip="This is the institute timeline. This timeline consists of public posts made by members of the same institute."
+     matTooltipPosition="right"
+     matTooltipShowDelay="250">
     <mat-icon mat-list-icon>location_city</mat-icon>
     Institute
   </a>
-  <a class="link" mat-list-item routerLink="/timeline/institute">
+  <a class="link" mat-list-item routerLink="/timeline/events" matTooltip="This is the events timeline. This timeline consists of upcoming events that you have been invited to."
+     matTooltipPosition="right"
+     matTooltipShowDelay="250">
     <mat-icon mat-list-icon>event</mat-icon>
     Events
   </a>
