@@ -79,7 +79,7 @@
             <mat-error *ngIf="update.get('summary')?.invalid">{{getSummaryError()}}</mat-error>
           </mat-form-field>
           <div fxLayout="row" fxLayoutAlign="end center">
-            <button color="primary" mat-raised-button>
+            <button color="primary" mat-raised-button [disabled]="requestInFlight">
               Update
             </button>
           </div>

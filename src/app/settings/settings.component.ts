@@ -16,6 +16,7 @@ export class SettingsComponent implements OnInit {
   filename: String = '';
   profilePictureError: String = '';
   profilePicturePreview: any = '';
+  requestInFlight: boolean = false;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private actorService: ActorService) {
     this.route.data.subscribe((res) => {
@@ -62,8 +63,10 @@ export class SettingsComponent implements OnInit {
     if (this.update.invalid) {
       return
     }
+    this.requestInFlight = true;
     this.actorService.updateActor(displayName, summary, profilePicture).subscribe({
       complete: () => this.router.navigate(['']),
+      error: () => this.requestInFlight = false,
     });
   }
 
