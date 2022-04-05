@@ -1,0 +1,12 @@
+<ng-container *ngIf="object !== undefined">
+  <mat-card class="unfocused" [ngClass]="{'text-content': focused}">
+    <app-activity-header [author]="actor"></app-activity-header>
+    <mat-card-content (click)="redirectTo(object.id)">
+      <ng-container *ngIf="object.type === 'Note'">
+        <app-note [note]="object" [ngClass]="{'text-content': focused}"></app-note>
+      </ng-container>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <app-activity-footer></app-activity-footer>
+  </mat-card>
+</ng-container>

@@ -24,7 +24,7 @@ export class Collection implements ActivityPubObject {
   last: CollectionPage;
   next: CollectionPage;
   prev: CollectionPage;
-  items: ActivityPubObject[]
+  items: ActivityPubObject[] | ActivityPubObject;
 
   constructor(c: any) {
     this.type = c.type;

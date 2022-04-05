@@ -29,9 +29,6 @@ const routes = [
         path: 'activity',
         queryParams: { id: ":id"},
         component: FocusedActivityComponent,
-        resolve: {
-          activity: ActivityResolver,
-        }
       },
       {
         path: 'settings',
