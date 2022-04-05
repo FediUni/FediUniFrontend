@@ -1,28 +1,17 @@
 <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="8">
-  <ng-container *ngIf="inReplyTo !== undefined">
-    <mat-card>
-      <app-activity-header [author]="inReplyTo.attributedTo"></app-activity-header>
-      <ng-container *ngIf="inReplyTo.type === 'Note'">
-        <app-note [note]="inReplyTo"></app-note>
-      </ng-container>
-      <mat-divider></mat-divider>
-      <app-activity-footer></app-activity-footer>
-    </mat-card>
+  <ng-container *ngIf="!loading && post !== undefined; else loadingActivity">
+    <ng-container *ngIf="inReplyTo !== undefined">
+      <app-post [post]="inReplyTo" [actor]="inReplyTo?.attributedTo"></app-post>
+    </ng-container>
+    <app-post [post]="post" [actor]="actor" [focused]="true"></app-post>
+    <ng-container *ngIf="replies.length > 0">
+      <app-post *ngFor="let reply of replies" [post]="reply" [actor]="reply?.attributedTo"></app-post>
+    </ng-container>
   </ng-container>
-  <app-activity [activity]="activity" [actor]="activity?.actor" [focussed]="true"> </app-activity>
-  <ng-container *ngIf="replies.length > 0; else loading">
-    <mat-card *ngFor="let reply of replies">
-      <app-activity-header [author]="reply.attributedTo"></app-activity-header>
-      <ng-container *ngIf="reply.type === 'Note'">
-        <app-note [note]="reply"></app-note>
-      </ng-container>
-      <mat-divider></mat-divider>
-      <app-activity-footer></app-activity-footer>
-    </mat-card>
-  </ng-container>
-  <ng-template #loading>
+  <ng-template #loadingActivity>
     <div fxLayout="column" fxLayoutAlign="center stretch">
       <mat-spinner fxFlex></mat-spinner>
     </div>
   </ng-template>
 </div>
+

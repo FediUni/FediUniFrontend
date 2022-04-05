@@ -1,0 +1,8 @@
+<ng-container *ngIf="post !== undefined">
+  <ng-container *ngIf="isActivity(); else notActivity">
+    <app-activity [activity]="post" [actor]="actor" [focused]="focused"> </app-activity>
+  </ng-container>
+  <ng-template #notActivity>
+    <app-object [object]="post" [actor]="actor" [focused]="focused"></app-object>
+  </ng-template>
+</ng-container>

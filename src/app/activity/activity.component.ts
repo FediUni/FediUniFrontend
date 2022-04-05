@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Activity } from '../vocab/Activity';
 import { Actor } from '../vocab/Actor';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-activity',
@@ -11,9 +12,9 @@ export class ActivityComponent implements OnInit {
   private _activity: Activity | undefined;
   private _actor: Actor | undefined;
   @Input()
-  focussed: boolean;
+  focused: boolean;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -43,4 +44,13 @@ export class ActivityComponent implements OnInit {
   get actor() {
     return this._actor;
   }
+
+  redirectTo(id: string | URL){
+    if (id instanceof URL) {
+      id = id.toString();
+    }
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigateByUrl(`/activity?id=${id}`));
+  }
+
 }

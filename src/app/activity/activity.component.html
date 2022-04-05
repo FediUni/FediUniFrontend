@@ -22,10 +22,10 @@
           [publicationTime]="activity?.object?.published"
         ></app-activity-header>
     </ng-template>
-    <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
+    <mat-card-content (click)="redirectTo(activity.id)">
     <ng-container *ngIf="activity?.object?.type === 'Note'">
       <app-note
-        [ngClass]="{'text-content': focussed}"
+        [ngClass]="{'text-content': focused}"
         [note]="activity?.object"
       ></app-note>
     </ng-container>

@@ -30,10 +30,10 @@
         </div>
       </ng-container>
       <ng-container *ngFor="let activity of activities">
-          <app-activity
-            class="activity"
-            [activity]="activity"
-            [actor]="activity.actor"></app-activity>
+        <app-post class="activity"
+                  [post]="activity"
+                  [actor]="activity.actor">
+        </app-post>
       </ng-container>
     </ng-container>
     <ng-template #loading>
