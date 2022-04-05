@@ -19,7 +19,6 @@ export class EventComponent implements OnInit {
   set event(event: ActivityPubObject | undefined) {
     if (event?.type === 'Event') {
       this._event = new Event(event);
-      console.log(this._event);
     }
   }
 

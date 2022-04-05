@@ -14,7 +14,7 @@ export class ActivityPubObject {
   location?: Place;
   startTime?: Date | string;
   endTime?: Date | string;
-  inReplyTo?: ActivityPubObject[] | ActivityPubObject;
+  inReplyTo?: ActivityPubObject;
   replies?: Collection;
   published?: Date | string;
   url?: Link[] | Link | string;

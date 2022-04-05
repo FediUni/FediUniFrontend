@@ -23,10 +23,15 @@
         ></app-activity-header>
     </ng-template>
     <mat-card-content [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">
-    <app-note
-      *ngIf="activity?.object?.type === 'Note'"
-      [note]="activity?.object"
-    ></app-note>
+    <ng-container *ngIf="activity?.object?.type === 'Note'">
+      <app-note
+        [ngClass]="{'text-content': focussed}"
+        [note]="activity?.object"
+      ></app-note>
+    </ng-container>
+      <ng-template>
+
+      </ng-template>
     <app-event
       *ngIf="activity?.object?.type === 'Event'"
       [event]="activity?.object"

@@ -12,7 +12,7 @@ export class Activity implements ActivityPubObject {
   name?: string;
   icon?: Image | Image[];
   image?: Image | Image[];
-  inReplyTo?: ActivityPubObject | ActivityPubObject[];
+  inReplyTo?: ActivityPubObject;
   published?: Date | string;
   url?: string | Link | Link[];
   actor?: Actor;

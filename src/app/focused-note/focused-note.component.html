@@ -1,6 +1,6 @@
 <div class="note">
   <ng-container *ngIf="note?.content?.length !== 0">
-    <p class="text-content" [innerHTML]="note?.content"></p>
+    <p [innerHTML]="note?.content"></p>
   </ng-container>
   <ng-container *ngIf="attachments?.length !== 0">
     <ng-container *ngIf="attachments.length > 1; else singleAttachment">

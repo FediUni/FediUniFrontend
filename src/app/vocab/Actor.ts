@@ -12,7 +12,7 @@ export class Actor implements ActivityPubObject {
   preferredUsername?: string = '';
   icon?: Image;
   image?: Image;
-  inReplyTo?: ActivityPubObject[] | ActivityPubObject = [];
+  inReplyTo?: ActivityPubObject;
   published?: Date = new Date();
   url?: Link[] | Link = [];
   host?: string;

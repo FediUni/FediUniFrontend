@@ -11,6 +11,7 @@ import {ActivityPubObject} from "../vocab/ActivityPubObject";
   styleUrls: ['./focused-activity.component.scss']
 })
 export class FocusedActivityComponent implements OnInit {
+  inReplyTo: ActivityPubObject;
   activity: Activity;
   replies: ActivityPubObject[];
 
@@ -20,22 +21,19 @@ export class FocusedActivityComponent implements OnInit {
     this.route.data.subscribe((res) => {
       this.activity = new Activity(res['activity']);
       this.activityService.getActivityWithReplies(this.activity.id).subscribe((res) => {
-        console.log(`Initial Response = ${res}`)
+        if (res?.object?.inReplyTo !== undefined) {
+          this.inReplyTo = res?.object?.inReplyTo;
+        }
         this.replies = [];
         let collection = new Collection(res?.object?.replies);
         let first = collection?.first;
-        if (first === undefined) {
-          return
+        if (first !== undefined) {
+          first.items.map((o) => this.replies.push(o))
+          let next = first?.next;
+          if (next !== undefined) {
+            next.items.map((o) => this.replies.push(o))
+          }
         }
-        console.log(`First Page = ${first}`)
-        first.items.map((o) => this.replies.push(o))
-        let next = first.next;
-        if (next === undefined) {
-          return
-        }
-        console.log(`Next Page = ${next}`)
-        next.items.map((o) => this.replies.push(o))
-        console.log(this.replies)
       })
     });
   }

@@ -10,7 +10,7 @@ export class Note implements ActivityPubObject {
   name?: string = '';
   icon?: Image[] = [];
   image?: Image[] = [];
-  inReplyTo?: ActivityPubObject[] = [];
+  inReplyTo?: ActivityPubObject;
   to?: string[] = [];
   cc?: string[] = [];
   published?: Date = new Date();

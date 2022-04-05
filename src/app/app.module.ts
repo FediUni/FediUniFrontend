@@ -47,6 +47,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {MatSelectModule} from "@angular/material/select";
 import { EventComponent } from './event/event.component';
+import { FocusedNoteComponent } from './focused-note/focused-note.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { EventComponent } from './event/event.component';
     SettingsComponent,
     CreateEventComponent,
     EventComponent,
+    FocusedNoteComponent,
   ],
   imports: [
     BrowserModule,

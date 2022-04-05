@@ -10,6 +10,8 @@ import { Actor } from '../vocab/Actor';
 export class ActivityComponent implements OnInit {
   private _activity: Activity | undefined;
   private _actor: Actor | undefined;
+  @Input()
+  focussed: boolean;
 
   constructor() { }
 

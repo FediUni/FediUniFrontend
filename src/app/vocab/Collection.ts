@@ -10,7 +10,7 @@ export class Collection implements ActivityPubObject {
   name?: string;
   icon?: Image[] | Image;
   image?: Image[] | Image;
-  inReplyTo?: ActivityPubObject[] | ActivityPubObject;
+  inReplyTo?:  ActivityPubObject;
   replies?: Collection;
   published?: Date | string;
   url?: Link[] | Link | string;
