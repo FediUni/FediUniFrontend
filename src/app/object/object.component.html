@@ -1,6 +1,6 @@
 <ng-container *ngIf="object !== undefined">
   <mat-card class="unfocused" [ngClass]="{'text-content': focused}">
-    <app-activity-header [author]="actor"></app-activity-header>
+    <app-activity-header [author]="actor" [publicationTime]="object?.published"></app-activity-header>
     <mat-card-content (click)="redirectTo(object.id)">
       <ng-container *ngIf="object.type === 'Note'">
         <app-note [note]="object" [ngClass]="{'text-content': focused}"></app-note>

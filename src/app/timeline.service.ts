@@ -26,6 +26,10 @@ export class TimelineService {
     return this.http.get(`${environment.apiUrl}/inbox?institute=true`);
   }
 
+  getEventTimelineCollection(username: string) {
+    return this.http.get(`${environment.apiUrl}/actor/${username}/inbox?events=true`);
+  }
+
   getFirstPage(c: OrderedCollection) {
     let url: string = '';
     if (c.first instanceof Link) {

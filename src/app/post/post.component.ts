@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from "../vocab/Activity";
 import {Actor} from "../vocab/Actor";
-import {ActivityPubObject} from "../vocab/ActivityPubObject";
+import {ActivityPubObject, isActivity} from "../vocab/ActivityPubObject";
 
 @Component({
   selector: 'app-post',
@@ -37,16 +37,6 @@ export class PostComponent implements OnInit {
   }
 
   isActivity(): boolean {
-    let type: string = this.post?.type || '';
-    switch (type) {
-      case "Create":
-        return true;
-      case "Announce":
-        return true;
-      case "Invite":
-        return true;
-      default:
-        return false;
-    }
+    return isActivity(this.post);
   }
 }

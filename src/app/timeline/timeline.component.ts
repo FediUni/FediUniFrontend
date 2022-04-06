@@ -42,6 +42,9 @@ export class TimelineComponent implements OnInit {
         case "institute":
           this.getInstituteTimeline();
           break;
+        case "events":
+          this.getEventsTimeline();
+          break;
       }
     })
   }
@@ -80,7 +83,16 @@ export class TimelineComponent implements OnInit {
   getInstituteTimeline(): void {
     this.timeline.getInstituteTimelineCollection().subscribe({
       next: (orderedCollection) => {
-        console.log(orderedCollection)
+        this.orderedCollection = new OrderedCollection(orderedCollection);
+        this.handleIncomingCollection(this.orderedCollection);
+      },
+      error: () => this.loadingActivities = false,
+    });
+  }
+
+  getEventsTimeline(): void {
+    this.timeline.getEventTimelineCollection(this.auth.getUsername()).subscribe({
+      next: (orderedCollection) => {
         this.orderedCollection = new OrderedCollection(orderedCollection);
         this.handleIncomingCollection(this.orderedCollection);
       },

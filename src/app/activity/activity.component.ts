@@ -20,6 +20,7 @@ export class ActivityComponent implements OnInit {
 
   @Input()
   set activity(activity: Activity | undefined) {
+    console.log(activity);
     if (activity !== undefined) {
       this._activity = activity as Activity;
     }
