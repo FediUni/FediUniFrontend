@@ -7,6 +7,7 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
+      <ng-container *ngIf="activities.length > 0; else empty">
         <mat-list>
           <ng-container *ngFor="let activity of activities">
             <ng-container *ngIf="activity?.type === 'Like'">
@@ -21,6 +22,10 @@
             </ng-container>
           </ng-container>
         </mat-list>
+      </ng-container>
+      <ng-template #empty>
+        <p>Nothing to report.</p>
+      </ng-template>
     </mat-card-content>
   </mat-card>
 </ng-container>
