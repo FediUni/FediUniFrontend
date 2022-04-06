@@ -49,6 +49,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { EventComponent } from './event/event.component';
 import { PostComponent } from './post/post.component';
 import { ObjectComponent } from './object/object.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ObjectComponent } from './object/object.component';
     EventComponent,
     PostComponent,
     ObjectComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
