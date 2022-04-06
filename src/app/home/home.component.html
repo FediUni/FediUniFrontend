@@ -12,8 +12,11 @@
         <app-message></app-message>
       </span>
     </span>
-    <span class="sidebar-links-container" fxFlex="25" fxLayout="row" fxLayoutAlign="center center" fxHide.lt-lg>
-      <app-profile-preview fxFlex="90"></app-profile-preview>
+    <span class="sidebar-links-container" fxFlex="25" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16" fxHide.lt-lg>
+      <app-profile-preview ></app-profile-preview>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <app-notifications fxFlexFill></app-notifications>
+      </div>
     </span>
   </div>
 </div>

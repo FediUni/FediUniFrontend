@@ -1,0 +1,10 @@
+.notifications-panel {
+  height: 50vh;
+  overflow: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mat-list-item-content {
+  padding: 0 !important;
+}
