@@ -11,8 +11,10 @@
         <mat-list>
           <ng-container *ngFor="let activity of activities">
             <ng-container *ngIf="activity?.type === 'Like'">
-              <mat-icon>like</mat-icon>
-              <p mat-line><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></p>
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
+                <mat-icon>favorite</mat-icon>
+                <span mat-line><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></span>
+              </div>
             </ng-container>
             <ng-container *ngIf="activity?.type === 'Invite'">
               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
