@@ -1,8 +1,9 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest,
+  HttpRequest, HttpStatusCode,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -10,16 +11,19 @@ import { MessageService } from '../message.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private msg: MessageService) {}
+  constructor(private msg: MessageService, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      catchError((error) => {
-        this.msg.sendMessage(`${error.status}: ${error.error}`);
-        return throwError(() => error);
+      catchError((httpErrorResponse: HttpErrorResponse, _: Observable<HttpEvent<any>>) => {
+        this.msg.sendMessage(`${httpErrorResponse.status}: ${httpErrorResponse.error}`);
+        if (httpErrorResponse.status == HttpStatusCode.Unauthorized) {
+          this.router.navigate(['/signin']);
+        }
+        return throwError(() => httpErrorResponse);
       })
     );
   }
