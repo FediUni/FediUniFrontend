@@ -11,16 +11,20 @@
         <mat-list>
           <ng-container *ngFor="let activity of activities">
             <ng-container *ngIf="activity?.type === 'Like'">
-              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
-                <mat-icon>favorite</mat-icon>
-                <span mat-line><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></span>
-              </div>
+              <mat-list-item>
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
+                  <mat-icon>favorite</mat-icon>
+                  <span class="favorite" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></span>
+                </div>
+              </mat-list-item>
             </ng-container>
             <ng-container *ngIf="activity?.type === 'Invite'">
-              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
-                <mat-icon>event</mat-icon>
-                <span fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has invited you to an <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">event</a></span>
-              </div>
+              <mat-list-item>
+                <div  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
+                  <mat-icon>event</mat-icon>
+                  <span class="event" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has invited you to an <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">event</a></span>
+                </div>
+              </mat-list-item>
             </ng-container>
           </ng-container>
         </mat-list>
