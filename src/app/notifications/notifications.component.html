@@ -13,7 +13,7 @@
             <ng-container *ngIf="activity?.type === 'Like'">
               <mat-list-item>
                 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
-                  <mat-icon>favorite</mat-icon>
+                  <mat-icon matListIcon>favorite</mat-icon>
                   <span class="favorite" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></span>
                 </div>
               </mat-list-item>
