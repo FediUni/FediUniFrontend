@@ -14,7 +14,7 @@
               <mat-list-item>
                 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
                   <mat-icon matListIcon>favorite</mat-icon>
-                  <span class="favorite" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">post</a></span>
+                  <span class="favorite" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has liked your <a [routerLink]="['/activity']" [queryParams]="{id: activity?.object?.id || activity?.object}">post</a></span>
                 </div>
               </mat-list-item>
             </ng-container>
@@ -22,7 +22,7 @@
               <mat-list-item>
                 <div  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
                   <mat-icon matListIcon>event</mat-icon>
-                  <span class="event" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has invited you to an <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">event</a></span>
+                  <span class="event" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has invited you to an <a [routerLink]="['/activity']" [queryParams]="{id: activity?.object?.id || activity?.object}">event</a></span>
                 </div>
               </mat-list-item>
             </ng-container>
