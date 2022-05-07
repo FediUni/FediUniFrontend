@@ -21,7 +21,7 @@
             <ng-container *ngIf="activity?.type === 'Invite'">
               <mat-list-item>
                 <div  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4">
-                  <mat-icon>event</mat-icon>
+                  <mat-icon matListIcon>event</mat-icon>
                   <span class="event" fxFlexFill><a routerLink="/actor/{{ identifier(activity) }}">{{activity?.actor?.preferredUsername}}</a> has invited you to an <a [routerLink]="['/activity']" [queryParams]="{id: activity?.id}">event</a></span>
                 </div>
               </mat-list-item>
