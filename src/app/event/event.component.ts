@@ -17,6 +17,7 @@ export class EventComponent implements OnInit {
 
   @Input()
   set event(event: ActivityPubObject | undefined) {
+    console.log(event);
     if (event?.type === 'Event') {
       this._event = new Event(event);
     }

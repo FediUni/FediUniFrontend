@@ -5,6 +5,9 @@
       <ng-container *ngIf="object.type === 'Note'">
         <app-note [note]="object" [ngClass]="{'text-content': focused}"></app-note>
       </ng-container>
+      <ng-container *ngIf="object.type === 'Event'">
+        <app-event [event]="object"></app-event>
+      </ng-container>
     </mat-card-content>
     <mat-divider></mat-divider>
     <app-activity-footer></app-activity-footer>

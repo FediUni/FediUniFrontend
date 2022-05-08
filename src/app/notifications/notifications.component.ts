@@ -82,7 +82,6 @@ export class NotificationsComponent implements OnInit {
   }
 
   identifier(activity: Activity): string {
-    console.log(activity);
     let actor = new Actor(activity?.actor);
     return `${actor.identifier()}`
   }

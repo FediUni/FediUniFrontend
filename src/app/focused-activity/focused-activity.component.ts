@@ -32,7 +32,7 @@ export class FocusedActivityComponent implements OnInit {
             object = a;
           } else {
             object = res;
-            this.actor = new Actor(object.attributedTo);
+            this.actor = new Actor(object?.attributedTo);
           }
           this.post = object;
           this.loading = false;
