@@ -82,6 +82,7 @@ export class CreateEventComponent implements OnInit {
       next:() => {
         this.postInFlight = false;
         this.event.reset();
+        location.reload();
       },
       error:() => { this.postInFlight = false },
     })
